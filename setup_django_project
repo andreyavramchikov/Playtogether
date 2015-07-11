@@ -1,0 +1,3 @@
+mkvirtualenv playtogether --no-site-packages
+django-admin startproject playtogether
+pip install -r requirements.txt
