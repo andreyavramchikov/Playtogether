@@ -1,0 +1,130 @@
+[
+    {
+        "model": "event.event",
+        "pk": 1,
+        "fields": {
+            "activity": 1,
+            "place": 1,
+            "city": "Minsk",
+            "start_date": "2014-09-09",
+            "end_date": "2014-09-10",
+            "min_people": 5,
+            "max_people":12,
+            "is_paid": true,
+            "cost": 50,
+            "description": "Have bathroom"
+        }
+    },
+    {
+        "model": "event.event",
+        "pk": 2,
+        "fields": {
+            "activity": 1,
+            "place": 1,
+            "city": "Minsk",
+            "start_date": "2014-09-09",
+            "end_date": "2014-09-10",
+            "min_people": 5,
+            "max_people":12,
+            "is_paid": true,
+            "cost": 50,
+            "description": "Have bathroom"
+        }
+    },
+    {
+        "model": "event.event",
+        "pk": 3,
+        "fields": {
+            "activity": 2,
+            "place": 1,
+            "city": "Minsk",
+            "start_date": "2014-09-09",
+            "end_date": "2014-09-10",
+            "min_people": 5,
+            "max_people":12,
+            "is_paid": true,
+            "cost": 50,
+            "description": "Have bathroom"
+        }
+    },
+    {
+        "model": "event.event",
+        "pk": 4,
+        "fields": {
+            "activity": 2,
+            "place": 2,
+            "city": "Minsk",
+            "start_date": "2014-09-09",
+            "end_date": "2014-09-10",
+            "min_people": 5,
+            "max_people":12,
+            "is_paid": true,
+            "cost": 50,
+            "description": "Have bathroom"
+        }
+    },
+    {
+        "model": "event.event",
+        "pk": 5,
+        "fields": {
+            "activity": 1,
+            "place": 1,
+            "city": "Minsk",
+            "start_date": "2014-09-09",
+            "end_date": "2014-09-10",
+            "min_people": 5,
+            "max_people":12,
+            "is_paid": true,
+            "cost": 50,
+            "description": "Have bathroom"
+        }
+    },
+    {
+        "model": "event.event",
+        "pk": 6,
+        "fields": {
+            "activity": 1,
+            "place": 1,
+            "city": "Minsk",
+            "start_date": "2014-09-09",
+            "end_date": "2014-09-10",
+            "min_people": 5,
+            "max_people":12,
+            "is_paid": true,
+            "cost": 50,
+            "description": "Have bathroom"
+        }
+    },
+    {
+        "model": "event.event",
+        "pk": 7,
+        "fields": {
+            "activity": 1,
+            "place": 1,
+            "city": "Minsk",
+            "start_date": "2014-09-09",
+            "end_date": "2014-09-10",
+            "min_people": 5,
+            "max_people":12,
+            "is_paid": true,
+            "cost": 50,
+            "description": "Have bathroom"
+        }
+    },
+    {
+        "model": "event.event",
+        "pk": 8,
+        "fields": {
+            "activity": 1,
+            "place": 1,
+            "city": "Minsk",
+            "start_date": "2014-09-09",
+            "end_date": "2014-09-10",
+            "min_people": 5,
+            "max_people":12,
+            "is_paid": true,
+            "cost": 50,
+            "description": "Have bathroom"
+        }
+    }
+]

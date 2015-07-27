@@ -1,0 +1,52 @@
+[
+    {
+        "model": "event.teamusers",
+        "pk": 1,
+        "fields": {
+            "team": 1,
+            "user": 1
+        }
+    },
+
+    {
+        "model": "event.teamusers",
+        "pk": 2,
+        "fields": {
+            "team": 2,
+            "user": 2
+        }
+    },
+    {
+        "model": "event.teamusers",
+        "pk": 3,
+        "fields": {
+            "team": 3,
+            "user": 3
+        }
+    },
+    {
+        "model": "event.teamusers",
+        "pk": 4,
+        "fields": {
+            "team": 2,
+            "user": 3
+        }
+    },
+    {
+        "model": "event.teamusers",
+        "pk": 5,
+        "fields": {
+            "team": 4,
+            "user": 3
+        }
+    },
+    {
+        "model": "event.teamusers",
+        "pk": 6,
+        "fields": {
+            "team": 2,
+            "user": 6
+        }
+    }
+
+]

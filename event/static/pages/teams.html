@@ -1,0 +1,19 @@
+<div class="col-md-3 col-sm-6 hero-feature" ng-repeat="team in teams">
+    <div class="thumbnail">
+
+        <div class="caption">
+            <h3>[[team.name]]</h3>
+            <div class='row'>
+                <p>[[team.city]]</p>
+                <p>[[team.type]]</p>
+                <p ng-repeat="team_activity in team.team_activities">
+                    [[team_activity.activity.name]] - [[team_activity.level]]
+                </p>
+                <p>
+                    [[team.team_users.length]]
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

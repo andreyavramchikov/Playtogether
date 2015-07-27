@@ -1,0 +1,74 @@
+[
+    {
+        "model": "event.activityplaces",
+        "pk": 1,
+        "fields": {
+            "activity": 1,
+            "place": 1
+        }
+    },
+    {
+        "model": "event.activityplaces",
+        "pk": 2,
+        "fields": {
+            "activity": 1,
+            "place": 2
+        }
+    },
+    {
+        "model": "event.activityplaces",
+        "pk": 3,
+        "fields": {
+            "activity": 1,
+            "place": 3
+        }
+    },
+    {
+        "model": "event.activityplaces",
+        "pk": 4,
+        "fields": {
+            "activity": 2,
+            "place": 1
+        }
+    },
+    {
+        "model": "event.activityplaces",
+        "pk": 5,
+        "fields": {
+            "activity": 2,
+            "place": 3
+        }
+    },
+    {
+        "model": "event.activityplaces",
+        "pk": 6,
+        "fields": {
+            "activity": 4,
+            "place": 3
+        }
+    },
+    {
+        "model": "event.activityplaces",
+        "pk": 7,
+        "fields": {
+            "activity": 5,
+            "place": 1
+        }
+    },
+    {
+        "model": "event.activityplaces",
+        "pk": 8,
+        "fields": {
+            "activity": 6,
+            "place": 4
+        }
+    },
+    {
+        "model": "event.activityplaces",
+        "pk": 9,
+        "fields": {
+            "activity": 2,
+            "place": 2
+        }
+    }
+]

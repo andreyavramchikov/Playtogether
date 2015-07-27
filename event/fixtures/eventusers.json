@@ -1,0 +1,66 @@
+[
+    {
+        "model": "event.eventusers",
+        "pk": 1,
+        "fields": {
+            "event": 1,
+            "user": 1,
+            "team": 1
+        }
+    },
+
+    {
+        "model": "event.eventusers",
+        "pk": 2,
+        "fields": {
+            "event": 1,
+            "user": 2,
+            "team": 2
+        }
+    },
+    {
+        "model": "event.eventusers",
+        "pk": 3,
+        "fields": {
+            "event": 2,
+            "user": 3,
+            "team": 2
+        }
+    },
+    {
+        "model": "event.eventusers",
+        "pk": 4,
+        "fields": {
+            "event": 4,
+            "user": 4,
+            "team": 4
+        }
+    },
+    {
+        "model": "event.eventusers",
+        "pk": 5,
+        "fields": {
+            "event": 1,
+            "user": 4,
+            "team": 2
+        }
+    },
+    {
+        "model": "event.eventusers",
+        "pk": 6,
+        "fields": {
+            "event": 5,
+            "user": 4,
+            "team": 3
+        }
+    },
+    {
+        "model": "event.eventusers",
+        "pk": 7,
+        "fields": {
+            "event": 1,
+            "user": 4,
+            "team": 4
+        }
+    }
+]
