@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarController">
+<nav class="navbar navbar-inverse navbar-fixed-top class1 class2" role="navigation" ng-controller="NavbarController">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -15,20 +15,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/">Main</a></li>
-                <li><a href="/events">Events</a></li>
-                <li><a href="/teams">Teams</a></li>
-                <li><a href="/places">Places</a></li>
-                <li><a href="/users">Users</a></li>
+                <li><a ui-sref="home">Main</a></li>
+                <li><a ui-sref="events">Events</a></li>
+                <li><a ui-sref="teams">Teams</a></li>
+                <li><a ui-sref="places">Places</a></li>
+                <li><a ui-sref="users">Users</a></li>
+                <li><a ui-sref="createevent">CreateEvent</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
-                {% if user.is_authenticated %}
-                    <li><a href="/{{ user.username }}">+{{ user.username }}</a></li>
-                    <li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
-                {% else %}
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
-                {% endif %}
+               <p style="color:white;">[[IS_AUTHENTICATED]]</p>
+                <li ng-show=[[IS_AUTHENTICATED]]><a ui-sref="/{{ user.username }}">+{{ user.username }}</a></li>
+                <li ng-show=[[IS_AUTHENTICATED]]><a ng-click="logout()">Logout</a></li>
+                <li ng-hide=[[IS_AUTHENTICATED]]><a ui-sref="login">Login</a></li>
+                <li ng-hide=[[IS_AUTHENTICATED]]><a ui-sref="registerStep1">Register</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

@@ -1,0 +1,25 @@
+{% load staticfiles %}
+
+<div id="landing-events">
+    <div class="row" ng-repeat="x in [1,2,3]">
+        <div class="event left">
+            <img src="{% static 'img/event.png' %}" class="event-img" />
+            <div class="event-name"><span>Basketball</span></div>
+        </div>
+        <div class="text left">
+            <p>15 June</p>
+            <p>Olimp</p>
+            <p>7 participants</p>
+            <p>5 places left</p>
+            <p>250.000</p>
+        </div>
+        <div class="buttons left">
+            <button>I am going</button>
+            <button>Invite</button>
+        </div>
+    </div>
+</div> {# end of landing-events block #}
+
+<div id="all-events">
+    <button>Look on all events</button>
+</div>

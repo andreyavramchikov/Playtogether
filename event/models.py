@@ -2,9 +2,16 @@ from django.db import models
 from authentication.models import User
 
 
+class City(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+
 class Place(models.Model):
     name = models.CharField(max_length=255)
-    city = models.CharField(max_length=50)
+    city = models.ForeignKey(City)
     address = models.TextField()
     website = models.CharField(max_length=255, blank=True)
     email = models.EmailField(unique=True, blank=True)
@@ -28,6 +35,9 @@ class ActivityPlaces(models.Model):
     activity = models.ForeignKey(Activity)
     place = models.ForeignKey(Place)
 
+    def __unicode__(self):
+        return 'Activity - {}; Place - {}'.format(self.activity, self.place)
+
 
 class Team(models.Model):
     OPENED = 'NEW'
@@ -37,7 +47,7 @@ class Team(models.Model):
         (CLOSED, 'CLOSED'),
     )
     name = models.CharField(max_length=255)
-    city = models.CharField(max_length=50)
+    city = models.ForeignKey(City, null=True, blank=True)
     type = models.CharField(max_length=255, choices=TYPE_CHOICES, default=OPENED)
     max_people = models.IntegerField(null=True, blank=True)
     is_captain = models.BooleanField(default=False)
@@ -61,16 +71,19 @@ class TeamActivities(models.Model):
     team = models.ForeignKey(Team)
     level = models.CharField(max_length=255, blank=True, choices=TEAM_LEVEL_CHOICES, default=NEW)
 
+    def __unicode__(self):
+        return 'Team - {}; Activity - {}'.format(self.team, self.activity)
+
 
 class Event(models.Model):
     activity = models.ForeignKey(Activity)
     place = models.ForeignKey(Place)
-    city = models.CharField(max_length=255, null=True, blank=True)
+    city = models.ForeignKey(City, null=True, blank=True)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     min_people = models.IntegerField()
     max_people = models.IntegerField()
-    is_paid = models.BooleanField()
+    is_paid = models.BooleanField(default=False)
     cost = models.IntegerField(null=True, blank=True)
     description = models.TextField(blank=True)
     users = models.ManyToManyField(User, through='EventUsers')
@@ -84,10 +97,16 @@ class EventUsers(models.Model):
     user = models.ForeignKey(User)
     team = models.ForeignKey(Team)
 
+    def __unicode__(self):
+        return 'Event - {}; User - {}'.format(self.event, self.user)
+
 
 class TeamUsers(models.Model):
     team = models.ForeignKey(Team)
     user = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return 'Team - {}; User - {}'.format(self.team, self.user)
 
 
 class ActivityUsers(models.Model):
@@ -103,6 +122,5 @@ class ActivityUsers(models.Model):
     activity = models.ForeignKey(Activity)
     level = models.CharField(max_length=255, blank=True, choices=LEVEL_CHOICES, default=NEW)
 
-
-class City(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    def __unicode__(self):
+        return 'Activity - {}; User - {}'.format(self.activity, self.user)

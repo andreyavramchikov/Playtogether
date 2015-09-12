@@ -1,9 +1,8 @@
 var app = angular.module('playTogether');
 
-app.controller('EventController', function ($scope, EventService) {
-    EventService.getEvents().then(function(data){
-        $scope.events = data.data.results;
+app.controller('EventController', function ($scope, $http, EventService) {
+    EventService.getEvents().then(function(response){
+        $scope.events = response.data.results;
     });
-
 });
 

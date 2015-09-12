@@ -1,0 +1,30 @@
+{% load staticfiles %}
+
+<div id="events">
+    <div class="nearest-events-text text-center">
+        <span>БЛИЖАЙШИЕ СОБЫТИЯ</span>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 left" ng-repeat="y in [1,2]" >
+            <div class="event relative">
+                <img class="event-img" src="{% static 'img/event.png' %}" />
+                <div class="absolute event-bottom">
+                    <span class="event-name">Волейбол</span>
+                </div>
+            </div>
+            <div class="description">
+                <div><span class="bold">Сегодня 16:00</span></div>
+                <div><span>250 000</span></div>
+                <div><span>7 участников</span></div>
+                <div><span>еще 5 мест</span></div>
+                <div><span>Олимп</span></div>
+            </div>
+            <a class="going"><span>Иду</span></a>
+            <a class="invite"><span>Пригласить</span></a>
+        </div>
+    </div>
+</div> {# end of events block #}
+
+<a class="row look-all-events text-center block">
+    <span>Посмотреть все события</span>
+</a>

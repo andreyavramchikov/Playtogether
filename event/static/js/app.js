@@ -1,78 +1,27 @@
-var app = angular.module('playTogether',['ngRoute', 'ngCookies', 'infinite-scroll']);
-app.config(function($locationProvider, $interpolateProvider, $routeProvider){
+var app = angular.module('playTogether',['ui.router','infinite-scroll', 'authentication', 'ui-rangeSlider', 'ui.mask', 'ui.bootstrap']);
 
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-
-    $routeProvider
-        .when('/', {
-            templateUrl: 'static/pages/main.html',
-            controller: 'MainController',
-            title: 'Home'
-        })
-        .when('/register', {
-            controller: 'RegisterController',
-            templateUrl: '/static/pages/authentication/register.html',
-            title: 'Register'
-        })
-        .when('/login', {
-            controller: 'LoginController',
-            templateUrl: '/static/pages/authentication/login.html',
-            title: 'Login'
-        })
-        .when('/events', {
-            controller: 'EventController',
-            templateUrl: '/static/pages/events.html',
-            title: 'Events'
-        })
-        .when('/places', {
-            controller: 'PlaceController',
-            templateUrl: '/static/pages/places.html',
-            title: 'Places'
-        })
-        .when('/teams', {
-            controller: 'TeamController',
-            templateUrl: '/static/pages/teams.html',
-            title: 'Teams'
-        })
-        .when('/users', {
-            controller: 'UserController',
-            templateUrl: '/static/pages/users.html',
-            title: 'Users'
-        })
-        .otherwise({ redirectTo: '/' });
-
-//        this is for avoiding # in urls, this is not work in all browsers
-//        need to refactored to switch to basic behavior if browser not allow HTML5 history
-        $locationProvider.html5Mode(true);
-        $locationProvider.hashPrefix('!');
-});
-
-app.filter('cityPrefix', function() {
-    return function(city) {
-        return 'г. ' + city;
-    }
-});
-
-app.filter('isPaidString', function() {
-    return function(is_paid) {
-        if (is_paid) {
-            return 'Платно'
-        } else {
-            return 'Бесплатно'
-        }
-    }
-});
-
-
-app.run(function($http, $rootScope) {
-//  for csrf protection
+app.run(function($http, $filter, $rootScope, AuthenticationService) {
+    //for csrf protection
     $http.defaults.xsrfHeaderName = 'X-CSRFToken';
     $http.defaults.xsrfCookieName = 'csrftoken';
 
-//    when url changes then dynamicly change the title
+    //when url changes then dynamicly change the title
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
     });
+
+    //update rootscope to get everywhere dates
+    var day_offset = 24 * 60 * 60 * 1000,
+        today = new Date(),
+        tomorrow = new Date(today.getTime() + day_offset),
+        after_tomorrow = new Date(tomorrow + day_offset),
+        later = new Date(tomorrow - 1000 * day_offset);
+
+    $rootScope.TODAY_DATE = $filter('date')(today, 'yyyy-MM-dd'),
+    $rootScope.TOMORROW_DATE = $filter('date')(tomorrow, 'yyyy-MM-dd'),
+    $rootScope.AFTER_TOMORROW_DATE = $filter('date')(after_tomorrow, 'yyyy-MM-dd'),
+    $rootScope.LATER_DATE = $filter('date')(later, 'yyyy-MM-dd');
+
+    $rootScope.IS_AUTHENTICATED = AuthenticationService.isAuthenticated();
 
 });

@@ -22,15 +22,32 @@ class ActivityUsersSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True, required=False)
+    password = serializers.CharField(write_only=True, required=True)
+    phone = serializers.IntegerField(write_only=True, required=False)
     confirm_password = serializers.CharField(write_only=True, required=False)
     activity_users = ActivityUsersSerializer(source='activityusers_set', many=True, read_only=True)
+
+    # invoke just if data correct
+    def validate(self, data):
+        send_sms = data.get('send_sms')
+        phone = data.get('phone')
+        if send_sms:
+            # if user checked send_sms checkbox then user MUST fill the phone field
+            if not phone:
+                raise serializers.ValidationError('Phone should be presented if you check sendSMS checkbox')
+            if not self.validate_phone(data.get('phone')):
+                raise serializers.ValidationError('Phone not valid')
+
+        return data
+
+    def validate_phone(self, phone):
+        return phone
 
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'city', 'notification_frequency',
                   'created_at', 'updated_at', 'first_name', 'last_name',
-                  'password', 'activity_users', 'confirm_password',)
+                  'password', 'activity_users', 'confirm_password', 'phone', 'send_sms', 'sex')
         read_only_fields = ('created_at', 'updated_at',)
 
         def create(self, validated_data):
@@ -52,3 +69,9 @@ class UserSerializer(serializers.ModelSerializer):
 
             return instance
 
+    # def validate_phone(self, data):
+    #     print data
+    #
+    # # need to think about it
+    # def is_valid(self):
+    #     super(UserSerializer, self).is_valid()

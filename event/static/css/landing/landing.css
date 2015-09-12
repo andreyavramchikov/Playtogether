@@ -1,0 +1,229 @@
+/* iPhone [portrait + landscape] */
+/*@media only screen and (max-width: 768px) {*/
+    /*START OF HEADER BLOCK*/
+    #landing #header {
+        max-width: 100%;
+        position: relative;
+    }
+
+    #landing #header .header-top {
+        height: 40px;
+    }
+
+    #landing #header .header-top .sports-club {
+        font-family: Vivaldi;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 32px;
+        color: black;
+        text-align: center;
+    }
+
+    #landing #header .header-bottom .choose-sport-text {
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        right: 10%;
+        font-family: Georgia;
+        font-weight: bold;
+        font-size: 14px;
+        color: white;
+        text-align: center;
+    }
+
+    #landing #header .header-bottom .how-it-works {
+        position: absolute;
+        width: 50%;
+        bottom: 40%;
+        left: 0;
+        right: 0;
+        height: 20%;
+        background-color: rgba(255, 255, 255, 0.5);
+        margin: 0 auto;
+    }
+
+    #landing #header .header-bottom .how-it-works span {
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 18px;
+        color: white;
+    }
+
+    #landing #header .header-bottom .search-activity {
+        position: absolute;
+        bottom: 10%;
+        left: 0;
+        right: 0;
+        height: 20%;
+        width: 100%;
+    }
+
+    #landing #header .header-bottom .search-activity .activity {
+        width: 95%;
+        margin-left: 2.5%;
+        padding-left: 2.5%;
+        border: 0;
+    }
+    /*END OF HEADER BLOCK*/
+
+
+    /*START OF COMING EVENTS BLOCK*/
+    #landing #events {
+        max-width: 100%;
+        position: relative;
+        overflow: hidden;/*huck need to thin how to avoid it;*/
+        /*Somewhy without this line all events block has no height which cause a lot of issues with next blocks*/
+    }
+
+    #landing #events .event, #landing #popular-events .event {
+        max-width: 95%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+    }
+
+    #landing #events .event .event-img, #landing #popular-events .event .event-img {
+        width: 100%;
+    }
+
+    #landing #events .event .event-bottom, #landing #popular-events .event .event-bottom {
+        bottom: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.65);
+    }
+
+    #landing #events .event .event-name, #landing #popular-events .event .event-name {
+        font-family: "Courier New";
+        font-weight: normal;
+        font-size: 20px;
+    }
+
+    #landing #events .description {
+        width: 100%;
+        text-align: right;
+        font-family: "Courier New";
+        font-size: 18px;
+    }
+
+    #landing #events .going {
+        display: block;
+        max-width: 95%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        margin-bottom: 5px;
+        background-color: #FF3F45;
+        font-family: Courier New;
+        font-size: 20px;
+        line-height: 40px;
+        text-align: center;
+        color: white;
+    }
+
+    #landing #events .invite {
+        display: block;
+        max-width: 95%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
+        background-color: white;
+        font-family: Courier New;
+        font-size: 20px;
+        line-height: 40px;
+        text-align: center;
+        color: #FF3F45;
+        border: 2px solid #FF3F45;
+    }
+    /*END OF COMING EVENTS BLOCK*/
+
+    #landing .look-all-events {
+        border: 2px solid #666666;
+        font-family: Georgia;
+        font-size: 18px;
+        color: #1E1E1E;
+        line-height: 40px;
+        margin: 20px 0;
+    }
+
+    /*START POPULAR EVENTS */
+    #landing #popular-events {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #landing #popular-events .black-line {
+        background-image: url('../../img/black_line.png');
+    }
+
+    #landing #popular-events .black-line div {
+        font-family: Georgia;
+        color: white;
+        font-size: 17px;
+        line-height: 40px;
+        text-align: center;
+    }
+
+    #landing #popular-events .popular-text{
+        line-height: 60px;
+        font-family: Georgia;
+        font-size: 17px;
+    }
+    /*END POPULAR EVENTS */
+
+
+    /*START FOOTER */
+    #landing #footer {
+        width: 100%;
+        background-color: black;
+        overflow: hidden;
+        color: white;
+    }
+
+    #landing #footer .sport-club {
+        font-family: Vivaldi;
+        font-size: 20px;
+        line-height: 40px;
+    }
+
+    #landing #footer .contacts {
+        font-family: "Courier New";
+        font-size: 15px;
+        line-height: 24px;
+        text-align: left;
+    }
+
+    #landing #footer .contacts-left {
+        font-family: "Courier New";
+        font-size: 13px;
+        line-height: 26px;
+        text-align: left;
+    }
+
+    #landing #footer .contacts-right {
+        font-family: "Courier New";
+        font-size: 13px;
+        line-height: 26px;
+        text-align: right;
+    }
+
+    #landing #footer .col-xs-6-margin {
+        width: 45%;
+        margin-right:2.5%;
+        margin-left:2.5%;
+    }
+    /*END FOOTER*/
+
+/*}*/
+/*END OF MOBILE */
+
+
+
+
+
+
+
+
+
+/*/!* iPads (portrait and landscape) ?????----------- *!/*/
+/*@media only screen and (max-width: 992px) {*/
+/*body {*/
+/*background-color: black;*/
+/*}*/
+/*}*/

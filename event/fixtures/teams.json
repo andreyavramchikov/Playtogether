@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -15,7 +15,7 @@
         "pk": 2,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -26,7 +26,7 @@
         "pk": 3,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -37,7 +37,7 @@
         "pk": 4,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -48,7 +48,7 @@
         "pk": 5,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -59,7 +59,7 @@
         "pk": 6,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -70,7 +70,7 @@
         "pk": 7,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -81,7 +81,7 @@
         "pk": 8,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -92,7 +92,7 @@
         "pk": 9,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -103,7 +103,7 @@
         "pk": 10,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true
@@ -115,7 +115,7 @@
         "pk": 11,
         "fields": {
             "name": "Olimpic",
-            "city": "Minsk",
+            "city": 1,
             "type": "Opened",
             "max_people": 10,
             "is_captain": true

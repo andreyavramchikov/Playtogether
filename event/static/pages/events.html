@@ -1,11 +1,32 @@
+<div id="filters" class="pull-left" ng-controller="EventFilterController">
+    <select ng-options="city.id as city.name for city in cities" ng-model="selectedCity" />
+
+
+    <select ng-options="activity.name as activity.name for activity in activities" ng-model="selectedActivity" />
+    <div>
+        <input type="radio" ng-model="is_paid" value="all"/>All
+        <input type="radio" ng-model="is_paid" value="True"/>Is paid
+        <input type="radio" ng-model="is_paid" value="False"/>Not paid
+    </div>
+
+    <button ng-model="event_date" date-filter data-date="later"> Later </button>
+    <button ng-model="event_date" date-filter data-date="today"> Today </button>
+    <button ng-model="event_date" date-filter data-date="tomorrow"> Tomorrow </button>
+    <button ng-model="event_date" date-filter data-date="after_tomorrow"> After Tomorrow </button>
+
+    <div range-slider min="minPrice" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" step="5"></div>
+
+</div>
+
+
 <div class="col-md-3 col-sm-6 hero-feature" ng-repeat="event in events">
     <div class="thumbnail">
         <div class="caption">
             <h3>[[event.activity.name]]</h3>
             <div class='row'>
                 <p>[[event.place.name]]</p>
-                <p>[[event.city | cityPrefix]]</p>
-                <p>[[event.start_date | date:'dd.MM HH:mm']]</p>
+                <p>[[event.city.name | cityPrefix]]</p>
+                <p>[[event.start_date | date:'yyyy.dd.MM HH:mm']]</p>
                 <p>[[event.min_people]]</p>
                 <p>[[event.max_people]]</p>
                 <p>[[event.is_paid | isPaidString]]</p>

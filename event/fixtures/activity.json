@@ -10,70 +10,70 @@
         "model": "event.activity",
         "pk": 2,
         "fields": {
-            "name": "Football"
+            "name": "Voleyball"
         }
     },
     {
         "model": "event.activity",
         "pk": 4,
         "fields": {
-            "name": "Football"
+            "name": "Tennis"
         }
     },
     {
         "model": "event.activity",
         "pk": 5,
         "fields": {
-            "name": "Football"
+            "name": "Veliki"
         }
     },
     {
         "model": "event.activity",
         "pk": 6,
         "fields": {
-            "name": "Football"
+            "name": "Pakatuhi"
         }
     },
     {
         "model": "event.activity",
         "pk": 7,
         "fields": {
-            "name": "Football"
+            "name": "Frisbi"
         }
     },
     {
         "model": "event.activity",
         "pk": 8,
         "fields": {
-            "name": "Football"
+            "name": "Pocker"
         }
     },
     {
         "model": "event.activity",
         "pk": 9,
         "fields": {
-            "name": "Football"
+            "name": "Something1"
         }
     },
     {
         "model": "event.activity",
         "pk": 10,
         "fields": {
-            "name": "Football"
+            "name": "Something2"
         }
     },
     {
         "model": "event.activity",
         "pk": 11,
         "fields": {
-            "name": "Football"
+            "name": "Something3"
         }
     },
     {
         "model": "event.activity",
         "pk": 12,
         "fields": {
-            "name": "Football"
+            "name": "Something4"
         }
     }
 ]

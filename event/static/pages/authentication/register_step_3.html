@@ -1,0 +1,19 @@
+<div class="row" ng-controller="RegisterStep3Controller">
+    <div class="col-md-4 col-md-offset-4">
+        <h1>Step-3</h1>
+        <div class="well">
+            <form role="form" name="registerFormStep2" ng-submit="registerStep3()" novalidate>
+                <div class="form-group">
+                    <label for="register__username">Sex</label>
+                    <input type="text" class="form-control" id="register__sex" ng-model="sex"
+                           placeholder="ex. john"/>
+                </div>
+                <div class="errors" ng-model="errors.sex">[[errors.sex]]</div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Register Step 3</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

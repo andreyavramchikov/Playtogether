@@ -1,15 +1,33 @@
+from datetime import datetime
+from urllib import addbase
+
 from django.views.generic.base import TemplateView
-from rest_framework import generics
-from event.models import Place, Team, Event
-from event.serializers import PlaceSerializer, TeamSerializer, EventSerializer
+from rest_framework import generics, filters
+
+from authentication.serializers import ActivitySerializer
+from event.models import Place, Team, Event, City, Activity
+from event.serializers import PlaceSerializer, TeamSerializer, EventSerializer, CitySerializer, EventCreateSerializer
+# from event.tasks import add
+from playtogether.celery_sync import debug_task
+
+
+class LandingView(TemplateView):
+    template_name = 'landing/index.html'
 
 
 class MainView(TemplateView):
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
+        # add.delay(2, 2)
+        debug_task.delay()
         context = self.get_context_data(**kwargs)
         return self.render_to_response(context)
+
+
+class UpdateUserView(generics.UpdateAPIView):
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
 
 
 class PlaceListView(generics.ListCreateAPIView):
@@ -27,4 +45,32 @@ class TeamListView(generics.ListCreateAPIView):
 class EventListView(generics.ListCreateAPIView):
     queryset = Event.objects.all().select_related('activity')
     serializer_class = EventSerializer
+    paginate_by = 100
+
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('city', 'is_paid', 'activity__name')
+
+    def get_queryset(self):
+        queryset = super(EventListView, self).get_queryset()
+        try:
+            start_date = datetime.strptime(self.request.QUERY_PARAMS.get('start_date'), '%Y-%m-%d').date()
+            queryset = queryset.filter(start_date__gt=start_date)
+        except (ValueError, TypeError):
+            start_date = None
+        return queryset
+
+
+class EventCreateView(generics.CreateAPIView):
+    serializer_class = EventCreateSerializer
+
+
+class CityListView(generics.ListCreateAPIView):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+    paginate_by = 100
+
+
+class ActivityListView(generics.ListCreateAPIView):
+    queryset = Activity.objects.all()
+    serializer_class = ActivitySerializer
     paginate_by = 100

@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson@gmail.com",
@@ -17,7 +17,7 @@
         "pk": 2,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson2@gmail.com",
@@ -30,7 +30,7 @@
         "pk": 3,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson3@gmail.com",
@@ -43,7 +43,7 @@
         "pk": 4,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson4@gmail.com",
@@ -56,7 +56,7 @@
         "pk": 5,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson5@gmail.com",
@@ -69,7 +69,7 @@
         "pk": 6,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson6@gmail.com",
@@ -82,7 +82,7 @@
         "pk": 7,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson7@gmail.com",
@@ -95,7 +95,7 @@
         "pk": 8,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson8@gmail.com",
@@ -108,7 +108,7 @@
         "pk": 9,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson9@gmail.com",
@@ -121,7 +121,7 @@
         "pk": 10,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson10@gmail.com",
@@ -134,7 +134,7 @@
         "pk": 11,
         "fields": {
             "name": "Olimpic stadium",
-            "city": "Minsk",
+            "city": 1,
             "address": "Gagarin street 28-58",
             "website": "www.ahalife.com",
             "email": "aldrson11@gmail.com",

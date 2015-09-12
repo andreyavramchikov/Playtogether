@@ -46,7 +46,6 @@ class Migration(migrations.Migration):
             name='Event',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('city', models.CharField(max_length=255, null=True, blank=True)),
                 ('start_date', models.DateTimeField()),
                 ('end_date', models.DateTimeField()),
                 ('min_people', models.IntegerField()),
@@ -55,6 +54,7 @@ class Migration(migrations.Migration):
                 ('cost', models.IntegerField(null=True, blank=True)),
                 ('description', models.TextField(blank=True)),
                 ('activity', models.ForeignKey(to='event.Activity')),
+                ('city', models.ForeignKey(blank=True, to='event.City', null=True)),
             ],
         ),
         migrations.CreateModel(
@@ -69,12 +69,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=255)),
-                ('city', models.CharField(max_length=50)),
                 ('address', models.TextField()),
                 ('website', models.CharField(max_length=255, blank=True)),
                 ('email', models.EmailField(unique=True, max_length=254, blank=True)),
                 ('phone', models.IntegerField(null=True, blank=True)),
                 ('is_paid', models.BooleanField(default=False)),
+                ('city', models.ForeignKey(to='event.City')),
             ],
         ),
         migrations.CreateModel(
@@ -82,10 +82,10 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=255)),
-                ('city', models.CharField(max_length=50)),
                 ('type', models.CharField(default=b'NEW', max_length=255, choices=[(b'NEW', b'OPENED'), (b'MIDDLE', b'CLOSED')])),
                 ('max_people', models.IntegerField(null=True, blank=True)),
                 ('is_captain', models.BooleanField(default=False)),
+                ('city', models.ForeignKey(blank=True, to='event.City', null=True)),
             ],
         ),
         migrations.CreateModel(

@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<div id="header">
+    <div class="header-top row">
+        <div class="col-xs-2 relative-100 left ">
+            <img class="center-image" src="{% static 'img/menu.png' %}"/>
+        </div>
+        <div class="sports-club left col-xs-8">
+            <span >Sports Club</span>
+        </div>
+        <div class="col-xs-2 relative-100 right ">
+            <img class="center-image"src="{% static 'img/login.png' %}"/>
+        </div>
+    </div>
+
+    <div class="header-bottom row relative">
+        <img class="row" src="{% static 'img/header.jpg' %}" />
+        <div class="choose-sport-text">
+            <span>Выбирайте спорт, которым бы вы хотели заняться</span>
+        </div>
+        <div class="how-it-works center-flex">
+            <span>Как это работает</span>
+        </div>
+
+        <div class="search-activity">
+            <div class="col-xs-10 relative-100 hidden left">
+                <input type="text" placeholder="Активность..." class="activity height-100 no-padding"/>
+            </div>
+            <div class="col-xs-2 relative-100 right">
+                <img class="search-icon center-image" src="{% static 'img/search.png' %}"  />
+            </div>
+        </div>
+    </div>
+</div>{# end of header block #}

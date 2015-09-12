@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 
 
 class AccountViewSet(viewsets.ModelViewSet):
-    lookup_field = 'username'
+    lookup_field = 'pk'
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -24,17 +24,22 @@ class AccountViewSet(viewsets.ModelViewSet):
 
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
+    def update(self, request, *args, **kwargs):
+        kwargs.update({'partial': True})
+        return super(AccountViewSet, self).update(request, *args, **kwargs)
+
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
-            User.objects.create_user(**serializer.validated_data)
-
+            user = User.objects.create_user(**serializer.validated_data)
+            serializer.validated_data.update({'pk': user.pk})
             return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
 
         return Response({
             'status': 'Bad request',
-            'message': 'Account could not be created with received data.'
+            'message': 'Account could not be created with received data.',
+            'errors': serializer.errors
         }, status=status.HTTP_400_BAD_REQUEST)
 
 

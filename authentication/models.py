@@ -30,6 +30,14 @@ class AccountManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
+    ALWAYS = 'ALWAYS'
+    WORKING_DAYS = 'WORKING_DAYS'
+    WEEKEND = 'WEEKEND'
+    FREQUENCY_CHOICES = (
+        (ALWAYS, 'ALWAYS'),
+        (WORKING_DAYS, 'WORKING_DAYS'),
+        (WEEKEND, 'WEEKEND'),
+    )
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, unique=True)
 
@@ -43,20 +51,17 @@ class User(AbstractBaseUser):
 
     #custom fields
     phone = models.IntegerField(null=True, blank=True)
-    sms_notification = models.BooleanField(default=False)
+    send_sms = models.BooleanField(default=False)
     email_notification = models.BooleanField(default=False)
     city = models.CharField(max_length=100, null=True, blank=True)
     sex = models.CharField(max_length=100, null=True, blank=True)
     date_of_birth = models.DateTimeField(null=True, blank=True)
-    notification_frequency = models.CharField(max_length=255, null=True, blank=True)
+    notification_frequency = models.CharField(max_length=255, choices=FREQUENCY_CHOICES, default=ALWAYS, blank=True)
 
     objects = AccountManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
-
-    def __unicode__(self):
-        return self.email
 
     def get_full_name(self):
         return ' '.join([self.first_name, self.last_name])
@@ -73,4 +78,7 @@ class User(AbstractBaseUser):
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
+
+    def __unicode__(self):
+        return self.email
 

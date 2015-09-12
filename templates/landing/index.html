@@ -1,0 +1,22 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html ng-app="landingApp">
+<head lang="en">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Landing</title>
+    <link rel="stylesheet" href="{% static 'css/landing/common.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/landing/landing.css'%}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="{% static 'js/landing/landing.js' %}"></script>
+{#    <script src="{% static 'js/landing/controllers/LandingController.js' %}"></script>#}
+</head>
+<body>
+    <div id="landing">{#maybe should be avoid these div#}
+        {% include 'landing/header.html' %}
+        {% include 'landing/events.html' %}
+        {% include 'landing/popular-events.html' %}
+        {% include 'landing/footer.html' %}
+    </div>
+</body>
+</html>

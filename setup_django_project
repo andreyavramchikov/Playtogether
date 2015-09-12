@@ -15,3 +15,6 @@ ALTER DATABASE playtogether CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 ALTER TABLE event_city CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 python manage.py makemigrations --empty event
+
+celery -A playtogether worker -l info
+celery -A proj worker -l info
