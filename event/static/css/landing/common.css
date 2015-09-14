@@ -5,50 +5,28 @@ body {
     padding: 0;
 }
 
-/*GRID SYSTEM FROM BOOTSTRAP*/
-.col-xs-12 {
-  width: 100%;
-}
-.col-xs-11 {
-  width: 91.66666667%;
-}
-.col-xs-10 {
-  width: 83.33333333%;
-}
-.col-xs-9 {
-  width: 75%;
-}
-.col-xs-8 {
-  width: 66.66666667%;
-}
-.col-xs-7 {
-  width: 58.33333333%;
-}
-.col-xs-6 {
-  width: 50%;
-}
-.col-xs-5 {
-  width: 41.66666667%;
-}
-.col-xs-4 {
-  width: 33.33333333%;
-}
-.col-xs-3 {
-  width: 25%;
-}
-.col-xs-2 {
-  width: 16.66666667%;
-}
-.col-xs-1 {
-  width: 8.33333333%;
-}
-
 .left {
     float: left;
 }
 
 .right {
     float: right;
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+.auto {
+    margin: 0 auto;
 }
 
 .row {
@@ -93,7 +71,15 @@ body {
     text-align: center;
 }
 
-/*absolute centering image; parent should be height:100% and position: relative;*/
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/*absolute centering - left- right image; parent should be height:100%(should present height of block) and position: relative;*/
 .center-image {
     margin: auto;
     position: absolute;
@@ -103,6 +89,22 @@ body {
     right: 0;
 }
 
+.right-image {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.left-image {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
 .center-flex {
     /*need to understand what it is*/
     display: flex;
@@ -110,14 +112,55 @@ body {
     align-items: center;
 }
 
-.hidden {
-    overflow: hidden;
+.row-95 {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
 }
 
-.block {
-    display: block;
+@media only screen and (max-width: 767px) {
+    .xs-hide {
+        display: none;
+    }
+
+    /*.phone-left {*/
+        /*float: left;*/
+    /*}*/
+
+    /*.phone-right {*/
+        /*float: right;*/
+    /*}*/
 }
 
-.auto {
-    margin: 0 auto;
+@media only screen
+  and (min-width: 768px)
+  and (max-width: 1023px) {
+
+    .md-hide {
+        display: none;
+    }
+    /*.tablet-left {*/
+        /*float: left;*/
+    /*}*/
+
+    /*.tablet-right {*/
+        /*float: right;*/
+    /*}*/
+}
+
+
+@media only screen
+  and (min-width: 1024px) {
+
+    .lg-hide {
+        display: none;
+    }
+
+    /*.desktop-left {*/
+        /*float: left;*/
+    /*}*/
+
+    /*.desktop-right {*/
+        /*float: right;*/
+    /*}*/
 }

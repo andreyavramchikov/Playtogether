@@ -1,0 +1,4 @@
+lessc header.less ../header_less.css
+lessc comming-events.less ../comming-events_less.css
+lessc popular-events.less ../popular-events_less.css
+lessc footer.less ../footer_less.css

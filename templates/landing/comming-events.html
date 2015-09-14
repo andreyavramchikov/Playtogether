@@ -1,0 +1,130 @@
+{% load staticfiles %}
+
+<div id="comming-events">
+    <div class="nearest-events-text text-center">
+        <span>БЛИЖАЙШИЕ СОБЫТИЯ</span>
+    </div>
+    <div class="row">
+        {# First event #}
+        <div class="col-xs-6 col-md-4 col-lg-3 col-lg-offset-1 event-container left">
+            <div class="row-95">
+                <div class="event relative row">
+                    <img class="row" src="{% static 'img/event.png' %}"/>
+
+                    <div class="absolute event-bottom">
+                        <span class="event-name">Волейбол</span>
+                    </div>
+                </div>
+                <div class="row description hidden text-right relative">
+                    <div class="absolute vertical-line"></div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left text-lg-left text-md-left"><span class="bold">Сегодня 16:00</span>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left"><span>250 000</span></div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left text-lg-left text-md-left"><span>7 участников</span>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left"><span>еще 5 мест</span></div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left text-lg-left text-md-left"><span>Олимп</span></div>
+                </div>
+                <div class="row actions">
+
+                    <div class="col-xs-12 col-md-6 col-lg-6 md-hide lg-hide left">
+                        <button class="going"><a>Иду</a></button>
+                    </div>
+                    <div class="xs-hide col-md-6 col-lg-6 relative-100 left">
+                        <img class="left-image" src="{% static 'img/menu.png' %}"/>
+                    </div>
+                    <div class="xs-hide col-md-6 col-lg-6 relative-100 left">
+                        <img class="right-image" src="{% static 'img/login.png' %}"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 md-hide lg-hide left">
+                        <a class="invite"><span>Пригласить</span></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {# Second event #}
+        <div class="col-xs-6 col-md-4 col-lg-3 col-lg-offset-0-5 event-container left">
+            <div class="row-95">
+                <div class="event relative row">
+                    <img class="row" src="{% static 'img/event.png' %}"/>
+
+                    <div class="absolute event-bottom">
+                        <span class="event-name">Волейбол</span>
+                    </div>
+                </div>
+                <div class="row description hidden text-right relative">
+                    <div class="absolute vertical-line"></div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left text-lg-left text-md-left"><span class="bold">Сегодня 16:00</span>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left"><span>250 000</span></div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left text-lg-left text-md-left"><span>7 участников</span>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left"><span>еще 5 мест</span></div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left text-lg-left text-md-left"><span>Олимп</span></div>
+                </div>
+                <div class="row actions">
+
+                    <div class="col-xs-12 col-md-6 col-lg-6 md-hide lg-hide left">
+                        <button class="going"><a>Иду</a></button>
+                    </div>
+                    <div class="xs-hide col-md-6 col-lg-6 relative-100 left">
+                        <img class="left-image" src="{% static 'img/menu.png' %}"/>
+                    </div>
+                    <div class="xs-hide col-md-6 col-lg-6 relative-100 left">
+                        <img class="right-image" src="{% static 'img/login.png' %}"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 md-hide lg-hide left">
+                        <a class="invite"><span>Пригласить</span></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {# Third event - not visible on mobile #}
+        <div class="col-xs-6 col-md-4 col-lg-3 col-lg-offset-0-5 event-container left xs-hide">
+            <div class="row-95">
+                <div class="event relative row">
+                    <img class="row" src="{% static 'img/event.png' %}"/>
+
+                    <div class="absolute event-bottom">
+                        <span class="event-name">Волейбол</span>
+                    </div>
+                </div>
+                <div class="row description hidden text-right relative">
+                    <div class="absolute vertical-line"></div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left text-lg-left text-md-left"><span class="bold">Сегодня 16:00</span>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left"><span>250 000</span></div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left text-lg-left text-md-left"><span>7 участников</span>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left"><span>еще 5 мест</span></div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 left text-lg-left text-md-left"><span>Олимп</span></div>
+                </div>
+                <div class="row actions">
+
+                    <div class="col-xs-12 col-md-6 col-lg-6 md-hide lg-hide left">
+                        <button class="going"><a>Иду</a></button>
+                    </div>
+                    <div class="xs-hide col-md-6 col-lg-6 relative-100 left">
+                        <img class="left-image" src="{% static 'img/menu.png' %}"/>
+                    </div>
+                    <div class="xs-hide col-md-6 col-lg-6 relative-100 left">
+                        <img class="right-image" src="{% static 'img/login.png' %}"/>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6 md-hide lg-hide left">
+                        <a class="invite"><span>Пригласить</span></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div> {# end of events block #}
+
+<a class="col-xs-12 col-md-6 col-lg-6 look-all-events text-center block">
+    <span>Посмотреть все события</span>
+</a>

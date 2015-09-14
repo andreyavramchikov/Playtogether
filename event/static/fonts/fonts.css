@@ -1,0 +1,5 @@
+/*FONTS MUST PUT IN SEPARATE FILE*/
+@font-face {
+    font-family: Vivaldi;
+    src: url('vivaldi.ttf');
+}

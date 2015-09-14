@@ -1,45 +1,36 @@
 {% load staticfiles %}
 
 <div id="footer">
-    <div class="row text-center"><span class="sport-club">SportClub</span></div>
-    <div class="row social">
-        <div class="col-xs-8 auto text-center">
-            <div class="col-xs-12"><span>МЫ В СОЦИАЛЬНЫХ СЕТЯХ</span></div>
-            <hr/>
-            <div class="col-xs-12">
-                <div class="col-xs-4 left">
-                    <img src="{% static 'img/facebook.png' %}"/>
-                </div>
-                <div class="col-xs-4 left">
-                    <img src="{% static 'img/google.png' %}"/>
-                </div>
-                <div class="col-xs-4 left">
-                    <img src="{% static 'img/facebook.png' %}"/>
-                </div>
+    <div class="social col-xs-12 col-md-4 col-lg-4 left hidden text-center">
+        <div class="col-xs-12"><span>МЫ В СОЦИАЛЬНЫХ СЕТЯХ</span></div>
+{#        <hr/>#}
+        <div class="col-xs-12">
+            <div class="col-xs-4 left">
+                <img src="{% static 'img/facebook.png' %}"/>
+            </div>
+            <div class="col-xs-4 left">
+                <img src="{% static 'img/google.png' %}"/>
+            </div>
+            <div class="col-xs-4 left">
+                <img src="{% static 'img/facebook.png' %}"/>
             </div>
         </div>
     </div>
-    <div class="row hidden">
-        <div class="col-xs-6-margin left">
-            <div class="row contacts-left">
-                <div><span class="bold">КАРТА САЙТА</span></div>
-                <hr/>
-                <div><span>События</span></div>
-                <div><span>Команды</span></div>
-                <div><span>Участники</span></div>
-                <div><span>Места</span></div>
-            </div>
-        </div>
-        <div class="col-xs-6-margin left">
-            <div class="row contacts-right">
-                <div><span class="bold">КОНТАКТЫ</span></div>
-                <hr/>
-                <div><span>Минск, Беларусь</span></div>
-                <div><span>ул.Филимонова 39-198</span></div>
-                <div><span>+375(44) 533-32-92</span></div>
-                <div><span>support@sportclub.by</span></div>
-            </div>
-        </div>
+    <div class="map col-xs-6 col-md-4 col-lg-4 hidden left">
+        <div><span class="bold">КАРТА САЙТА</span></div>
+{#        <hr/>#}
+        <div><span>События</span></div>
+        <div><span>Команды</span></div>
+        <div><span>Участники</span></div>
+        <div><span>Места</span></div>
+    </div>
+    <div class="contacts col-xs-6 col-md-4 col-lg-4 hidden left text-right">
+        <div><span class="bold">КОНТАКТЫ</span></div>
+{#        <hr/>#}
+        <div><span>Минск, Беларусь</span></div>
+        <div><span>ул.Филимонова 39-198</span></div>
+        <div><span>+375(44) 533-32-92</span></div>
+        <div><span>support@sportclub.by</span></div>
     </div>
     <div class="row text-center"><span> © 2015 SportClub</span></div>
 </div>{# end of footer #}
