@@ -122,45 +122,22 @@ body {
     .xs-hide {
         display: none;
     }
-
-    /*.phone-left {*/
-        /*float: left;*/
-    /*}*/
-
-    /*.phone-right {*/
-        /*float: right;*/
-    /*}*/
 }
 
-@media only screen
-  and (min-width: 768px)
-  and (max-width: 1023px) {
+/*TABLET*/
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
 
     .md-hide {
         display: none;
     }
-    /*.tablet-left {*/
-        /*float: left;*/
-    /*}*/
-
-    /*.tablet-right {*/
-        /*float: right;*/
-    /*}*/
 }
 
-
+/*DESKTOP*/
 @media only screen
-  and (min-width: 1024px) {
+  and (min-width: 1025px) {
 
     .lg-hide {
         display: none;
     }
 
-    /*.desktop-left {*/
-        /*float: left;*/
-    /*}*/
-
-    /*.desktop-right {*/
-        /*float: right;*/
-    /*}*/
 }
