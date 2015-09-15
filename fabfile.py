@@ -29,10 +29,19 @@ def setup():
 
 def deploy():
     sudo('rm -r projects') #MUST REMOVE IT
+    sudo('rm -r /etc/nginx/sites-enabled/mysite_nginx.conf')#MUST REMOVE IT
+    sudo('apt-get install nginx')
     setup_directories()
     setup_virtualenv()
     clone_repo()
     install_requirements()
+    sudo('ln -s /home/ubuntu/projects/Playtogether/repository/mysite_nginx.conf /etc/nginx/sites-enabled/')#MUST REMOVE IT
+    sudo('/etc/init.d/nginx restart')
+    # run('pip install uwsgi')
+    run('cp -r /home/ubuntu/projects/Playtogether/repository/event/static/ /home/ubuntu/projects/Playtogether/repository/')
+    run('uwsgi --ini mysite_uwsgi.ini')
+
+
 
 def install_requirements():
     """
