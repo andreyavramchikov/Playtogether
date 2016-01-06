@@ -7,19 +7,23 @@
   /*Somewhy without this line all events block has no height which cause a lot of issues with next blocks*/
 
 }
+
 #landing #comming-events .event-container .actions {
   height: 50px;
 }
+
 #landing #comming-events .event-container .event .event-bottom {
   bottom: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.65);
 }
+
 #landing #comming-events .event-container .event .event-name {
   font-family: "Courier New";
   font-weight: normal;
   font-size: 20px;
 }
+
 #landing #comming-events .description {
   font-family: "Courier New";
   font-size: 18px;

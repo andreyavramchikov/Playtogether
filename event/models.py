@@ -124,3 +124,7 @@ class ActivityUsers(models.Model):
 
     def __unicode__(self):
         return 'Activity - {}; User - {}'.format(self.activity, self.user)
+
+
+class Venues(models.Model):
+    venue_name = models.CharField(max_length=255)

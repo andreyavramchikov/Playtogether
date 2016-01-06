@@ -1,0 +1,22 @@
+1 sudo apt-get update
+2 sudo apt-get upgrade
+3 sudo apt-get install python-virtualenv
+4 sudo pip install virtualenvwrapper -> update ~/.bashrc with 
+5 ('export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh)
+6 source ~/.bashrc
+7 mkvirtualenv playtogether --no-site-packages
+8 workon playtogether or source ~/.virtualenvs/playtogether/bin/activate
+9 pip install django
+
+
+sudo apt-get install mysql-server
+sudo apt-get install mysql-client
+
+sudo apt-get install python2.7-dev
+
+sudo apt-get install nginx
+
+sudo apt-get install libmysqlclient-dev
+pip install mysql-python
+

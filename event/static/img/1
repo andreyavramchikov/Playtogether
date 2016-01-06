@@ -1,0 +1,34 @@
+<div class="left-column">
+        <div class="selector-available">Available</div>
+        <div>
+            <img/>
+            <input type="text" class="filtered" ng-model="searchVenue"/>
+        </div>
+        <select multiple name="mySelect" id="mySelectVenue"
+              ng-options="venue.venue_name for venue in venues | filter : searchValue"
+              ng-model="data.selectedOption"></select>
+    </div>
+
+    <div  class="middle-column">
+        <button id="add-to-prepaiment" ng-click="addToPrepaiment()">Right</button>
+        <button id="remove-from-prepaiment" ng-click="removeFromPrepaiment()">Left</button>
+        <img />
+        <img />
+    </div>
+
+    <div  class="right-column">
+        <div class="selector-chosen">
+            <h2>Choosen</h2>
+            <div>
+                <img/>
+                <input type="text" ng-model="searchPrepaidVenue" class="selector-filter"/>
+            </div>
+        </div>
+
+
+        <select multiple name="mySelect2" id="mySelectPrepaidVenue"
+              ng-options="venue.venue_name for venue in prepaid_venues track by venue.pk"
+              ng-model="data.selectedOption2"></select>
+
+        <a href="#" id="id-clear-all" ng-click="clearAll()">Clear All</a>
+    </div>

@@ -1,11 +1,12 @@
 from datetime import datetime
 from urllib import addbase
+from django.http.response import HttpResponse
 
-from django.views.generic.base import TemplateView
+from django.views.generic.base import TemplateView, View
 from rest_framework import generics, filters
 
 from authentication.serializers import ActivitySerializer
-from event.models import Place, Team, Event, City, Activity
+from event.models import Place, Team, Event, City, Activity, Venues
 from event.serializers import PlaceSerializer, TeamSerializer, EventSerializer, CitySerializer, EventCreateSerializer
 # from event.tasks import add
 from playtogether.celery_sync import debug_task
@@ -16,13 +17,13 @@ class LandingView(TemplateView):
 
 
 class MainView(TemplateView):
-    template_name = 'index.html'
+    template_name = 'landing/index.html'
 
-    def get(self, request, *args, **kwargs):
-        # add.delay(2, 2)
-        debug_task.delay()
-        context = self.get_context_data(**kwargs)
-        return self.render_to_response(context)
+    # def get(self, request, *args, **kwargs):
+    #     # add.delay(2, 2)
+    #     debug_task.delay()
+    #     context = self.get_context_data(**kwargs)
+    #     return self.render_to_response(context)
 
 
 class UpdateUserView(generics.UpdateAPIView):
@@ -74,3 +75,36 @@ class ActivityListView(generics.ListCreateAPIView):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
     paginate_by = 100
+
+
+import json
+
+
+class PrepaimentView(View):
+
+    def post(self, request, *args, **kwargs):
+        print self.request.POST
+
+    def put(self, request, *args, **kwargs):
+        print self.request.POST
+
+    def get(self, request, *args, **kwargs):
+        list_ids =  self.request.GET.get('list')
+        list_ids = list_ids.split(',')
+        for id in list_ids:
+            print id
+
+
+class GetListVenue(View):
+
+    def get(self, request, *args, **kwargs):
+        venues = Venues.objects.all().values('pk', 'venue_name')
+        return HttpResponse(json.dumps(list(venues)), content_type="application/json")
+
+
+
+class GetListPrepaidVenues(View):
+
+    def get(self, request, *args, **kwargs):
+        venues = Venues.objects.all().values('pk', 'venue_name')[0:20]
+        return HttpResponse(json.dumps(list(venues)), content_type="application/json")

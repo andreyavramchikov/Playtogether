@@ -79,7 +79,8 @@ body {
     text-align: left;
 }
 
-/*absolute centering - left- right image; parent should be height:100%(should present height of block) and position: relative;*/
+/*absolute centering - left- right image;
+parent should be height:100% (should present height of block) and position: relative;*/
 .center-image {
     margin: auto;
     position: absolute;

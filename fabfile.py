@@ -1,14 +1,9 @@
 from fabric.api import env, run
 from fabric.operations import sudo
 
-HARDCODED_DATA = {
-    'GIT' : 'https://github.com/andreyavramchikov/Playtogether',
-    'GIT' : 'https://github.com/andreyavramchikov/Playtogether.git'
-}
-
 env.hosts = [
-        'ec2-54-175-18-119.compute-1.amazonaws.com'
-    ]
+    'ec2-54-175-18-119.compute-1.amazonaws.com'
+]
 
 env.user = 'ubuntu'
 env.project_name = 'Playtogether'
@@ -16,48 +11,50 @@ env.path = '/home/ubuntu/projects/%(project_name)s' % env
 env.env_path = '%(path)s/env' % env
 env.repo_path = '%(path)s/repository' % env
 
+
 def setup():
+    # STILL NEED TO INSTALL MANUALLY MYSQL AND PYTHON-MYSQL ETC
+
     sudo('apt-get update')
     sudo('apt-get upgrade')
+    sudo('apt-get install python-dev')
     sudo('apt-get install python-virtualenv')
     sudo('apt-get install libmysqlclient-dev')
-    sudo('pip install virtualenvwrapper') #must update .bashrc
+    sudo('pip install virtualenvwrapper')  # must update .bashrc still manually
     run('source ~/.bashrc')
     run('mkvirtualenv playtogether --no-site-packages')
     run('source ~/.virtualenvs/playtogether/bin/activate')
 
 
 def deploy():
-    sudo('rm -r projects') #MUST REMOVE IT
-    sudo('rm -r /etc/nginx/sites-enabled/mysite_nginx.conf')#MUST REMOVE IT
+    sudo('rm -r projects')  # MUST REMOVE IT
+    sudo('rm -r /etc/nginx/sites-enabled/mysite_nginx.conf')  # MUST REMOVE IT
     sudo('apt-get install nginx')
     setup_directories()
     setup_virtualenv()
     clone_repo()
     install_requirements()
-    sudo('ln -s /home/ubuntu/projects/Playtogether/repository/mysite_nginx.conf /etc/nginx/sites-enabled/')#MUST REMOVE IT
+    sudo(
+        'ln -s /home/ubuntu/projects/Playtogether/repository/mysite_nginx.conf /etc/nginx/sites-enabled/')  # MUST REMOVE IT
     sudo('/etc/init.d/nginx restart')
-    # run('pip install uwsgi')
-    run('cp -r /home/ubuntu/projects/Playtogether/repository/event/static/ /home/ubuntu/projects/Playtogether/repository/')
-    run('uwsgi --ini mysite_uwsgi.ini')
-
+    run(
+        'cp -r /home/ubuntu/projects/Playtogether/repository/event/static/ /home/ubuntu/projects/Playtogether/repository/')
+    # run('pip install uwsgi') #manually still
+    # run('uwsgi --ini mysite_uwsgi.ini')#manually still
 
 
 def install_requirements():
     """
     Install the required packages using pip.
     """
-    print '---------------'
-
-    print 'source %(env_path)s/bin/activate; pip install -r %(repo_path)s/requirements.txt' % env
     run('source %(env_path)s/bin/activate; pip install -r %(repo_path)s/requirements.txt' % env)
+
 
 def clone_repo():
     """
     Do initial clone of the git repository.
     """
     run('git clone https://github.com/andreyavramchikov/%(project_name)s.git %(repo_path)s' % env)
-
 
 
 def setup_directories():
@@ -156,4 +153,3 @@ def setup_virtualenv():
 #     setup_virtualenv()
 #     install_requirements()
 #     configure_nginx()
-

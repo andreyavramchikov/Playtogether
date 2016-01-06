@@ -1,6 +1,9 @@
 var app = angular.module('playTogether');
 
-app.config(function($locationProvider, $interpolateProvider, $stateProvider, $urlRouterProvider){
+app.config(function($locationProvider, $httpProvider, $interpolateProvider, $stateProvider, $urlRouterProvider){
+
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
@@ -67,7 +70,14 @@ app.config(function($locationProvider, $interpolateProvider, $stateProvider, $ur
             controller: 'UserController',
             templateUrl: '/static/pages/users.html',
             title: 'Users'
+        })
+        .state('venue', {
+            url : '/venue',
+            controller: 'VenueController',
+            templateUrl: '/static/pages/venue.html',
+            title: 'Venue'
         });
+
 
         //this is for avoiding # in urls, this is not work in all browsers
         //need to refactored to switch to basic behavior if browser not allow HTML5 history

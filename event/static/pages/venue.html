@@ -1,0 +1,46 @@
+<div class="bootstrap-transfer-container">
+    <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="45%">
+                <div class="selector-available">
+                    <h2>Available</h2>
+
+                    <div class="selector-filter">
+                        <table width="100%" border="0">
+                            <tr>
+                                <td style="width:14px;">
+                                    <i class="icon-search"></i>
+                                </td>
+                                <td>
+                                    <div style="padding-left:10px;">
+                                        <input type="text" class="filter-input" ng-model="searchVenue.venue_name">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <select multiple class="filtered remaining"
+                            ng-options='venue as (venue.venue_name + " - " + venue.venue_id) for venue in venues | filter : searchVenue'
+                            ng-model="data.selectedOption"></select>
+                </div>
+            </td>
+            <td width="10%">
+                <div class="selector-chooser">
+                    <a href="#" class="selector-add" ng-click="addToPrepaiment()">add</a>
+                    <a href="#" class="selector-remove" ng-click="removeFromPrepaiment()">rem</a>
+                </div>
+            </td>
+            <td width="45%">
+                <div class="selector-chosen">
+                    <h2>Chosen</h2>
+                    <select multiple class="filtered target"
+                      ng-options="venue.venue_name for venue in prepaid_venues track by venue.pk"
+                      ng-model="data.selectedOption2"></select>
+                    <a href="#" class="selector-clearall" ng-click="clearAll()">Clear all</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<button id="id-save-prepaiment-venues" ng-click="savePrepaimentVenues()"> Save </button>
