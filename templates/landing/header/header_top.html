@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<div class="header-top row hidden">
+
+    <div class="small-menu col-xs-2 col-md-1 lg-hide left relative-100">
+        <img class="center-image" src="{% static 'img/menu.png' %}"/>
+    </div>
+
+    <div class="sports-club col-xs-8 col-md-10 col-lg-3 left">
+        <span >Sports Club</span>
+    </div>
+
+    <div class="menu xs-hide md-hide col-lg-5 left hidden">
+        <div class="col-lg-12">
+            <ul>
+                <li class="col-lg-3"><a href="#">События</a></li>
+                <li class="col-lg-3"><a href="#">Команды</a></li>
+                <li class="col-lg-3"><a href="#">Участники</a></li>
+                <li class="col-lg-3"><a href="#">Места</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="signin xs-hide md-hide col-lg-4 right hidden">
+        <a class="col-lg-6 right" href="#"><span>Войти | Регистрация</span></a>
+        <a class="col-lg-6 right" href="#"><span>Минск</span></a>
+    </div>
+
+    <div class="signin-small col-xs-2 col-md-1 lg-hide relative-100 right">
+        <img class="center-image" src="{% static 'img/login.png' %}"/>
+    </div>
+</div>

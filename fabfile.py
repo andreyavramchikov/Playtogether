@@ -2,10 +2,11 @@ from fabric.api import env, run
 from fabric.operations import sudo
 
 env.hosts = [
-    'ec2-54-175-18-119.compute-1.amazonaws.com'
+    'ec2-52-90-107-10.compute-1.amazonaws.com'
 ]
 
 env.user = 'ubuntu'
+env.key_filename = '/home/andrey/Playtogether.pem'
 env.project_name = 'Playtogether'
 env.path = '/home/ubuntu/projects/%(project_name)s' % env
 env.env_path = '%(path)s/env' % env
@@ -14,8 +15,7 @@ env.repo_path = '%(path)s/repository' % env
 
 def setup():
     # STILL NEED TO INSTALL MANUALLY MYSQL AND PYTHON-MYSQL ETC
-
-    sudo('apt-get update')
+    sudo('apt-get update -y')
     sudo('apt-get upgrade')
     sudo('apt-get install python-dev')
     sudo('apt-get install python-virtualenv')
@@ -27,9 +27,10 @@ def setup():
 
 
 def deploy():
-    sudo('rm -r projects')  # MUST REMOVE IT
-    sudo('rm -r /etc/nginx/sites-enabled/mysite_nginx.conf')  # MUST REMOVE IT
+    sudo('rm -rf projects')  # MUST REMOVE IT
+    sudo('rm -rf /etc/nginx/sites-enabled/mysite_nginx.conf')  # MUST REMOVE IT
     sudo('apt-get install nginx')
+    sudo('apt-get install git')
     setup_directories()
     setup_virtualenv()
     clone_repo()

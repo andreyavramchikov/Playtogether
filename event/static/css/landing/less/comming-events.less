@@ -15,12 +15,16 @@
                     bottom: 0;
                     right: 0;
                     background-color: rgba(255, 255, 255, 0.65);
+                    HEIGHT: 35px;
+                    padding: 0 10px;
                 }
 
                 .event-name {
                     font-family: "Courier New";
                     font-weight: normal;
                     font-size: 20px;
+                    line-height: 31px; // it's not 35 because of weird bug(image not occupy all height - it's occupy 100% - 4px, so that's why it's 31=35-4
+                    height: 100%;
                 }
 
             }
