@@ -19,6 +19,9 @@ class LandingView(TemplateView):
 class MainView(TemplateView):
     template_name = 'landing/index.html'
 
+class TestView(TemplateView):
+    template_name = 'test.html'
+
     # def get(self, request, *args, **kwargs):
     #     # add.delay(2, 2)
     #     debug_task.delay()

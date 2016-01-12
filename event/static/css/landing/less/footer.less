@@ -1,40 +1,48 @@
 /*START FOOTER */
+
+@footer-font : Georgia;
+
+.box_not_expanding_size_on_padding_and_margin {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+}
+
+.white-bottom-border {
+  border-bottom: 1px solid white;
+}
+
 #landing {
   #footer {
     width: 100%;
     background-color: black;
     overflow: hidden;
     color: white;
-    font-family: "Georgia";
+    font-family: @footer-font;
     font-size: 13px;
     line-height: 24px;
 
     .we-social {
       display: inline-block;
-      border-bottom: 1px solid white;
+      .white-bottom-border;
       margin-top: 10px;
     }
 
     .map-text {
       display: inline-block;
-      border-bottom: 1px solid white;
+      .white-bottom-border;
     }
 
     .map {
       // these properties allow me to add padding to the box without expanding it width
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-
+      .box_not_expanding_size_on_padding_and_margin;
       padding-left: 5%;
     }
 
     .contacts {
       // these properties allow me to add padding to the box without expanding it width
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-
+      .box_not_expanding_size_on_padding_and_margin;
       padding-right: 5%;
     }
 

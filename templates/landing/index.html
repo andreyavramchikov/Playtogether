@@ -17,34 +17,22 @@
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/comming-events.less' %}" />
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/popular-events.less' %}" />
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/footer.less' %}" />
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/mobile_menu.less' %}" />
         <script src="{% static 'js/libs/less.js' %}"></script>
     {% endblock %}
 
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <script src="{% static 'js/landing/landing.js' %}"></script>
-    <script>
-		$(function() {
-			var pull 		= $('.header-top'),
-				menu 		= $('.mobile-menu'),
-				menuHeight	= menu.height();
-
-			$(pull).on('click', function(e) {
-				e.preventDefault();
-				menu.slideToggle();
-			});
-
-			$(window).resize(function(){
-        		var w = $(window).width();
-        		if(w > 320 && menu.is(':hidden')) {
-        			menu.removeAttr('style');
-        		}
-    		});
-		});
-	</script>
-
 </head>
 <body>
+
+{#    MOBILE MENU#}
+    <input type="checkbox" id="mobile-menu-input" class="lg-hide">
+    <label for="mobile-menu-input" onclick class="lg-hide menu-label"></label>
+    {% include "landing/header/mobile_menu.html" %}
+{#END MOBILE MENU#}
+
     <div id="landing">{#maybe should be avoid these div#}
         {% include 'landing/header/header.html' %}
         {% include 'landing/comming-events.html' %}

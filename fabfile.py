@@ -12,6 +12,7 @@ env.path = '/home/ubuntu/projects/%(project_name)s' % env
 env.env_path = '%(path)s/env' % env
 env.repo_path = '%(path)s/repository' % env
 
+# ssh -i ~/Playtogether.pem ubuntu@ec2-52-90-107-10.compute-1.amazonaws.com
 
 def setup():
     # STILL NEED TO INSTALL MANUALLY MYSQL AND PYTHON-MYSQL ETC
@@ -40,8 +41,10 @@ def deploy():
     sudo('/etc/init.d/nginx restart')
     run(
         'cp -r /home/ubuntu/projects/Playtogether/repository/event/static/ /home/ubuntu/projects/Playtogether/repository/')
+    # activate_virtualenv()
     # run('pip install uwsgi') #manually still
-    # run('uwsgi --ini mysite_uwsgi.ini')#manually still
+    run('source %(env_path)s/bin/activate; pip install uwsgi' % env)
+    run('source %(env_path)s/bin/activate; uwsgi --ini %(repo_path)s/mysite_uwsgi.ini' % env)#manually still
 
 
 def install_requirements():
@@ -64,6 +67,10 @@ def setup_directories():
     """
     run('mkdir -p %(path)s' % env)
     run('mkdir -p %(env_path)s' % env)
+
+
+def activate_virtualenv():
+    run('source %(env_path)s/bin/activate;' % env)
 
 
 def setup_virtualenv():

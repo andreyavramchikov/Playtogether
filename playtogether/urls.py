@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView
 from event.views import MainView, PlaceListView, TeamListView, EventListView, CityListView, ActivityListView, EventCreateView, \
-    UpdateUserView, LandingView, GetListVenue, GetListPrepaidVenues, PrepaimentView
+    UpdateUserView, LandingView, GetListVenue, GetListPrepaidVenues, PrepaimentView, TestView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework import routers
 
@@ -18,12 +18,14 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', MainView.as_view(), name='index'),
     # url(r'^$', RedirectView.as_view(url='/landing'), name='index'),
-    # url(r'^landing/$', LandingView.as_view(), name='landing'),
+    url(r'^landing/$', LandingView.as_view(), name='landing'),
     # url(r'^api/v1/accounts/(?P<id>[0-9]+)$', UpdateUserView.as_view(), name='index'),
     #rewriting urls to avoid 404 when reload on this page
     #the view will invoked just when you first time go to /places or when you reload
     #and will not run when you just walking on the site
     url(r'^places/$', MainView.as_view(), name='index'),
+
+    url(r'^test/$', TestView.as_view(), name='index'),
     url(r'^teams/$', MainView.as_view(), name='index'),
     url(r'^events/$', MainView.as_view(), name='index'),
     url(r'^createevent/$', MainView.as_view(), name='index'),

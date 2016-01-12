@@ -1,7 +1,7 @@
 {% load staticfiles %}
 
-<div id="footer">
-    <div class="social col-xs-12 col-md-4 col-lg-4 left hidden text-center">
+<footer id="footer">
+    <section class="social col-xs-12 col-md-4 col-lg-4 left hidden text-center">
         <span class="we-social">МЫ В СОЦИАЛЬНЫХ СЕТЯХ</span>
         <div class="col-xs-12">
             <div class="col-xs-4 left">
@@ -14,20 +14,23 @@
                 <img src="{% static 'img/facebook.png' %}"/>
             </div>
         </div>
-    </div>
-    <div class="map col-xs-6 col-md-4 col-lg-4 hidden left">
-        <span class="map-text">КАРТА САЙТА</span>
-        <div><span>События</span></div>
-        <div><span>Команды</span></div>
-        <div><span>Участники</span></div>
-        <div><span>Места</span></div>
-    </div>
-    <div class="contacts col-xs-6 col-md-4 col-lg-4 hidden left text-right">
-        <span class="map-text">КОНТАКТЫ</span>
-        <div><span>Минск, Беларусь</span></div>
-        <div><span>ул.Филимонова 39-198</span></div>
-        <div><span>+375(44) 533-32-92</span></div>
-        <div><span>support@sportclub.by</span></div>
-    </div>
+    </section>
+    <section class="map col-xs-6 col-md-4 col-lg-4 hidden left">
+        <div class="map-text">КАРТА САЙТА</div>
+        <div>События</div>
+        <div>Команды</div>
+        <div>Участники</div>
+        <div>Места</div>
+    </section>
+
+    <section class="contacts col-xs-6 col-md-4 col-lg-4 hidden left text-right">
+        <header class="map-text">КОНТАКТЫ</header>
+        <address>Минск, Беларусь</address>
+        <address>ул.Филимонова 39-198</address>
+        <div>+375(44) 533-32-92</div>
+        <div>support@sportclub.by</div>
+    </section>
+
     <div class="row text-center"><span> © 2015 SportClub</span></div>
-</div>{# end of footer #}
+
+</footer>{# end of footer #}
