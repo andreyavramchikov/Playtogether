@@ -17,7 +17,7 @@ class LandingView(TemplateView):
 
 
 class MainView(TemplateView):
-    template_name = 'landing/index.html'
+    template_name = 'index.html'
 
 class TestView(TemplateView):
     template_name = 'test.html'

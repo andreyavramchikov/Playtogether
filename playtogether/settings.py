@@ -117,3 +117,57 @@ CELERY_TIMEZONE = "Europe/Madrid"
 
 # import djcelery
 # djcelery.setup_loader()
+
+
+
+# // MUST RETHING ABOUT THE LOGGER AFTER READING THE DOC
+# // RIGHT NOW IT IS ADDED FROM CLASSPASS PROJECT JUST TO OUTPUT SQL QUERIES INTO CONSOLE
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'root': {
+        'handlers': ['console_debug_on'],
+        'level': 'DEBUG',
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '[%(levelname).1s:%(asctime)s:%(module)s:%(lineno)d] %(message)s'
+        },
+        'simple': {
+            'format': '[%(levelname).1s:%(module)s:%(lineno)d] %(message)s'
+        }
+    },
+    'handlers': {
+        'console_debug_on': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+            'filters': ['require_debug_true']
+        },
+        'console_debug_off': {
+            'level': 'WARNING',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+            'filters': ['require_debug_false'],
+        },
+
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console_debug_off'],
+            'propagate': True
+        },
+        'django': {
+            'handlers': ['console_debug_on'],
+            'propagate': False
+        },
+    },
+}

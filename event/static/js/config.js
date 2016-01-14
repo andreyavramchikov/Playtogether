@@ -8,7 +8,7 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 
-    $urlRouterProvider.otherwise('home');
+//    $urlRouterProvider.otherwise('home');
 
     $stateProvider
         .state('home', {
@@ -42,37 +42,37 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             title: 'Login'
         })
         .state('events', {
-            url : '/events',
+            url : '/events/',
             controller: 'EventController',
             templateUrl: '/static/pages/events.html',
             title: 'Events'
         })
         .state('createevent', {
-            url : '/createevent',
+            url : '/createevent/',
             controller: 'CreateEventController',
             templateUrl: '/static/pages/create_event.html',
             title: 'Create Event'
         })
         .state('places', {
-            url : '/places',
+            url : '/places/',
             controller: 'PlaceController',
             templateUrl: '/static/pages/places.html',
             title: 'Places'
         })
         .state('teams', {
-            url : '/teams',
+            url : '/teams/',
             controller: 'TeamController',
             templateUrl: '/static/pages/teams.html',
             title: 'Teams'
         })
         .state('users', {
-            url : '/users',
+            url : '/users/',
             controller: 'UserController',
             templateUrl: '/static/pages/users.html',
             title: 'Users'
         })
         .state('venue', {
-            url : '/venue',
+            url : '/venue/',
             controller: 'VenueController',
             templateUrl: '/static/pages/venue.html',
             title: 'Venue'
