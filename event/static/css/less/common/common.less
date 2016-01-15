@@ -1,8 +1,32 @@
 /*Common styles for all devices and width of screen*/
 
-body {
+body, h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
+}
+
+//BASIC STYLES FOR NAVIGATION
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    li {
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .left {
@@ -64,7 +88,7 @@ body {
 }
 
 .bold {
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .text-center {
@@ -80,7 +104,7 @@ body {
 }
 
 /*absolute centering - left- right image;
-parent should be height:100% (should present height of block) and position: relative;*/
+parent should be height:100% (should present height of block + WIDTH of the block) and position: relative;*/
 .center-image {
     margin: auto;
     position: absolute;

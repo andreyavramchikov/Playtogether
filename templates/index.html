@@ -1,11 +1,9 @@
 
 {% extends "base.html" %}
 
-{% block content %}
-    <header class="jumbotron hero-spacer">
-    </header>
-    <div id="main" ng-controller="MainController">
-        <div ui-view></div>
-    </div>
+{% block main %}
+    <article id="main" ng-controller="MainController">
+        <section ui-view></section>
+    </article>
 {% endblock %}
 

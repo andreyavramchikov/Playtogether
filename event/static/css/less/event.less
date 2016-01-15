@@ -1,0 +1,81 @@
+.box_sizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+}
+
+.action_button(@color, @background-color, @border, @difference) {
+  display: block;
+  background-color: @background-color;
+  font-family: Courier New;
+  font-size: 20px;
+  line-height: 40px - @difference;
+  text-align: center;
+  color: @color;
+  border: @border;
+  cursor: pointer;
+  margin-top:5px;
+}
+
+#events {
+
+  section {
+
+    .event-image {
+      max-width: 100%;
+    }
+    .event-bottom {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.65);
+      height: 35px;
+      padding: 0 10px;
+      line-height: 35px - 4px;
+      font-family: "Courier New";
+      font-weight: normal;
+      font-size: 20px;
+    }
+
+
+    > div {
+      .box_sizing;
+      padding: 0 0 0 5px;
+    }
+
+    div h3 {
+      font-family: "Courier New";
+      font-size: 18px;
+      font-weight: normal;
+      text-align: right;
+    }
+
+    .actions {
+      a:nth-child(1){
+        .action_button(white, #FF3F45, 0, 0);
+      }
+      a:nth-child(2){
+        .action_button(#FF3F45, white, 2px solid #FF3F45, 4);
+        .box_sizing;
+      }
+    }
+  }
+
+}
+
+/*Tablet*/
+@media (min-width: 768px)
+  and (max-width: 1024px) {
+  #events {
+    .event-bottom {
+      height: 50px;
+      padding: 0 10px;
+      line-height: 50px - 4px;  // the bug with differences between div and inline image on 4px;MUST FIX THIS
+      font-family: "Courier New";
+      font-weight: normal;
+      font-size: 25px;
+    }
+  }
+
+}

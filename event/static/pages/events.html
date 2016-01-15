@@ -1,23 +1,80 @@
+<article id="events">
+
 <div id="filters" class="pull-left" ng-controller="EventFilterController">
     <select ng-options="city.id as city.name for city in cities" ng-model="selectedCity" />
-
-
     <select ng-options="activity.name as activity.name for activity in activities" ng-model="selectedActivity" />
     <div>
         <input type="radio" ng-model="is_paid" value="all"/>All
         <input type="radio" ng-model="is_paid" value="True"/>Is paid
         <input type="radio" ng-model="is_paid" value="False"/>Not paid
     </div>
-
     <button ng-model="event_date" date-filter data-date="later"> Later </button>
     <button ng-model="event_date" date-filter data-date="today"> Today </button>
     <button ng-model="event_date" date-filter data-date="tomorrow"> Tomorrow </button>
     <button ng-model="event_date" date-filter data-date="after_tomorrow"> After Tomorrow </button>
-
     <div range-slider min="minPrice" max="maxPrice" model-min="userMinPrice" model-max="userMaxPrice" step="5"></div>
-
 </div>
 
+
+<section>
+
+    <div class="col-xs-6 col-md-4 col-lg-4 left">
+        <div class="relative">
+            <img class="event-image" src="/static/img/event.png"/>
+            <h3 class="event-bottom">Волейбол</h3>
+        </div>
+        <div>
+            <h3 class="bold">Сегодня 16:00</h3>
+            <h3>250 000</h3>
+            <h3>7 участников</h3>
+            <h3>еще 5 мест</h3>
+            <h3>Олимп</h3>
+        </div>
+
+        <div class="actions">
+            <a class="col-xs-12 col-md-6 left">Иду</a>
+            <a class="col-xs-12 col-md-6 left">Пригласить</a>
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-md-4 col-lg-4 left">
+        <div class="relative">
+            <img class="event-image" src="/static/img/event.png"/>
+            <h3 class="event-bottom">Волейбол</h3>
+        </div>
+        <div>
+            <h3 class="bold">Сегодня 16:00</h3>
+            <h3>250 000</h3>
+            <h3>7 участников</h3>
+            <h3>еще 5 мест</h3>
+            <h3>Олимп</h3>
+        </div>
+
+        <div class="actions">
+            <a class="col-xs-12 col-md-6 left">Иду</a>
+            <a class="col-xs-12 col-md-6 left">Пригласить</a>
+        </div>
+    </div>
+
+    <div class="col-xs-6 col-md-4 col-lg-4 left">
+        <div class="relative">
+            <img class="event-image" src="/static/img/event.png"/>
+            <h3 class="event-bottom">Волейбол</h3>
+        </div>
+        <div>
+            <h3 class="bold">Сегодня 16:00</h3>
+            <h3>250 000</h3>
+            <h3>7 участников</h3>
+            <h3>еще 5 мест</h3>
+            <h3>Олимп</h3>
+        </div>
+
+        <div class="actions">
+            <a class="col-xs-12 col-md-6 left">Иду</a>
+            <a class="col-xs-12 col-md-6 left">Пригласить</a>
+        </div>
+    </div>
+</section>
 
 <div class="col-md-3 col-sm-6 hero-feature" ng-repeat="event in events">
     <div class="thumbnail">
@@ -34,3 +91,5 @@
         </div>
     </div>
 </div>
+
+</article>

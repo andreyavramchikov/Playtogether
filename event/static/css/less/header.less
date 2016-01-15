@@ -1,0 +1,70 @@
+@header-font : Georgia;
+@sports-club-font: Vivaldi;
+@xs-header-height: 40px;
+@md-lg-header-height: 70px;
+
+.box-size {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+header {
+  .box-size;
+  height: @xs-header-height;
+  > h3 {
+    float: left;
+    font-family: @sports-club-font;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    line-height: @xs-header-height;
+  }
+
+  .signin {
+    position: relative;
+    height: 100%;
+    float: right;
+  }
+}
+
+/*Tablet and Descktop*/
+@media (min-width: 768px){
+//  and (max-width: 1024px) {
+
+  header {
+    height: @md-lg-header-height;
+    >h3 {
+      line-height: @md-lg-header-height;
+    }
+
+    section {
+      a {
+        font-family: @header-font;
+        color: black;
+        font-size: 16px;
+        line-height: @md-lg-header-height;
+      }
+    }
+  }
+
+  nav {
+    ul {
+      li {
+        float: left;
+        a {
+          font-family: @header-font;
+          font-style: normal;
+          font-size: 16px;
+          color: black;
+          line-height: 70px;
+        }
+      }
+    }
+  }
+
+
+}
+
