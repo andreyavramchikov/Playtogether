@@ -17,8 +17,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin@admin.com",
-            "sms_notification": false
+            "email": "admin@admin.com"
+
 
         }
     },
@@ -40,8 +40,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin2@admin.com",
-            "sms_notification": false
+            "email": "admin2@admin.com"
+
 
         }
     },
@@ -63,8 +63,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin3@admin.com",
-            "sms_notification": false
+            "email": "admin3@admin.com"
+
 
         }
     },
@@ -86,8 +86,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin4@admin.com",
-            "sms_notification": false
+            "email": "admin4@admin.com"
+
 
         }
     },
@@ -109,8 +109,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin5@admin.com",
-            "sms_notification": false
+            "email": "admin5@admin.com"
+
 
         }
     },
@@ -132,8 +132,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin6@admin.com",
-            "sms_notification": false
+            "email": "admin6@admin.com"
+
 
         }
     },
@@ -155,8 +155,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin7@admin.com",
-            "sms_notification": false
+            "email": "admin7@admin.com"
+
 
         }
     },
@@ -178,8 +178,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin8@admin.com",
-            "sms_notification": false
+            "email": "admin8@admin.com"
+
 
         }
     },
@@ -201,8 +201,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin9@admin.com",
-            "sms_notification": false
+            "email": "admin9@admin.com"
+
 
         }
     },
@@ -224,8 +224,8 @@
             "is_admin": true,
             "password": "pbkdf2_sha256$20000$FbITwky8BnAS$QZlU959YI66JTu43qZ7Bdz4LCiNcskzrqfWND6Wh3Wo=",
             "notification_frequency": null,
-            "email": "admin10@admin.com",
-            "sms_notification": false
+            "email": "admin10@admin.com"
+
 
         }
     }
