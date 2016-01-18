@@ -18,3 +18,8 @@ python manage.py makemigrations --empty event
 
 celery -A playtogether worker -l info
 celery -A proj worker -l info
+
+
+CREATE DATABASE playtogether
+  DEFAULT CHARACTER SET utf8
+  DEFAULT COLLATE utf8_general_ci;

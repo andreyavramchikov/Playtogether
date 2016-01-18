@@ -1,6 +1,6 @@
 /*Common styles for all devices and width of screen*/
 
-body, h1, h2, h3, h4, h5, h6 {
+body, h1, h2, h3, h4, h5, h6, figure, header {
     margin: 0;
     padding: 0;
 }
@@ -145,7 +145,7 @@ parent should be height:100% (should present height of block + WIDTH of the bloc
 
 @media only screen and (max-width: 767px) {
     .xs-hide {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -153,7 +153,7 @@ parent should be height:100% (should present height of block + WIDTH of the bloc
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
 
     .md-hide {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -162,7 +162,7 @@ parent should be height:100% (should present height of block + WIDTH of the bloc
   and (min-width: 1025px) {
 
     .lg-hide {
-        display: none;
+        display: none !important;
     }
 
 }

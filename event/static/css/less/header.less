@@ -9,7 +9,6 @@
   box-sizing: border-box;
 }
 
-
 header {
   .box-size;
   height: @xs-header-height;
@@ -31,12 +30,11 @@ header {
 }
 
 /*Tablet and Descktop*/
-@media (min-width: 768px){
-//  and (max-width: 1024px) {
-
+@media (min-width: 768px) {
+  //  and (max-width: 1024px) {
   header {
     height: @md-lg-header-height;
-    >h3 {
+    > h3 {
       line-height: @md-lg-header-height;
     }
 
@@ -48,23 +46,21 @@ header {
         line-height: @md-lg-header-height;
       }
     }
-  }
 
-  nav {
-    ul {
-      li {
-        float: left;
-        a {
-          font-family: @header-font;
-          font-style: normal;
-          font-size: 16px;
-          color: black;
-          line-height: 70px;
+    nav {
+      ul {
+        li {
+          float: left;
+          a {
+            font-family: @header-font;
+            font-style: normal;
+            font-size: 16px;
+            color: black;
+            line-height: 70px;
+          }
         }
       }
     }
   }
-
-
 }
 

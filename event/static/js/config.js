@@ -71,10 +71,10 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             templateUrl: '/static/pages/users.html',
             title: 'Users'
         })
-        .state('venue', {
-            url : '/venue/',
-            controller: 'VenueController',
-            templateUrl: '/static/pages/venue.html',
+        .state('test', {
+            url : '/test/',
+            controller: 'TestController',
+            templateUrl: '/static/pages/test.html',
             title: 'Venue'
         });
 

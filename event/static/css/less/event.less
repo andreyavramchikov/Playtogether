@@ -76,6 +76,52 @@
       font-weight: normal;
       font-size: 25px;
     }
-  }
 
+    section {
+      .description-left h3{
+        text-align: left;
+        border-right: 1px solid gray;
+        .box_sizing;
+      }
+
+      .description-right h3{
+        text-align: right;
+      }
+
+      .actions {
+        a:nth-child(1) {
+          float: right;
+        }
+      }
+
+    }
+  }
+}
+
+/*Desktop*/
+@media (min-width: 1025px) {
+  #events {
+    section {
+      .actions {
+        figure {
+          position: relative;
+          height: 30px;
+        }
+      }
+
+//      copy past from tablet styles - need to read best practice and organize in ONE SAMPLE OF CODE
+      .description-left h3{
+        text-align: left;
+        border-right: 1px solid gray;
+        .box_sizing;
+      }
+
+      .description-right h3{
+        text-align: right;
+      }
+//  END COPY PAST
+
+
+    }
+  }
 }

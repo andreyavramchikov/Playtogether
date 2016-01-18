@@ -21,12 +21,13 @@
     <link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="image/x-icon"/>
 
     {% block fonts %}
-        <link href="{% static 'fonts/fonts.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fonts/fonts.css' %}" rel="stylesheet" type="text/css"/>
     {% endblock %}
 
 
     {% block less %}
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/header.less' %}"/>
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/footer.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/mobile_menu.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/common/bootstrap-grid.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/event.less' %}"/>
@@ -34,8 +35,8 @@
     {% endblock %}
 
     {% block lib_css %}
-{#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">#}
-{#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">#}
+        {#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">#}
+        {#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">#}
         <link rel="stylesheet" href="{% static "css/angular.rangeSlider.css" %}">
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/css/bootstrap-datetimepicker.min.css">
@@ -92,7 +93,7 @@
         <script src="{% static "js/controllers/UserController.js" %}"></script>
         <script src="{% static "js/controllers/EventFilterController.js" %}"></script>
         <script src="{% static "js/controllers/CreateEventController.js" %}"></script>
-        <script src="{% static "js/controllers/VenueController.js" %}"></script>
+        <script src="{% static "js/controllers/TestController.js" %}"></script>
         <script src="{% static "js/directives/EventDirectives.js" %}"></script>
     {% endblock %}
 
@@ -102,8 +103,8 @@
 
 {% block mobile_menu %}
     <input type="checkbox" id="mobile-menu-input">
-    <label for="mobile-menu-input" onclick ></label>
-{#    Should be separate from other content because of moving other content to right - effect#}
+    <label for="mobile-menu-input" onclick></label>
+    {#    Should be separate from other content because of moving other content to right - effect#}
     {% include 'mobile_menu.html' %}
 {% endblock %}
 
@@ -118,17 +119,9 @@
     {% block main %}
     {% endblock %}
 
-{#    {% block footer %}#}
-{#        <hr>#}
-{#        <!-- Footer -->#}
-{#        <footer>#}
-{#            <div class="row">#}
-{#                <div class="col-lg-12">#}
-{#                    <p>Copyright &copy; Your Website 2014</p>#}
-{#                </div>#}
-{#            </div>#}
-{#        </footer>#}
-{#    {% endblock %}#}
+    {% block footer %}
+        {% include 'footer.html' %}
+    {% endblock %}
 
 </main>
 

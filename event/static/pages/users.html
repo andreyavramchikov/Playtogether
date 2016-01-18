@@ -1,13 +1,3 @@
-<div class="col-md-3 col-sm-6 hero-feature" ng-repeat="user in users">
-    <div class="thumbnail">
-        <div class="caption">
-            <p>[[user.first_name]]</p>
-            <p>[[user.last_name]]</p>
-            <p>[[user.email]]</p>
-            <p>[[user.city]]</p>
-            <p ng-repeat="activity_user in user.activity_users">
-                [[activity_user.activity.name]]
-            </p>
-        </div>
-    </div>
-</div>
+<button ng-click="incrementPrices()"> Change Prices </button>
+
+<div unordered-list="products" list-property="price | currency"></div>
