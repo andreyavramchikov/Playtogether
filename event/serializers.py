@@ -87,7 +87,7 @@ class EventSerializer(serializers.ModelSerializer):
 #NEED TO THINK HOW TO COMBINE THIS CLASS WITH EventSerializer
 class EventCreateSerializer(serializers.ModelSerializer):
     start_date = serializers.DateTimeField(input_formats=['%d-%m-%Y %H:%M'])
-    end_date = serializers.DateTimeField(input_formats=['%d-%m-%Y %H:%M'])
+    end_date = serializers.DateTimeField(input_formats=['%d-%m-%Y %H:%M'], required=False)
 
     class Meta:
         model = Event

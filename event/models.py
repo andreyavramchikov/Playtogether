@@ -77,12 +77,12 @@ class TeamActivities(models.Model):
 
 class Event(models.Model):
     activity = models.ForeignKey(Activity)
-    place = models.ForeignKey(Place)
+    place = models.ForeignKey(Place, null=True, blank=True)
     city = models.ForeignKey(City, null=True, blank=True)
     start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    end_date = models.DateTimeField(null=True, blank=True)
     min_people = models.IntegerField()
-    max_people = models.IntegerField()
+    max_people = models.IntegerField(null=True, blank=True)
     is_paid = models.BooleanField(default=False)
     cost = models.IntegerField(null=True, blank=True)
     description = models.TextField(blank=True)

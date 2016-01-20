@@ -8,7 +8,7 @@ app.service('EventService', function($http){
     };
 
     this.createEvent = function(data){
-        return $http.post('/api/v1/event/create', data)
+        return $http.post('/api/v1/event/create', data);
     }
 
 });

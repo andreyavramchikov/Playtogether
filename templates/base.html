@@ -26,18 +26,22 @@
 
 
     {% block less %}
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/pages/create-event.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/header.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/footer.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/mobile_menu.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/common/bootstrap-grid.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/event.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/common/common.less' %}"/>
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/common/custom-select.less' %}"/>
     {% endblock %}
 
     {% block lib_css %}
         {#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">#}
         {#        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">#}
         <link rel="stylesheet" href="{% static "css/angular.rangeSlider.css" %}">
+        <link rel="stylesheet" href="{% static "css/libs/DateTimePicker.css" %}">
+
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/css/bootstrap-datetimepicker.min.css">
     {% endblock %}
@@ -66,6 +70,8 @@
         <script src="{% static "js/libs/angular.rangeSlider.js" %}"></script>
         <script src="{% static "js/libs/angular.mask.js" %}"></script>
         <script src="{% static "js/libs/bootstrap-select.js" %}"></script>
+
+        <script src="{% static 'js/libs/DateTimePicker.js' %}"></script>
 
     {% endblock %}
 

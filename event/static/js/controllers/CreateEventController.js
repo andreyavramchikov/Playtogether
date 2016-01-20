@@ -1,26 +1,29 @@
 var app = angular.module('playTogether');
 
 app.controller('CreateEventController', function ($scope, $http, $timeout, EventService, ActivityService, PlaceService) {
-
-    $scope.modelka = '';
-
-
     var getPostData = function(){
         var data = {
             activity: $scope.selectedActivity,
-            place: $scope.selectedPlace,
             start_date: $scope.start_date,
-            end_date: $scope.end_date,
-            min_people: $scope.min_people,
-            max_people: $scope.max_people
+            min_people: $scope.min_people
         };
         return data;
     };
 
+
+     $("#dtBox").DateTimePicker();
+    $scope.errors = {};
     $scope.createEvent = function(){
         var data = getPostData();
         EventService.createEvent(data).then(function(response){
             console.log(response);
+        }, function(response){
+            var errors = response.data;
+            if (errors){
+                _.each(errors, function (value, key) {
+                    $scope.errors[key] = value[0];
+                });
+            }
         });
     };
 

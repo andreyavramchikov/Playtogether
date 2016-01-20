@@ -1,14 +1,19 @@
 from fabric.api import env, run
 from fabric.operations import sudo
 
-env.hosts = [
-    'ec2-52-90-107-10.compute-1.amazonaws.com'
-]
+# env.hosts = [
+#     'ec2-52-90-107-10.compute-1.amazonaws.com'
+# ]
+#
+# env.user = 'ubuntu'
+# env.key_filename = '/home/andrey/Playtogether.pem'
+env.hosts = ['127.0.0.1:2222']
+env.user = 'vagrant'
+env.key_filename = '/home/andrey/Dropbox/playtogether/.vagrant/machines/default/virtualbox/private_key'
 
-env.user = 'ubuntu'
-env.key_filename = '/home/andrey/Playtogether.pem'
 env.project_name = 'Playtogether'
-env.path = '/home/ubuntu/projects/%(project_name)s' % env
+# env.path = '/home/ubuntu/projects/%(project_name)s' % env
+env.path = '/home/vagrant/projects/%(project_name)s' % env
 env.env_path = '%(path)s/env' % env
 env.repo_path = '%(path)s/repository' % env
 
@@ -32,18 +37,25 @@ def deploy():
     sudo('rm -rf /etc/nginx/sites-enabled/mysite_nginx.conf')  # MUST REMOVE IT
     sudo('apt-get install nginx')
     sudo('apt-get install git')
+    sudo('apt-get install mysql-server')
     setup_directories()
     setup_virtualenv()
     clone_repo()
     install_requirements()
+    # sudo(
+    #     'ln -s /home/ubuntu/projects/Playtogether/repository/mysite_nginx.conf /etc/nginx/sites-enabled/')  # MUST REMOVE IT
     sudo(
-        'ln -s /home/ubuntu/projects/Playtogether/repository/mysite_nginx.conf /etc/nginx/sites-enabled/')  # MUST REMOVE IT
+        'ln -s /home/vagrant/projects/Playtogether/repository/mysite_nginx.conf /etc/nginx/sites-enabled/')  # MUST REMOVE IT
+
     sudo('/etc/init.d/nginx restart')
+    # run(
+    #     'cp -r /home/ubuntu/projects/Playtogether/repository/event/static/ /home/ubuntu/projects/Playtogether/repository/')
     run(
-        'cp -r /home/ubuntu/projects/Playtogether/repository/event/static/ /home/ubuntu/projects/Playtogether/repository/')
+        'cp -r /home/vagrant/projects/Playtogether/repository/event/static/ /home/vagrant/projects/Playtogether/repository/')
+
     # activate_virtualenv()
-    # run('pip install uwsgi') #manually still
-    # run('source %(env_path)s/bin/activate; python manage.py migrate' % env)
+    run('pip install uwsgi') #manually still
+    run('source %(env_path)s/bin/activate; python manage.py migrate' % env)
     run('source %(env_path)s/bin/activate; pip install uwsgi' % env)
     run('source %(env_path)s/bin/activate; uwsgi --ini %(repo_path)s/mysite_uwsgi.ini' % env)#manually still
 
