@@ -1,19 +1,22 @@
-<div class="row" ng-controller="RegisterStep3Controller">
-    <div class="col-md-4 col-md-offset-4">
-        <h1>Step-3</h1>
-        <div class="well">
-            <form role="form" name="registerFormStep2" ng-submit="registerStep3()" novalidate>
-                <div class="form-group">
-                    <label for="register__username">Sex</label>
-                    <input type="text" class="form-control" id="register__sex" ng-model="sex"
-                           placeholder="ex. john"/>
-                </div>
-                <div class="errors" ng-model="errors.sex">[[errors.sex]]</div>
+<form id="register-step-3" class="col-xs-12">
+    <ng-include src="'/static/pages/utils/responsive-circle-line-circle.html'"></ng-include>
+    <h3 class="col-xs-12">Когда хочешь заниматься? </h3>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Register Step 3</button>
-                </div>
-            </form>
-        </div>
+    <div class="schedule">
+        <img src="/static/img/calendar-red.png" class="left-image">
+        <p>По будням</p>
     </div>
-</div>
+
+    <div class="schedule">
+        <img src="/static/img/calendar-black.png" class="left-image">
+        <p>По выходным</p>
+    </div>
+
+    <div class="schedule">
+        <img src="/static/img/calendar-gray.png" class="left-image">
+        <p>Всю неделю</p>
+    </div>
+
+    <input type="submit" class="col-xs-12" value="Дальше" ng-click="register()">
+
+</form>

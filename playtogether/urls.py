@@ -33,6 +33,8 @@ urlpatterns = patterns('',
     url(r'^register/step-2/$', MainView.as_view(), name='index'),
     url(r'^register/step-2/(?P<id>[0-9]+)$', MainView.as_view(), name='index'),
     url(r'^register/step-3/$', MainView.as_view(), name='index'),
+    url(r'^register/step-4/$', MainView.as_view(), name='index'),
+    url(r'^register/step-5/$', MainView.as_view(), name='index'),
     url(r'^login/$', MainView.as_view(), name='index'),
 
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

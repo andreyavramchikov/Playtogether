@@ -9,7 +9,7 @@ from authentication.serializers import UserSerializer
 
 from django.contrib.auth import authenticate, login, logout
 
-
+#MUST REWRITTEN TO ALLOW PUT METHOD OR REPLACED BY ANOTHER OOP IMPLEMENTATION
 class AccountViewSet(viewsets.ModelViewSet):
     lookup_field = 'pk'
     queryset = User.objects.all()

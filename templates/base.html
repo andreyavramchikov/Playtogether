@@ -34,6 +34,7 @@
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/event.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/common/common.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/common/custom-select.less' %}"/>
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/pages/register.less' %}"/>
     {% endblock %}
 
     {% block lib_css %}
@@ -87,11 +88,13 @@
         <script src="{% static "js/services/EventService.js" %}"></script>
         <script src="{% static "js/services/UserService.js" %}"></script>
         <script src="{% static "js/services/ActivityService.js" %}"></script>
-        <script src="{% static "js/authentication/controllers/RegisterController.js" %}"></script>
         <script src="{% static "js/authentication/controllers/register/RegisterStep1Controller.js" %}"></script>
         <script src="{% static "js/authentication/controllers/register/RegisterStep2Controller.js" %}"></script>
         <script src="{% static "js/authentication/controllers/register/RegisterStep3Controller.js" %}"></script>
+        <script src="{% static "js/authentication/controllers/register/RegisterStep4Controller.js" %}"></script>
+        <script src="{% static "js/authentication/controllers/register/RegisterStep5Controller.js" %}"></script>
         <script src="{% static "js/authentication/controllers/LoginController.js" %}"></script>
+        <script src="{% static "js/authentication/controllers/LogoutController.js" %}"></script>
         <script src="{% static "js/controllers/MainController.js" %}"></script>
         <script src="{% static "js/controllers/EventController.js" %}"></script>
         <script src="{% static "js/controllers/PlaceController.js" %}"></script>

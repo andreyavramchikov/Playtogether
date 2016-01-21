@@ -1,0 +1,242 @@
+
+.box-size {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+}
+
+.forms-common-mixin {
+  .box-size;
+
+  padding: 2% 5%;
+
+  font-family: Georgia;
+  font-size: 15px;
+
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: gray;
+  }
+
+  input[type='submit'] {
+    height: 40px;
+    background-color: red;
+    border: none;
+    color: white;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+
+  // circle - line - circle - RESPONSIVE
+  responsive-line {
+
+    ul {
+      .box-size;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li {
+        width: 25%;
+        text-align: center;
+        line-height: 2em;
+        float: left;
+        color: white;
+        position: relative;
+
+        &:first-of-type:after {
+          left: calc(-100% + 1em);
+          width: 250%;
+        }
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: calc(~"50% - 1em");
+          width: 2em;
+          height: 2em;
+          border-radius: 1em;
+          background: dodgerblue;
+          z-index: -1;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: .9em;
+          left: calc(~"50% + 1em");
+          width: 100%;
+          height: .2em;
+          background: dodgerblue;
+          z-index: -1;
+        }
+      }
+
+      .active:before {
+          background: lightblue;
+      }
+      .active:after {
+        background: lightblue;
+      }
+
+      .active ~ li:before {
+        background: lightblue;
+      }
+      .active ~ li:after {
+        background: lightblue;
+      }
+
+    }
+
+  }
+  // end circle line
+
+    //  STYLIZATION OF PLACEHOLDER - MAYBE SHOULD PLACE THIS CODE INTO COMMON.LESS?????
+  ::-webkit-input-placeholder {
+    line-height: 10px;
+    color: gray;
+    text-overflow: ellipsis;
+    transition: line-height 0.5s ease;
+  }
+  ::-moz-placeholder {
+    color: gray;
+    text-overflow: ellipsis;
+    line-height: 10px;
+    transition: line-height 0.5s ease;
+  }
+  /* Firefox 19+ */
+
+  :-ms-input-placeholder {
+    color: gray;
+    text-overflow: ellipsis;
+    line-height: 10px;
+    transition: line-height 0.5s ease;
+  }
+
+  //hide the text in placeholder not working on my current Chrome 45 version
+  :focus::-webkit-input-placeholder {
+    color: transparent
+  }
+  :focus::-moz-placeholder {
+    color: transparent
+  }
+  :focus:-moz-placeholder {
+    color: transparent
+  }
+  :focus:-ms-input-placeholder {
+    color: transparent
+  }
+
+  //beautifully hidden functionality of  placeholders
+  input[type='email']:focus::-webkit-input-placeholder,
+  input[type='password']:focus::-webkit-input-placeholder {
+    line-height: 100px;
+  }
+  // END PLACEHOLDERS STYLES
+
+}
+
+form#register-step-1 {
+
+  .forms-common-mixin;
+
+  input {
+    height: 30px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    margin-bottom: 20px;
+
+  }
+
+  a {
+    color: red;
+  }
+
+}
+
+form#register-step-2 {
+
+  .forms-common-mixin;
+
+  div p {
+    text-align: center;
+  }
+
+  .men, .women {
+    position: relative;
+    height: 100px;
+    .box-size;
+    border: 1px solid gray;
+  }
+
+  .women {
+    border-left: none;
+  }
+
+}
+
+form#register-step-3 {
+  .forms-common-mixin;
+
+  .schedule {
+    height: 100px;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    border-bottom: none;
+
+    &:last-of-type {
+      border-bottom: 1px solid gray;
+    }
+
+    p {
+      .box-size;
+      width: 100%;
+      text-align: center;
+      line-height: 100px;
+      padding-left: 20%;
+    }
+
+    img {
+      left: 10%;
+    }
+
+  }
+}
+
+form#register-step-4 {
+  .forms-common-mixin;
+  .in-pair-activities, .team-activities {
+    width: 100%;
+    height: 70px;
+    position: relative;
+  }
+}
+
+form#register-step-5 {
+  .forms-common-mixin;
+
+  & >div {
+    height: 70px;
+  }
+
+  input[type='checkbox'] {
+    width: 30px;
+    height: 30px;
+    float: left;
+  }
+
+  #register__phone {
+    width: 100%;
+    border: none;
+    font-size: 25px;
+    color: gray;
+  }
+}

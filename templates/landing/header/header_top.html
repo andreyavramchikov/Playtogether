@@ -17,7 +17,10 @@
     </div>
 
     <div class="signin xs-hide md-hide col-lg-4 right hidden">
-        <a class="col-lg-6 right" href="#"><span>Войти | Регистрация</span></a>
+        <a class="col-lg-6 right" href="/register/step-1/"><span>Войти | Регистрация2</span></a>
+        {% if user.is_authenticated %}
+            <a class="col-lg-6 right" href="/register/step-1/"><span>Yes</span></a>
+        {% endif %}
         <a class="col-lg-6 right" href="#"><span>Минск</span></a>
     </div>
 

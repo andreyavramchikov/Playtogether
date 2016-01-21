@@ -12,8 +12,13 @@
 </nav>
 
 <section class="xs-hide col-md-4 col-lg-4 right">
-    <a class="col-md-8 col-lg-6 right" href="#">Войти | Регистрация</a>
-    <a class="col-md-4 col-lg-6 right" href="#">Минск</a>
+    {% if user.is_authenticated %}
+        <a class="col-md-8 col-lg-6 right" href="/register/step-1/"><span>{{ user.email }}</span></a>
+    {% else %}
+        <a class="col-md-8 col-lg-6 right" href="/register/step-1/">Войти | Регистрация</a>
+    {% endif %}
+{#    <a class="col-md-4 col-lg-6 right" href="#">Минск</a>#}
+    <a class="col-md-4 col-lg-6 right" href="/logout">Выйти</a>
 </section>
 
 <div class="signin col-xs-2 md-hide lg-hide">

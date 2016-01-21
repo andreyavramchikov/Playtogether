@@ -1,13 +1,10 @@
 var app = angular.module('authentication');
 
 app.service('AuthenticationService', function($http, $cookies, $rootScope){
-    this.register = function(email, username, password, phone, send_sms){
+    this.register = function(email, password){
         return $http.post('/api/v1/accounts/', {
-            username: username,
             password: password,
-            email: email,
-            phone: phone,
-            send_sms: send_sms
+            email: email
         });
     };
 

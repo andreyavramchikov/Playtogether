@@ -1,4 +1,6 @@
-var app = angular.module('playTogether',['ui.router','infinite-scroll', 'authentication', 'ui-rangeSlider', 'ui.mask', 'ui.bootstrap']);
+var app = angular.module('playTogether',['ui.router','infinite-scroll',
+    'authentication', 'ui-rangeSlider',
+    'ui.mask', 'ui.bootstrap']);
 
 app.run(function($http, $filter, $rootScope, AuthenticationService) {
     //for csrf protection

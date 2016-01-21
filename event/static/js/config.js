@@ -18,28 +18,45 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             title: 'Home'
         })
         .state('registerStep1', {
-            url : '/register/step-1',
-            controller: 'RegisterController',
+            url : '/register/step-1/',
+            controller: 'RegisterStep1Controller',
             templateUrl: '/static/pages/authentication/register_step_1.html',
             title: 'Register'
         })
         .state('registerStep2', {
-            url : '/register/step-2/:userId',
+            url : '/register/step-2/',
             controller: 'RegisterStep2Controller',
             templateUrl: '/static/pages/authentication/register_step_2.html',
             title: 'Register-Step-2'
         })
         .state('registerStep3', {
-            url : '/register/step-3/:userId',
+            url : '/register/step-3/',
             controller: 'RegisterStep3Controller',
             templateUrl: '/static/pages/authentication/register_step_3.html',
             title: 'Register-Step-3'
+        })
+        .state('registerStep4', {
+            url : '/register/step-4/',
+            controller: 'RegisterStep4Controller',
+            templateUrl: '/static/pages/authentication/register_step_4.html',
+            title: 'Register-Step-4'
+        })
+        .state('registerStep5', {
+            url : '/register/step-5/',
+            controller: 'RegisterStep5Controller',
+            templateUrl: '/static/pages/authentication/register_step_5.html',
+            title: 'Register-Step-5'
         })
         .state('login', {
             url : '/login',
             controller: 'LoginController',
             templateUrl: '/static/pages/authentication/login.html',
             title: 'Login'
+        })
+        .state('logout', {
+            url : '/logout',
+            controller: 'LogoutController',
+            title: 'Logout'
         })
         .state('events', {
             url : '/events/',
