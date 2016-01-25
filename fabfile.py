@@ -54,9 +54,9 @@ def deploy():
         'cp -r /home/vagrant/projects/Playtogether/repository/event/static/ /home/vagrant/projects/Playtogether/repository/')
 
     # activate_virtualenv()
-    run('pip install uwsgi') #manually still
-    run('source %(env_path)s/bin/activate; python manage.py migrate' % env)
-    run('source %(env_path)s/bin/activate; pip install uwsgi' % env)
+    run('source %(env_path)s/bin/activate; pip install uwsgi' % env) #manually still
+    # run('source %(env_path)s/bin/activate; python manage.py migrate' % env)
+    # run('source %(env_path)s/bin/activate; pip install uwsgi' % env)
     run('source %(env_path)s/bin/activate; uwsgi --ini %(repo_path)s/mysite_uwsgi.ini' % env)#manually still
 
 

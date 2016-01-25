@@ -4,16 +4,16 @@
 
     <div class="col-xs-12">
         <p>Пол</p>
-        <div class="men col-xs-6 left">
-            <img src="/static/img/mustache.png" class="center-image ">
+        <div class="men col-xs-6 left" data-sex="men" user-sex>
+            <img src="/static/img/mustache.png" class="center-image">
         </div>
-        <div class="women col-xs-6 left">
+        <div class="women col-xs-6 left" data-sex="woman" user-sex>
             <img src="/static/img/kiss.png" class="center-image ">
         </div>
     </div>
 
     <h3 class="col-xs-12">Дата рождения</h3>
-    <input type="text" class="col-xs-12" data-field="date" readonly>
+    <input type="text" class="col-xs-12" data-field="date" ng-model="dateBirth">
     <div id="dtBox"></div>
 
     <input type="submit" class="col-xs-12" value="Дальше" ng-click="register()">

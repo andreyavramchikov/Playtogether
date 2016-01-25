@@ -24,8 +24,11 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             title: 'Register'
         })
         .state('registerStep2', {
-            url : '/register/step-2/',
+            url : '/register/step-2/:userId',
             controller: 'RegisterStep2Controller',
+            //params: [
+            //    'userId',
+            //],
             templateUrl: '/static/pages/authentication/register_step_2.html',
             title: 'Register-Step-2'
         })

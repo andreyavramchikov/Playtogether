@@ -19,7 +19,7 @@ class AccountViewSet(viewsets.ModelViewSet):
         if self.request.method in permissions.SAFE_METHODS:
             return (permissions.AllowAny(),)
 
-        if self.request.method == 'POST':
+        if self.request.method == 'POST' or self.request.method == 'PUT':
             return (permissions.AllowAny(),)
 
         return (permissions.IsAuthenticated(), IsAccountOwner(),)

@@ -8,10 +8,8 @@ app.service('AuthenticationService', function($http, $cookies, $rootScope){
         });
     };
 
-    this.registerStep2 = function(id, sex){
-        return $http.put('api/v1/accounts/' + id + '/', {
-            'sex': sex
-        });
+    this.registerStep2 = function(userId, data){
+        return $http.put('api/v1/accounts/' + userId + '/', data);
     };
 
     this.registerStep3 = function(id, sex){

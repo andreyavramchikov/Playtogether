@@ -8,10 +8,13 @@ app.controller('RegisterStep1Controller', function ($http, $scope, $rootScope, $
         AuthenticationService.register(email, password).then(function (response) {
             var data = response.data;
             AuthenticationService.login(data.email, data.password).then(function (response) {
-                    AuthenticationService.setAuthenticatedAccount(response.data);  //MUST TO THIN TO REFACTORED THIS LINE BECAUSE REPEATED IN SOME PLACES
+                    var data = response.data,
+                        userId = data.id;
+
+                    AuthenticationService.setAuthenticatedAccount(data);  //MUST TO THIN TO REFACTORED THIS LINE BECAUSE REPEATED IN SOME PLACES
                     //MUST TO MOVE IT AND MAYBE THE LINE ABOVE INTO SERVICE
                     $rootScope.IS_AUTHENTICATED = true;
-                    $state.go('registerStep2');
+                    $state.go('registerStep2', {'userId' : userId});
                 }
             );
         }, function (response) {

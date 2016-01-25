@@ -1,14 +1,39 @@
 var app = angular.module('authentication');
 
 app.controller('RegisterStep2Controller', function ($http, $scope, $location, $state, $cookies, $stateParams, AuthenticationService, ActivityService) {
-    $("#dtBox").DateTimePicker( {isPopup : false});
+    $("#dtBox").DateTimePicker( {isPopup : false,dateFormat: "yyyy-MM-dd"});
+
+    var _getData = function(){
+        var sex = $scope.sex,
+            dateBirth = $scope.dateBirth,
+            data = {'sex': sex, 'date_of_birth': dateBirth};
+        return data;
+    };
+
     $scope.register = function(){
-        $http.put('/api/v1/accounts/', {
-            sex: 'Мужской'
+        var userId = $stateParams.userId,
+            data = _getData();
+
+        AuthenticationService.registerStep2(userId, data).then(function(response){
+            $state.go('registerStep3');
+        }, function(response){
+            console.log('Error');
         });
-         $state.go('registerStep3');
+
     }
 });
+
+
+app.directive('userSex', function(){
+    return function (scope, element, attrs) {
+        element.on('click', function(){
+            scope.$apply(function() {
+              scope.sex = element.data('sex');
+           });
+        });
+    }
+});
+
 
 //
 //

@@ -47,7 +47,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ('id', 'email', 'username', 'city', 'notification_frequency',
                   'created_at', 'updated_at', 'first_name', 'last_name',
-                  'password', 'activity_users', 'confirm_password', 'phone', 'send_sms', 'sex')
+                  'password', 'activity_users', 'confirm_password', 'phone', 'send_sms', 'sex', 'date_of_birth')
         read_only_fields = ('created_at', 'updated_at',)
 
         def create(self, validated_data):
