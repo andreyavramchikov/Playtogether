@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView
 from event.views import MainView, PlaceListView, TeamListView, EventListView, CityListView, ActivityListView, EventCreateView, \
-    UpdateUserView, LandingView, GetListVenue, GetListPrepaidVenues, PrepaimentView, TestView
+    UpdateUserView, LandingView, GetListVenue, GetListPrepaidVenues, PrepaimentView, TestView, UserActivities
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework import routers
 
@@ -49,6 +49,8 @@ urlpatterns = patterns('',
     url(r'^api/v1/user$', UserListView.as_view(), name='event-list'),
     url(r'^api/v1/city$', CityListView.as_view(), name='city-list'),
     url(r'^api/v1/activity$', ActivityListView.as_view(), name='activity-list'),
+
+    url(r'^api/v1/user_activities$', UserActivities.as_view(), name='user-activities-list'),
 
     url(r'^api/v1/venues/$', GetListVenue.as_view(), name='venue-list'),
     url(r'^api/v1/prepaid-venues/', GetListPrepaidVenues.as_view(), name='venue-prepaid-list'),

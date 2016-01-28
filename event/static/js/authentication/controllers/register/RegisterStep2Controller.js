@@ -15,11 +15,10 @@ app.controller('RegisterStep2Controller', function ($http, $scope, $location, $s
             data = _getData();
 
         AuthenticationService.registerStep2(userId, data).then(function(response){
-            $state.go('registerStep3');
+            $state.go('registerStep3', {'userId' : userId});
         }, function(response){
             console.log('Error');
         });
-
     }
 });
 

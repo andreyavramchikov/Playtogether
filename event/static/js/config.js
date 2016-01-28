@@ -26,26 +26,23 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
         .state('registerStep2', {
             url : '/register/step-2/:userId',
             controller: 'RegisterStep2Controller',
-            //params: [
-            //    'userId',
-            //],
             templateUrl: '/static/pages/authentication/register_step_2.html',
             title: 'Register-Step-2'
         })
         .state('registerStep3', {
-            url : '/register/step-3/',
+            url : '/register/step-3/:userId',
             controller: 'RegisterStep3Controller',
             templateUrl: '/static/pages/authentication/register_step_3.html',
             title: 'Register-Step-3'
         })
         .state('registerStep4', {
-            url : '/register/step-4/',
+            url : '/register/step-4/:userId',
             controller: 'RegisterStep4Controller',
             templateUrl: '/static/pages/authentication/register_step_4.html',
             title: 'Register-Step-4'
         })
         .state('registerStep5', {
-            url : '/register/step-5/',
+            url : '/register/step-5/:userId',
             controller: 'RegisterStep5Controller',
             templateUrl: '/static/pages/authentication/register_step_5.html',
             title: 'Register-Step-5'

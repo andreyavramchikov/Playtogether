@@ -29,11 +29,11 @@ class AccountManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     ALWAYS = 'ALWAYS'
-    WORKING_DAYS = 'WORKING_DAYS'
+    WEEKDAY = 'WEEKDAY'
     WEEKEND = 'WEEKEND'
     FREQUENCY_CHOICES = (
         (ALWAYS, 'ALWAYS'),
-        (WORKING_DAYS, 'WORKING_DAYS'),
+        (WEEKDAY, 'WEEKDAY'),
         (WEEKEND, 'WEEKEND'),
     )
     email = models.EmailField(unique=True)
@@ -49,12 +49,12 @@ class User(AbstractBaseUser):
 
     #custom fields
     phone = models.IntegerField(null=True, blank=True)
-    send_sms = models.BooleanField(default=False)
+    sms_notification = models.BooleanField(default=False)
     email_notification = models.BooleanField(default=False)
     city = models.CharField(max_length=100, null=True, blank=True)
     sex = models.CharField(max_length=100, null=True, blank=True)
     date_of_birth = models.DateField(null=True, blank=True)
-    notification_frequency = models.CharField(max_length=255, choices=FREQUENCY_CHOICES, default=ALWAYS, blank=True)
+    schedule_to_play = models.CharField(max_length=255, choices=FREQUENCY_CHOICES, default=ALWAYS, blank=True)
 
     objects = AccountManager()
 

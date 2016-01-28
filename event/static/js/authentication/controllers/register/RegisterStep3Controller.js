@@ -1,26 +1,31 @@
 var app = angular.module('authentication');
 
 app.controller('RegisterStep3Controller', function ($http, $scope, $location, $state, $stateParams, AuthenticationService) {
-    $scope.register = function(){
-         $state.go('registerStep4');
+    $scope.register = function () {
+        var _getData = function () {
+            var schedule = $scope.schedule,
+                data = {'schedule_to_play': schedule};
+            return data;
+        };
+
+        $scope.register = function () {
+            var userId = $stateParams.userId,
+                data = _getData();
+            AuthenticationService.registerStep3(userId, data).then(function (response) {
+                $state.go('registerStep4', {'userId': userId});
+            }, function (response) {
+                console.log('Error');
+            });
+        };
     }
 });
 
-//var userId = $stateParams.userId;
-//    console.log(userId);
-//    $scope.registerStep3 = function () {
-//        AuthenticationService.registerStep3(userId).then(
-//            function (response) {
-//                console.log('Step 3 is Success');
-//                $state.go('home');
-//            },
-//            function (response) {
-//                console.log('Step 3 is Failure');
-//                var errors = response.data.errors;
-//                if (errors) {
-//                    _.each(errors, function (value, key) {
-//                        $scope.errors[key] = value[0];
-//                    });
-//                }
-//            });
-//    };
+app.directive('userSchedule', function () {
+    return function (scope, element, attrs) {
+        element.on('click', function () {
+            scope.$apply(function () {
+                scope.schedule = element.data('schedule');
+            });
+        });
+    }
+});

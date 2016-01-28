@@ -5,12 +5,23 @@
     <div class="in-pair-activities col-xs-12">
         <img src="/static/img/pair.png" class="left-image">
         <p>Парные</p>
-        <img src="/static/img/expand-arrow.png" class="right-image">
+        <img src="/static/img/expand-arrow.png" class="right-image" choose-activity kind="pair">
     </div>
+
+    <div class='events' ng-repeat="activity in activities | filter:{ kind: 'TEAM' }" ng-show="pair">
+        <input type="checkbox" ng-model="activity.selected">
+        <label>[[activity.name]]</label>
+    </div>
+
     <div class="team-activities">
         <img src="/static/img/team.png" class="left-image">
         <p>Командные</p>
-        <img src="/static/img/expand-arrow.png" class="right-image">
+        <img src="/static/img/expand-arrow.png" class="right-image" choose-activity kind="team">
+    </div>
+
+    <div class='events' ng-repeat="activity in activities | filter:{ kind: 'PAIR' }" ng-show="team">
+        <input type="checkbox" ng-model="activity.selected">
+        <label>[[activity.name]]</label>
     </div>
 
     <input type="submit" class="col-xs-12" value="Дальше" ng-click="register()">

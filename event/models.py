@@ -23,7 +23,15 @@ class Place(models.Model):
 
 
 class Activity(models.Model):
+    PAIR = 'PAIR'
+    TEAM = 'TEAM'
+    KIND_CHOICES = (
+        (PAIR, 'PAIR'),
+        (TEAM, 'TEAM'),
+    )
+
     name = models.CharField(max_length=255)
+    kind = models.CharField(max_length=255, choices=KIND_CHOICES, default=TEAM)
     activity_places = models.ManyToManyField(Place, through='ActivityPlaces', through_fields=('activity', 'place'))
     activity_users = models.ManyToManyField(User, through='ActivityUsers')
 

@@ -18,6 +18,17 @@ app.service('AuthenticationService', function($http, $cookies, $rootScope){
         });
     };
 
+    this.registerStep4 = function(userId, activityId){
+        return $http.post('api/v1/user_activities', {
+            user: {id: userId},
+            activity: {id: activityId}
+        });
+    };
+
+    this.registerStep5 = function(userId, data){
+        return $http.put('api/v1/accounts/' + userId + '/', data);
+    };
+
     this.login = function(email, password){
         return $http.post('/api/v1/auth/login/', {
             password: password,

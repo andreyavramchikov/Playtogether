@@ -4,9 +4,10 @@ from django.http.response import HttpResponse
 
 from django.views.generic.base import TemplateView, View
 from rest_framework import generics, filters
+from rest_framework.views import APIView
 
-from authentication.serializers import ActivitySerializer
-from event.models import Place, Team, Event, City, Activity, Venues
+from authentication.serializers import ActivitySerializer, ActivityUsersSerializer
+from event.models import Place, Team, Event, City, Activity, Venues, ActivityUsers
 from event.serializers import PlaceSerializer, TeamSerializer, EventSerializer, CitySerializer, EventCreateSerializer
 # from event.tasks import add
 from playtogether.celery_sync import debug_task
@@ -78,6 +79,20 @@ class ActivityListView(generics.ListCreateAPIView):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
     paginate_by = 100
+
+
+class UserActivities(APIView):
+    pass
+    # def post(self, request, *args, **kwargs):
+    #     print request.DATA
+    #     serializer = ActivityUsersSerializerTmp(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     for key, value in request.data.items():
+    #         ActivityUsers.objects.create(user__pk=)
+    #
+    #     # self.perform_create(serializer)
+    #     headers = self.get_success_headers(serializer.data)
+    #     # Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 import json
