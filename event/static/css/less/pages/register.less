@@ -6,6 +6,15 @@
 
 }
 
+.selected-border {
+  border: 3px solid blue;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  box-shadow: 0px 0px 8px #d9d9d9;
+  -moz-box-shadow: 0px 0px 8px #d9d9d9;
+  -webkit-box-shadow: 0px 0px 8px #d9d9d9;
+}
+
 .forms-common-mixin {
   .box-size;
 
@@ -79,7 +88,7 @@
       }
 
       .active:before {
-          background: lightblue;
+        background: lightblue;
       }
       .active:after {
         background: lightblue;
@@ -97,7 +106,7 @@
   }
   // end circle line
 
-    //  STYLIZATION OF PLACEHOLDER - MAYBE SHOULD PLACE THIS CODE INTO COMMON.LESS?????
+  //  STYLIZATION OF PLACEHOLDER - MAYBE SHOULD PLACE THIS CODE INTO COMMON.LESS?????
   ::-webkit-input-placeholder {
     line-height: 10px;
     color: gray;
@@ -170,10 +179,17 @@ form#register-step-2 {
   }
 
   .men, .women {
+    .box-size;
     position: relative;
     height: 100px;
-    .box-size;
     border: 1px solid gray;
+    &:hover {
+      .selected-border;
+    }
+  }
+
+  div.active {
+    .selected-border;
   }
 
   .women {
@@ -185,12 +201,19 @@ form#register-step-2 {
 form#register-step-3 {
   .forms-common-mixin;
 
+  div.active {
+    .selected-border;
+  }
   .schedule {
     height: 100px;
     position: relative;
     box-sizing: border-box;
     border: 1px solid gray;
     border-bottom: none;
+
+    &:hover {
+      .selected-border;
+    }
 
     &:last-of-type {
       border-bottom: 1px solid gray;
@@ -213,6 +236,12 @@ form#register-step-3 {
 
 form#register-step-4 {
   .forms-common-mixin;
+
+  section {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
   .in-pair-activities, .team-activities {
     width: 100%;
     height: 70px;
@@ -222,19 +251,60 @@ form#register-step-4 {
   .events {
     input[type='checkbox'] {
       width: 35px;
-      height:35px;
+      height: 35px;
+      float: left;
     }
     label {
-      float: right;
+      float: left;
       font-size: 24px;
+      text-align: center;
     }
   }
+
+
+  //RATING STARS
+  ul.star-rating {
+    margin:0;
+    padding:0;
+    float: right;
+    .box-size;
+
+    //highlight all but then unhighlight all which goes after element on which we hover; Please look to li{ $:hover} code
+    &:hover li{
+      color: #fd0;
+    }
+
+    li {
+      float: left;
+      display: inline-block;
+      list-style-type: none;
+      font-size: 20px;
+      padding: 1px;
+      color: gray;
+
+      &.filled {
+        color: #fd0;
+      }
+
+      &:hover ~ li {
+        color: gray;
+      }
+
+      i {
+        &:before {
+          content: "\f005";
+          font-family: FontAwesome;
+        }
+      }
+    }
+  }
+
 }
 
 form#register-step-5 {
   .forms-common-mixin;
 
-  & >div {
+  & > div {
     height: 70px;
   }
 

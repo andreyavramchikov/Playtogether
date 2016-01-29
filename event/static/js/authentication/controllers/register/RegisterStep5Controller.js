@@ -4,19 +4,15 @@ app.controller('RegisterStep5Controller', function ($http, $scope, $location, $s
 
     $scope.register = function () {
         var _getData = function () {
-            var email_notification = $scope.email_notification,
-                sms_notification = $scope.sms_notification,
-                phone = $scope.phone;
-            var data = {'email_notification': email_notification,
-                'sms_notification': sms_notification,
-                'phone': phone};
-            return data;
+            return {'email_notification': $scope.email_notification,
+                'sms_notification': $scope.sms_notification,
+                'phone': $scope.phone};
         };
 
         $scope.register = function () {
-            var userId = $stateParams.userId,
-                data = _getData();
-            AuthenticationService.registerStep5(userId, data).then(function (response) {
+            var userId = $stateParams.userId;
+
+            AuthenticationService.registerStep5(userId, _getData()).then(function (response) {
                 $state.go('home');
             }, function (response) {
                 console.log('Error');

@@ -4,18 +4,21 @@
 
     <div class="col-xs-12">
         <p>Пол</p>
-        <div class="men col-xs-6 left" data-sex="men" user-sex>
+        <div class="men col-xs-6 left" data-sex="men" user-sex ng-class="sex=='men' ? 'active' : ''">
             <img src="/static/img/mustache.png" class="center-image">
         </div>
-        <div class="women col-xs-6 left" data-sex="woman" user-sex>
+        <div class="women col-xs-6 left" data-sex="woman" user-sex ng-class="sex=='woman' ? 'active' : ''">
             <img src="/static/img/kiss.png" class="center-image ">
         </div>
     </div>
 
     <h3 class="col-xs-12">Дата рождения</h3>
-    <input type="text" class="col-xs-12" data-field="date" ng-model="dateBirth">
+    <input type="text" class="col-xs-12" data-field="date" ng-model="date_of_birth">
+    <span class="errors" ng-model="errors.date_of_birth">[[errors.date_of_birth]]</span>
+
     <div id="dtBox"></div>
 
     <input type="submit" class="col-xs-12" value="Дальше" ng-click="register()">
+    <div class="errors" ng-model="errors.non_field_errors">[[errors.non_field_errors]]</div>
 
 </form>

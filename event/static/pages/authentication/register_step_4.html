@@ -5,24 +5,31 @@
     <div class="in-pair-activities col-xs-12">
         <img src="/static/img/pair.png" class="left-image">
         <p>Парные</p>
-        <img src="/static/img/expand-arrow.png" class="right-image" choose-activity kind="pair">
+        <img src="/static/img/expand-arrow.png" class="right-image" open-activity-block kind="pair">
     </div>
 
-    <div class='events' ng-repeat="activity in activities | filter:{ kind: 'TEAM' }" ng-show="pair">
-        <input type="checkbox" ng-model="activity.selected">
-        <label>[[activity.name]]</label>
-    </div>
+    <section ng-show="pair">
+        <div class='events' ng-repeat="activity in activities | filter:{ kind: 'TEAM' }">
+            <div class="col-xs-12 hidden">
+                <input type="checkbox" class="col-xs-2" ng-model="activity.selected">
+                <label class="col-xs-6">[[activity.name]]</label>
+                <div star-rating ng-model="activity.rating" data-initial-rating=0></div>
+            </div>
+        </div>
+    </section>
 
     <div class="team-activities">
         <img src="/static/img/team.png" class="left-image">
         <p>Командные</p>
-        <img src="/static/img/expand-arrow.png" class="right-image" choose-activity kind="team">
+        <img src="/static/img/expand-arrow.png" class="right-image" open-activity-block kind="team">
     </div>
-
-    <div class='events' ng-repeat="activity in activities | filter:{ kind: 'PAIR' }" ng-show="team">
-        <input type="checkbox" ng-model="activity.selected">
-        <label>[[activity.name]]</label>
-    </div>
+    <section ng-show="team">
+        <div class='events' ng-repeat="activity in activities | filter:{ kind: 'PAIR' }">
+            <input type="checkbox" ng-model="activity.selected">
+            <label>[[activity.name]]</label>
+            <div star-rating ng-model="activity.rating" data-initial-rating=0></div>
+        </div>
+    </section>
 
     <input type="submit" class="col-xs-12" value="Дальше" ng-click="register()">
 
