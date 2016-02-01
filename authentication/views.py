@@ -85,3 +85,14 @@ class UserListView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     paginate_by = 100
+
+    def get_queryset(self):
+        queryset = super(UserListView, self).get_queryset()
+        selected_activity_ids = self.request.QUERY_PARAMS.get('selected_activity_ids')
+        sex = self.request.QUERY_PARAMS.get('sex')
+
+        if sex:
+            queryset = queryset.filter(sex=sex)
+        if selected_activity_ids:
+            queryset = queryset.filter(activity__pk__in=selected_activity_ids.split(','))
+        return queryset

@@ -46,7 +46,7 @@ class EventListView(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = super(EventListView, self).get_queryset()
         try:
-            start_date = datetime.strptime(self.request.QUERY_PARAMS.get('start_date'), '%Y-%m-%d').date()
+            start_date = datetime.strptime(self.request.QUERY_PARAMS.get('start_date'), '%d-%m-%Y').date()
             queryset = queryset.filter(start_date__gt=start_date)
         except (ValueError, TypeError):
             start_date = None

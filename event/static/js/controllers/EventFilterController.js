@@ -2,27 +2,16 @@ var app = angular.module('playTogether');
 
 app.controller('EventFilterController', function ($scope, $http) {
 
+    DAYS_IN_WEEK = 7;
+    $scope.dates = [];
+    $scope.currentweek = moment();
 
-    //// CODE FOR SLIDER RANGE, JUST EXAMPLE; NEED TO BE REFACTORED ALL
-    // set available range
-    $scope.minPrice = 100;
-    $scope.maxPrice = 999;
-    // default the user's values to the available range
-    $scope.userMinPrice = $scope.minPrice;
-    $scope.userMaxPrice = $scope.maxPrice;
-    ///// END OF SLIDER RANGE CODE
-
-    $http.get('/api/v1/city').then(function(response){
-        $scope.cities = response.data.results;
-    });
-
-    $http.get('/api/v1/activity').then(function(response){
+    $http.get('/api/v1/activity').then(function (response) {
         $scope.activities = response.data.results;
     });
-
     var query_params = {};
-    $scope.getQueryString = function() {
-        if ($scope.selectedCity != undefined && $scope.selectedCity != null){
+    $scope.getQueryString = function () {
+        if ($scope.selectedCity != undefined && $scope.selectedCity != null) {
             query_params.city = $scope.selectedCity;
         }
         if ($scope.is_paid != undefined && $scope.is_paid != null) {
@@ -33,8 +22,8 @@ app.controller('EventFilterController', function ($scope, $http) {
             query_params.activity__name = $scope.selectedActivity;
         }
 
-        if ($scope.event_date != undefined && $scope.event_date != null) {
-            query_params.start_date = $scope.event_date;
+        if ($scope.currentDate != undefined && $scope.currentDate != null) {
+            query_params.start_date = $scope.currentDate['value'];
         }
 
         if ($scope.userMinPrice != undefined && $scope.userMinPrice != null) {
@@ -48,20 +37,72 @@ app.controller('EventFilterController', function ($scope, $http) {
         return $.param(query_params);
     };
 
-    getFilteredEvents = function(){
+    getFilteredEvents = function () {
         var queryString = $scope.getQueryString();
         console.log(queryString);
-        if (queryString){
-            $http.get("/api/v1/event?" + queryString).then(function(response){
-                $scope.$parent.events =  response.data.results;
+        if (queryString) {
+            $http.get("/api/v1/event?" + queryString).then(function (response) {
+                $scope.$parent.events = response.data.results;
             });
         }
     };
 
     //I use debounce just for the slider purpose, to avoid every milisecond run http call to server
-    $scope.$watchGroup(['selectedCity', 'is_paid', 'selectedActivity', 'event_date', 'userMinPrice', 'userMaxPrice'],
+    $scope.$watchGroup(['selectedCity', 'is_paid', 'selectedActivity', 'event_date', 'userMinPrice', 'userMaxPrice', 'currentDate'],
         _.debounce(getFilteredEvents, 300));
 
-
+    var _generateDates = function (startDate) {
+        _.times(DAYS_IN_WEEK, function (index) {
+            var date = moment(startDate, "DD-MM-YYYY").add(index, 'days');
+            $scope.dates.push({'name': date.format('dddd'), 'value': date.format('DD-MM-YYYY')});
+        });
+    };
+    _generateDates(moment());
 });
 
+
+app.directive('weekDate', function () {
+    return {
+        restrict: 'EA',
+        templateUrl: '/static/pages/utils/week_date.html',
+        scope: {
+            dates: '=dates',
+            current: '=ngModel',
+            currentweek: '=currentweek'
+        },
+        link: function (scope, element, attr) {
+            scope.dateSelected = function (date) {
+                scope.current = date;
+            };
+
+            _updateDates = function(action){
+                if (action == 'Next') {
+                    scope.currentweek = moment(scope.currentweek, "DD-MM-YYYY").add(7, 'days');
+                }else if (action == 'Last'){
+                    scope.currentweek = moment(scope.currentweek, "DD-MM-YYYY").add(-7, 'days');
+                }
+                scope.current = ({'name': scope.currentweek.format('dddd'),
+                    'value': scope.currentweek.format('DD-MM-YYYY')});
+
+                scope.dates = [];
+
+                _.times(DAYS_IN_WEEK, function (index) {
+                    var date = moment(scope.currentweek, "DD-MM-YYYY").add(index, 'days');
+                    scope.dates.push({
+                        'name': date.format('dddd'),
+                        'value': date.format('DD-MM-YYYY')
+                    });
+                });
+            };
+
+            scope.clickNextWeek = function () {
+                _updateDates('Next');
+            };
+
+            scope.clickLastWeek = function(){
+                _updateDates('Last');
+            }
+
+        }
+    };
+});

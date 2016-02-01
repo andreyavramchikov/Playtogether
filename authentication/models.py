@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import BaseUserManager
 from django.db import models
 
+# from event.models import ActivityUsers
+
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
@@ -36,6 +38,13 @@ class User(AbstractBaseUser):
         (WEEKDAY, 'WEEKDAY'),
         (WEEKEND, 'WEEKEND'),
     )
+    MALE = 'MALE'
+    FEMALE = 'FEMALE'
+    SEX_CHOICES = (
+        (MALE, 'MALE'),
+        (FEMALE, 'FEMALE'),
+    )
+
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=40, blank=True)
 
@@ -52,11 +61,13 @@ class User(AbstractBaseUser):
     sms_notification = models.BooleanField(default=False)
     email_notification = models.BooleanField(default=False)
     city = models.CharField(max_length=100, null=True, blank=True)
-    sex = models.CharField(max_length=100, null=True, blank=True)
+    sex = models.CharField(max_length=100, null=True, blank=True, choices=SEX_CHOICES)
     date_of_birth = models.DateField(null=True, blank=True)
     schedule_to_play = models.CharField(max_length=255, choices=FREQUENCY_CHOICES, default=ALWAYS, blank=True)
 
     objects = AccountManager()
+
+    # activities = models.ManyToManyField(ActivityUsers)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

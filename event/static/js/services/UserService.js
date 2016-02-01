@@ -7,4 +7,8 @@ app.service('UserService', function($http){
         return $http.get('/api/v1/user');
     };
 
+    this.filterUsers = function(data) {
+        return $http.get('/api/v1/user?' + data);
+    }
+
 });
