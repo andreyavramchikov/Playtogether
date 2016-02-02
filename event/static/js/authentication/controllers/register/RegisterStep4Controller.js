@@ -25,17 +25,6 @@ app.controller('RegisterStep4Controller', function ($http, $scope, $location, $s
     }
 });
 
-app.directive('openActivityBlock', function () {
-    return function (scope, element, attrs) {
-        element.on('click', function () {
-            scope.$apply(function () {
-                scope[attrs.kind] = scope[attrs.kind] == true ? false : true;
-            });
-        });
-    }
-});
-
-
 app.directive('starRating', function () {
     return {
         restrict: 'EA',

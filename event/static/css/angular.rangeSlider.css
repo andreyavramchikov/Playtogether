@@ -354,3 +354,10 @@
 body.ngrs-touching {
   -ms-touch-action: none;
 }
+
+
+/*// MY HACK TO SHOW VALUES OF RANGE SLIDER*/
+
+.ngrs-range-slider .ngrs-value-runner div {
+  display: block !important;
+}

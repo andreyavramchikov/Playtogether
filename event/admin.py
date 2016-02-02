@@ -19,6 +19,7 @@ class PlaceAdmin(admin.ModelAdmin):
 
 class UserAdmin(admin.ModelAdmin):
     inlines = (UserEventsInline, UserTeamsInline, ActivityUsersInline)
+    save_as = True
 
 
 class EventAdmin(admin.ModelAdmin):

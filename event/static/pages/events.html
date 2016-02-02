@@ -1,17 +1,37 @@
 <article id="events">
 
-<div id="filters" class="pull-left" ng-controller="EventFilterController">
-    <div week-date dates="dates" ng-model="currentDate" currentweek="currentweek"></div>
-    currentDate = [[currentDate]]
-    currentWeek = [[currentweek]]
-</div>
+    <div id="filters" class="col-xs-12 col-md-4 col-lg-4 left" ng-controller="EventFilterController">
+        <div week-date dates="dates" ng-model="currentDate" currentweek="currentweek"></div>
+        currentDate = [[currentDate]]
+        currentWeek = [[currentweek]]
+        <div class="activities" collapse-block model="openactivity">
+            <div class="relative">
+                <h3>Activities</h3>
+                <img src="/static/img/expand-arrow.png" class="right-image">
+            </div>
+            <div ng-show="openactivity">
+                <input type="search" ng-model="searchActivity.name"/>
+                <div ng-repeat="activity in activities | filter: searchActivity">
+                    <input type="checkbox" ng-model="activity.selected">
+                    <label>[[activity.name]]</label>
+                </div>
+            </div>
+        </div>
+        <div range-slider
+             min="minTime" max="maxTime"
+             model-min="userMinTime"
+             model-max="userMaxTime"
+             step="30" filter="timeRangeFilter"
+             prevent-equal-min-max="true">
+        </div>
+    </div>
 
-<section>
-    <div class="col-xs-6 col-md-4 col-lg-4 left" ng-repeat="event in events">
-        <figure class="relative">
-            <img class="event-image" src="/static/img/event.png"/>
-            <h3 class="event-bottom">[[event.activity.name]]</h3>
-        </figure>
+    <section class="col-xs-12 col-md-8 col-lg-8  left">
+        <div class="col-xs-6 col-md-4 col-lg-4 left" ng-repeat="event in events">
+            <figure class="relative">
+                <img class="event-image" src="/static/img/[[event.activity.name]].png"/>
+                <h3 class="event-bottom">[[event.activity.name]]</h3>
+            </figure>
 
             <div class="description-left col-xs-12 col-md-6 col-lg-6 left">
                 <h3 class="bold">[[event.start_date | date:'yyyy.dd.MM HH:mm']]</h3>
@@ -23,17 +43,17 @@
                 <h3>[[event.place.name]]</h3>
             </div>
 
-        <div class="actions">
-            <a class="col-xs-12 col-md-6 left lg-hide">Иду</a>
-            <a class="col-xs-12 col-md-6 left lg-hide">Пригласить</a>
-            <figure class="col-lg-6 left xs-hide md-hide">
-                <img class="left-image" src="/static/img/menu.png"/>
-            </figure>
-            <figure class="col-lg-6 left xs-hide md-hide">
-                <img class="right-image" src="/static/img/login.png"/>
-            </figure>
+            <div class="actions">
+                <a class="col-xs-12 col-md-6 left lg-hide">Иду</a>
+                <a class="col-xs-12 col-md-6 left lg-hide">Пригласить</a>
+                <figure class="col-lg-6 left xs-hide md-hide">
+                    <img class="left-image" src="/static/img/menu.png"/>
+                </figure>
+                <figure class="col-lg-6 left xs-hide md-hide">
+                    <img class="right-image" src="/static/img/login.png"/>
+                </figure>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 </article>

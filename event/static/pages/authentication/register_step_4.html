@@ -5,7 +5,7 @@
     <div class="in-pair-activities col-xs-12">
         <img src="/static/img/pair.png" class="left-image">
         <p>Парные</p>
-        <img src="/static/img/expand-arrow.png" class="right-image" open-activity-block kind="pair">
+        <img src="/static/img/expand-arrow.png" class="right-image" collapse-block model="pair">
     </div>
 
     <section ng-show="pair">
@@ -21,7 +21,7 @@
     <div class="team-activities">
         <img src="/static/img/team.png" class="left-image">
         <p>Командные</p>
-        <img src="/static/img/expand-arrow.png" class="right-image" open-activity-block kind="team">
+        <img src="/static/img/expand-arrow.png" class="right-image" collapse-block model="team">
     </div>
     <section ng-show="team">
         <div class='events' ng-repeat="activity in activities | filter:{ kind: 'PAIR' }">
