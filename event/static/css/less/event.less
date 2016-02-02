@@ -20,6 +20,29 @@
 
 #events {
 
+  #filters {
+    .box_sizing;
+    padding: 0px 5%;
+    .activities {
+      h3 {
+        font-family: serif;
+        font-size: 24px;
+        color: gray;
+        text-align: center;
+      }
+      .collapsed-activities {
+        input[type='checkbox'] {
+          width: 25px;
+          height: 25px;
+        }
+        label {
+          float: right;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+
   section {
 
     .event-image {
@@ -58,6 +81,15 @@
       a:nth-child(2){
         .action_button(#FF3F45, white, 2px solid #FF3F45, 4);
         .box_sizing;
+      }
+    }
+  }
+
+  .date-range-line {
+    a {
+      cursor: pointer;
+      &:hover {
+        color: green;
       }
     }
   }

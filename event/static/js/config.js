@@ -48,7 +48,7 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             title: 'Register-Step-5'
         })
         .state('login', {
-            url : '/login',
+            url : '/login/',
             controller: 'LoginController',
             templateUrl: '/static/pages/authentication/login.html',
             title: 'Login'

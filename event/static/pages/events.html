@@ -1,17 +1,14 @@
 <article id="events">
 
     <div id="filters" class="col-xs-12 col-md-4 col-lg-4 left" ng-controller="EventFilterController">
-        <div week-date dates="dates" ng-model="currentDate" currentweek="currentweek"></div>
-        currentDate = [[currentDate]]
-        currentWeek = [[currentweek]]
-        <div class="activities" collapse-block model="openactivity">
-            <div class="relative">
+        <div class="activities">
+            <div class="relative" collapse-block model="openactivity">
                 <h3>Activities</h3>
                 <img src="/static/img/expand-arrow.png" class="right-image">
             </div>
-            <div ng-show="openactivity">
-                <input type="search" ng-model="searchActivity.name"/>
-                <div ng-repeat="activity in activities | filter: searchActivity">
+            <div ng-show="openactivity" class="collapsed-activities">
+                <input type="search" ng-model="searchActivity.name" class="col-xs-12"/>
+                <div ng-repeat="activity in activities | filter: searchActivity" class="col-xs-12">
                     <input type="checkbox" ng-model="activity.selected">
                     <label>[[activity.name]]</label>
                 </div>
@@ -26,7 +23,12 @@
         </div>
     </div>
 
-    <section class="col-xs-12 col-md-8 col-lg-8  left">
+    <section class="col-xs-12 col-md-8 col-lg-8 left">
+
+        <div ng-controller="DateFilterController">
+            <span week-date dates="dates" ng-model="currentDate" currentweek="currentweek" ></span>
+        </div>
+
         <div class="col-xs-6 col-md-4 col-lg-4 left" ng-repeat="event in events">
             <figure class="relative">
                 <img class="event-image" src="/static/img/[[event.activity.name]].png"/>

@@ -1,25 +1,26 @@
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <h1>Login</h1>
+<form name='loginForm' id="login-form"
+      class="col-xs-12" novalidate
+      ng-submit="loginForm.$valid && login()">
+    <h3>Зайти</h3>
 
-    <div class="well">
-      <form role="form" ng-submit="login()">
-        <div class="alert alert-danger" ng-show="error" ng-bind="error"></div>
+    <input type="email" name="email"
+           class="col-xs-12" placeholder="Email"
+           ng-model="user.email" required
+           ng-focus="email.focus = true" ng-blur="email.focus = false"
+           ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"/>
+    <span ng-show="loginForm.email.$invalid && !loginForm.email.$pristine && !email.focus">Please enter a valid email address!</span>
+    <span class="errors" ng-model="errors.email">[[errors.email]]</span>
 
-        <div class="form-group">
-          <label for="login__email">Email</label>
-          <input type="text" class="form-control" id="login__email" ng-model="email" placeholder="ex. john@example.com" />
-        </div>
+    <input type="password" class="col-xs-12"
+           name="password" ng-model="user.password"
+           placeholder="Пароль" required minlength="5"
+           ng-focus="password.focus = true" ng-blur="password.focus = false">
+    <span ng-show="loginForm.password.$invalid && !loginForm.password.$pristine && !password.focus">Please enter a valid password</span>
+    <span class="errors" ng-model="errors.password">[[errors.password]]</span>
 
-        <div class="form-group">
-          <label for="login__password">Password</label>
-          <input type="password" class="form-control" id="login__password" ng-model="password" placeholder="ex. thisisnotgoogleplus" />
-        </div>
+    <input type="submit" name="submit" class="col-xs-12"  value="Войти">
+    <div class="errors" ng-model="errors.non_field_errors">[[errors.non_field_errors]]</div>
 
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+    <p>Нет аккаунта? <a href="/register/step-1/">Зарегистрироваться</a></p>
+
+</form>
