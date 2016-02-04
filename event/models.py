@@ -103,7 +103,7 @@ class Event(models.Model):
 class EventUsers(models.Model):
     event = models.ForeignKey(Event)
     user = models.ForeignKey(User)
-    team = models.ForeignKey(Team)
+    team = models.ForeignKey(Team, null=True, blank=True)
 
     def __unicode__(self):
         return 'Event - {}; User - {}'.format(self.event, self.user)

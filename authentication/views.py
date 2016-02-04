@@ -5,7 +5,7 @@ from rest_framework.response import Response
 
 from authentication.models import User
 from authentication.permissions import IsAccountOwner
-from authentication.serializers import UserSerializer
+from authentication.serializers import UserSerializer, SignUpSerializer
 
 from django.contrib.auth import authenticate, login, logout
 
@@ -96,3 +96,12 @@ class UserListView(generics.ListCreateAPIView):
         if selected_activity_ids:
             queryset = queryset.filter(activity__pk__in=selected_activity_ids.split(','))
         return queryset
+
+
+from rest_framework import generics
+from permissions import IsAuthenticatedOrCreate
+
+class SignUp(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = SignUpSerializer
+    permission_classes = (IsAuthenticatedOrCreate,)

@@ -1,7 +1,7 @@
 from django.contrib.auth import update_session_auth_hash
 from rest_framework import serializers
 from authentication.models import User
-from event.models import ActivityUsers, Activity
+from event.models import ActivityUsers, Activity, EventUsers
 
 
 class ActivitySerializer(serializers.ModelSerializer):
@@ -94,3 +94,22 @@ class UserSerializer(serializers.ModelSerializer):
     # # need to think about it
     # def is_valid(self):
     #     super(UserSerializer, self).is_valid()
+
+
+
+class EventUsersSerializer(serializers.ModelSerializer):
+
+
+    class Meta:
+        model = EventUsers
+        fields = ('event', 'user', 'team')
+
+
+
+from rest_framework import serializers
+
+class SignUpSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'password')
+        write_only_fields = ('password',)

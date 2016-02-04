@@ -9,7 +9,7 @@
             <div ng-show="openactivity" class="collapsed-activities">
                 <input type="search" ng-model="searchActivity.name" class="col-xs-12"/>
                 <div ng-repeat="activity in activities | filter: searchActivity" class="col-xs-12">
-                    <input type="checkbox" ng-model="activity.selected">
+                    <input type="checkbox" ng-model="activity.selected" ng-change="changedActivities()">
                     <label>[[activity.name]]</label>
                 </div>
             </div>
@@ -29,8 +29,8 @@
             <span week-date dates="dates" ng-model="currentDate" currentweek="currentweek" ></span>
         </div>
 
-        <div class="col-xs-6 col-md-4 col-lg-4 left" ng-repeat="event in events">
-            <figure class="relative">
+        <div class="col-xs-6 col-md-4 col-lg-4 left" ng-class="{'active': event.user_done}" ng-repeat="event in events | filterUserEvents:userId">
+            <figure class="relative"  >
                 <img class="event-image" src="/static/img/[[event.activity.name]].png"/>
                 <h3 class="event-bottom">[[event.activity.name]]</h3>
             </figure>
@@ -52,7 +52,7 @@
                     <img class="left-image" src="/static/img/menu.png"/>
                 </figure>
                 <figure class="col-lg-6 left xs-hide md-hide">
-                    <img class="right-image" src="/static/img/login.png"/>
+                    <img class="right-image" src="/static/img/login.png" ng-click="goToEvent(event.id, $index)" ng-hide="event.user_done"/>
                 </figure>
             </div>
         </div>

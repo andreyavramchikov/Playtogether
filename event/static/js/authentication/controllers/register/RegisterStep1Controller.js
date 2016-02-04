@@ -1,6 +1,13 @@
 var app = angular.module('authentication');
 
 app.controller('RegisterStep1Controller', function ($http, $scope, $rootScope, $location, $state, AuthenticationService) {
+
+    $scope.vk = function(){
+        $http.get('/api/v1/vk/').then(function(response){
+            console.log(response);
+        });
+    };
+
     $scope.errors = [];
     $scope.register = function () {
         var email = $scope.user.email,

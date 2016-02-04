@@ -1,9 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView
-from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView
+from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView, SignUp
 from event.views import MainView, PlaceListView, TeamListView, EventListView, CityListView, ActivityListView,\
-    EventCreateView, LandingView
+    EventCreateView, LandingView, VkViewLogin, EventUsersUpdate
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework import routers
 
@@ -14,7 +14,6 @@ router.register(r'accounts', AccountViewSet)
 
 urlpatterns = patterns('',
     url(r'^api/v1/', include(router.urls)),
-
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', RedirectView.as_view(url='/landing'), name='index'),
 
@@ -27,16 +26,17 @@ urlpatterns = patterns('',
     url(r'^users/$', MainView.as_view(), name='index'),
 
     url(r'^createevent/$', MainView.as_view(), name='index'),
-
-
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    url(r'^sign_up/$', SignUp.as_view(), name="sign_up"),
     url(r'^register/step-1/$', MainView.as_view(), name='index'),
     url(r'^register/step-2/$', MainView.as_view(), name='index'),
     url(r'^register/step-2/(?P<id>[0-9]+)$', MainView.as_view(), name='index'),
     url(r'^register/step-3/$', MainView.as_view(), name='index'),
     url(r'^register/step-4/$', MainView.as_view(), name='index'),
     url(r'^register/step-5/$', MainView.as_view(), name='index'),
+    url(r'^vklogin/$', VkViewLogin.as_view(), name='vk'),
     url(r'^login/$', MainView.as_view(), name='index'),
-
+     url(r'', include('social_auth.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
@@ -48,6 +48,10 @@ urlpatterns = patterns('',
     url(r'^api/v1/user$', UserListView.as_view(), name='event-list'),
     url(r'^api/v1/city$', CityListView.as_view(), name='city-list'),
     url(r'^api/v1/activity$', ActivityListView.as_view(), name='activity-list'),
+                       url(r'^social/', include('social_auth.urls')),
+    url(r'^api/v1/updateeventusers$', EventUsersUpdate.as_view(), name='update-users-event'),
+    # url(r'^api/v1/vk/$', VkView.as_view(), name='vk'),
+
 )
 
 urlpatterns += staticfiles_urlpatterns()

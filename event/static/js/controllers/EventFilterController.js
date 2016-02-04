@@ -68,12 +68,20 @@ app.controller('EventFilterController', function ($scope, $http) {
     };
 
     //I use debounce just for the slider purpose, to avoid every milisecond run http call to server
-    $scope.$watchGroup(['selectedCity', 'is_paid', 'selectedActivity', 'event_date', 'userMinPrice', 'userMaxPrice', 'currentDate'],
-        _.debounce(getFilteredEvents, 300));
+    $scope.$watchGroup(['selectedCity', 'is_paid', 'selectedActivity', 'event_date', 'userMinTime', 'userMaxTime', 'currentDate'],
+        function(newValue, oldValue, scope){
+            if (newValue != oldValue){
+                _.debounce(getFilteredEvents(), 300);
+            }
+        });
 
-    $scope.$watch('activities', function(newValue, oldValue, scope){
+    //$scope.$watch('activities.selected', function(newValue, oldValue, scope){
+    //    getFilteredEvents();
+    //}, true);
+    //since upper function somehow not working I use it
+    $scope.changedActivities = function(){
         getFilteredEvents();
-    }, true);
+    };
 
     var _generateDates = function (startDate) {
         _.times(DAYS_IN_WEEK, function (index) {

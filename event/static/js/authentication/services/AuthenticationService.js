@@ -56,6 +56,7 @@ app.service('AuthenticationService', function($http, $cookies, $rootScope){
         $cookies.authenticatedAccount = JSON.stringify(account);
     };
 
+
     this.unauthenticate = function() {
       delete $cookies.authenticatedAccount;
     };
