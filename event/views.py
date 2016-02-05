@@ -1,18 +1,17 @@
 from datetime import datetime
-from django.http.response import HttpResponse
 
-from django.views.generic.base import TemplateView, View
-from rest_framework import generics, filters
-from authentication.serializers import ActivitySerializer, EventUsersSerializer
-from event.models import Place, Team, Event, City, Activity, Venues, EventUsers
+from django.views.generic.base import TemplateView
+from rest_framework import generics, filters, status
+from rest_framework.response import Response
+from authentication.serializers import ActivitySerializer
+from event.models import Place, Team, Event, City, Activity, EventUsers
 from event.serializers import PlaceSerializer, TeamSerializer, EventSerializer, CitySerializer, EventCreateSerializer
 from rest_framework import views
+
 
 class LandingView(TemplateView):
     template_name = 'landing/index.html'
 
-
-# oauth get info of user - https://api.vkontakte.ru/method/getProfiles?uid=10453474&access_token=6ff8250ff65b3dfa345f0860d6bb242274b93f4d383bad013ab6a0f52cfd38f1da3ee37c1c76f8618486b&fields=photo
 
 class MainView(TemplateView):
     template_name = 'index.html'
@@ -93,27 +92,3 @@ class EventUsersUpdate(views.APIView):
 
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
-
-
-
-
-
-
-import requests
-# class VkView(APIView):
-#
-#     # href="http://oauth.vk.com/authorize?client_id=5269479&redirect_uri=http://ec2-52-90-107-10.compute-1.amazonaws.com:8000/vklogin&response_type=code"
-#     def get(self, request):
-#         r = requests.get('http://oauth.vk.com/authorize?client_id=5269479&redirect_uri=http://ec2-52-90-107-10.compute-1.amazonaws.com:8000/vklogin&response_type=code')
-#         print request
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework import permissions, viewsets, status, views, generics
-class VkViewLogin(views.APIView):
-
-    # href="http://oauth.vk.com/authorize?client_id=5269479&redirect_uri=http://ec2-52-90-107-10.compute-1.amazonaws.com:8000/vklogin&response_type=code"
-    def get(self, request):
-        code = request.QUERY_PARAMS.get('code')
-        return Response({
-                'code': code
-            }, status=status.HTTP_200_OK)

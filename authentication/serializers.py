@@ -21,25 +21,6 @@ class ActivityUsersSerializer(serializers.ModelSerializer):
         fields = ('user', 'activity')
 
 
-# hack for temporary use
-# class ActivitySerializerTmp(serializers.ModelSerializer):
-#     class Meta:
-#         model = Activity
-#         fields = ('id',)
-#
-# class UserSerializerTmp(serializers.ModelSerializer):
-#     class Meta:
-#         model = User
-#         fields = ('id',)
-#
-# class ActivityUsersSerializerTmp(serializers.ModelSerializer):
-#     activity = ActivitySerializerTmp()
-#     user = UserSerializerTmp()
-#     class Meta:
-#         model = ActivityUsers
-#         fields = ('user', 'activity')
-
-
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
     phone = serializers.IntegerField(write_only=True, required=False)
@@ -88,28 +69,9 @@ class UserSerializer(serializers.ModelSerializer):
 
             return instance
 
-    # def validate_phone(self, data):
-    #     print data
-    #
-    # # need to think about it
-    # def is_valid(self):
-    #     super(UserSerializer, self).is_valid()
-
-
 
 class EventUsersSerializer(serializers.ModelSerializer):
-
 
     class Meta:
         model = EventUsers
         fields = ('event', 'user', 'team')
-
-
-
-from rest_framework import serializers
-
-class SignUpSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('username', 'password')
-        write_only_fields = ('password',)

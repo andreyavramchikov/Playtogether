@@ -8,8 +8,6 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 
-//    $urlRouterProvider.otherwise('home');
-
     $stateProvider
         .state('home', {
             url : '/',

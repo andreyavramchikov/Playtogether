@@ -26,11 +26,11 @@
     <section class="col-xs-12 col-md-8 col-lg-8 left">
 
         <div ng-controller="DateFilterController">
-            <span week-date dates="dates" ng-model="currentDate" currentweek="currentweek" ></span>
+            <span week-date dates="dates" ng-model="currentDate" currentweek="currentweek"></span>
         </div>
 
         <div class="col-xs-6 col-md-4 col-lg-4 left" ng-class="{'active': event.user_done}" ng-repeat="event in events">
-            <figure class="relative"  >
+            <figure class="relative">
                 <img class="event-image" src="/static/img/[[event.activity.name]].png"/>
                 <h3 class="event-bottom">[[event.activity.name]]</h3>
             </figure>
@@ -52,8 +52,10 @@
                     <img class="left-image" src="/static/img/menu.png"/>
                 </figure>
                 <figure class="col-lg-6 left xs-hide md-hide">
-                    <img class="right-image" src="/static/img/login.png" ng-click="goToEvent(event.id, $index)" ng-hide="event.user_done"/>
-                    <img class="right-image" src="/static/img/minus.png" ng-click="goFromEvent(event.id, $index)" ng-show="event.user_done"/>
+                    <img class="right-image" src="/static/img/login.png" ng-click="goToEvent(event.id, $index)"
+                         ng-hide="event.user_done"/>
+                    <img class="right-image" src="/static/img/minus.png" ng-click="goFromEvent(event.id, $index)"
+                         ng-show="event.user_done"/>
                 </figure>
             </div>
         </div>

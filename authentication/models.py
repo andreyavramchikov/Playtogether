@@ -2,16 +2,11 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import BaseUserManager
 from django.db import models
 
-# from event.models import ActivityUsers
-
 
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
         if not email:
             raise ValueError('Users must have a valid email address.')
-
-        # if not kwargs.get('username'):
-        #     raise ValueError('Users must have a valid username.')
 
         account = self.model(email=self.normalize_email(email))
 
@@ -66,8 +61,6 @@ class User(AbstractBaseUser):
     schedule_to_play = models.CharField(max_length=255, choices=FREQUENCY_CHOICES, default=ALWAYS, blank=True)
 
     objects = AccountManager()
-
-    # activities = models.ManyToManyField(ActivityUsers)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
