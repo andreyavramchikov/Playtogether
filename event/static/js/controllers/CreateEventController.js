@@ -1,7 +1,7 @@
 var app = angular.module('playTogether');
 
 app.controller('CreateEventController', function ($scope, $http, $timeout, EventService, ActivityService, PlaceService) {
-    var getPostData = function(){
+    var getPostData = function () {
         var data = {
             activity: $scope.selectedActivity,
             start_date: $scope.start_date,
@@ -10,16 +10,15 @@ app.controller('CreateEventController', function ($scope, $http, $timeout, Event
         return data;
     };
 
-
-     $("#dtBox").DateTimePicker();
+    //$("#dtBox").DateTimePicker();
     $scope.errors = {};
-    $scope.createEvent = function(){
+    $scope.createEvent = function () {
         var data = getPostData();
-        EventService.createEvent(data).then(function(response){
+        EventService.createEvent(data).then(function (response) {
             console.log(response);
-        }, function(response){
+        }, function (response) {
             var errors = response.data;
-            if (errors){
+            if (errors) {
                 _.each(errors, function (value, key) {
                     $scope.errors[key] = value[0];
                 });
@@ -27,11 +26,11 @@ app.controller('CreateEventController', function ($scope, $http, $timeout, Event
         });
     };
 
-    ActivityService.getActivities().then(function(response){
+    ActivityService.getActivities().then(function (response) {
         $scope.activities = response.data.results;
     });
 
-    PlaceService.getPlaces().then(function(response){
+    PlaceService.getPlaces().then(function (response) {
         $scope.places = response.data.results;
     });
 });

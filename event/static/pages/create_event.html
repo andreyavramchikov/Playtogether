@@ -1,19 +1,27 @@
-<form id="create-event" ng-submit="createEvent()">
-    <select ng-options="activity.id as activity.name for activity in activities" ng-model="selectedActivity"></select>
-     <!--  DateTime Input  -->
-    <p>DateTime : </p>
+<form id="create-event" name="createEventForm" ng-submit="createEvent()">
+
+    <label>Во что играем? </label>
+    <div class="relative">
+        <input type="text" ng-model="searchActivity"/>
+        <select ng-options="activity.id as activity.name for activity in activities | filter: searchActivity" ng-model="selectedActivity"></select>
+    </div>
+
+    [[colours]]
+    <dropdown placeholder="Colour..." list="colours" selected="colour" property="name"></dropdown>
+
+    <label>Когда играем? : </label>
     <input type="text" data-field="datetime" readonly ng-model="start_date">
-    <div id="dtBox"></div>
+{#    <div id="dtBox"></div>#}
 
     <div class="errors" ng-model="errors.start_date">[[errors.start_date]]</div>
 
     <label for="count">Count of people</label>
-    <input type="number" id="count" value="count" ng-model="min_people" placeholder="Minimum number of people to make event happen">
+    <input type="number" id="count" value="count" ng-model="min_people" placeholder="Сколько минимум людей надо?">
 
     <div class="errors" ng-model="errors.min_people">[[errors.min_people]]</div>
 
 
-    <label for="address">Address</label>
+    <label for="address">Где играть будем?</label>
     <input type="text" id="address" ng-model="description" placeholer="Provide address">
 
     <input type="submit" ng-click="createEvent()" value="Save">

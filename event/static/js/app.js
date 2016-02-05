@@ -7,6 +7,10 @@ app.run(function($http, $filter, $rootScope, AuthenticationService) {
     $http.defaults.xsrfHeaderName = 'X-CSRFToken';
     $http.defaults.xsrfCookieName = 'csrftoken';
 
+    angular.element(document).on("click", function(e) {
+		$rootScope.$broadcast("documentClicked", angular.element(e.target));
+	});
+
     //when url changes then dynamicly change the title
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;

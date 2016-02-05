@@ -6,7 +6,7 @@ from fabric.operations import sudo
 # env.key_filename = '/home/andrey/Dropbox/playtogether/.vagrant/machines/default/virtualbox/private_key'
 env.user = 'ubuntu'
 env.hosts = [
-    'ec2-52-90-107-10.compute-1.amazonaws.com'
+    'ec2-54-209-133-98.compute-1.amazonaws.com'
 ]
 
 env.key_filename = '/home/andrey/Playtogether.pem'
@@ -17,7 +17,7 @@ env.path = '/home/ubuntu/projects/%(project_name)s' % env
 env.env_path = '%(path)s/env' % env
 env.repo_path = '%(path)s/repository' % env
 
-# ssh -i ~/Playtogether.pem ubuntu@ec2-52-90-107-10.compute-1.amazonaws.com
+# ssh -i ~/Playtogether.pem ubuntu@ec2-54-209-133-98.compute-1.amazonaws.com
 
 def setup():
     # STILL NEED TO INSTALL MANUALLY MYSQL AND PYTHON-MYSQL ETC
