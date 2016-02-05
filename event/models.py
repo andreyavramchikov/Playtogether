@@ -105,6 +105,9 @@ class EventUsers(models.Model):
     user = models.ForeignKey(User)
     team = models.ForeignKey(Team, null=True, blank=True)
 
+    class Meta:
+        unique_together = (("event", "user"),)
+
     def __unicode__(self):
         return 'Event - {}; User - {}'.format(self.event, self.user)
 

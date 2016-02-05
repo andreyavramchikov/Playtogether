@@ -78,13 +78,21 @@ class ActivityListView(generics.ListCreateAPIView):
 class EventUsersUpdate(views.APIView):
 
     def post(self, request, *args, **kwargs):
-        event_id = request.DATA.get('event_id')
+        try:
+            event_id = request.DATA['event_id']
+            action = request.DATA['action']
+        except KeyError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
         user = request.user
         if event_id and user:
-            EventUsers.objects.create(user=user, event_id=event_id)
-        return Response({
-            'status': 'Correct',
-        }, status=status.HTTP_200_OK)
+            if action == 'create':
+                EventUsers.objects.create(user=user, event_id=event_id)
+            elif action == 'delete':
+                EventUsers.objects.get(user=user, event_id=event_id).delete()
+            return Response(status=status.HTTP_200_OK)
+
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 
 

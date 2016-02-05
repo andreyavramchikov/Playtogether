@@ -69,6 +69,7 @@ class EventSerializer(serializers.ModelSerializer):
     place = EventPlaceSerializer(read_only=True)
     event_users = serializers.SerializerMethodField(read_only=True)
     city = CitySerializer(required=False)
+    count_of_members = serializers.SerializerMethodField(read_only=True)
 
     """
     BAD Example of serializing ManyToMany model - need to be refactored
@@ -77,11 +78,14 @@ class EventSerializer(serializers.ModelSerializer):
         event_user_ids = EventUsers.objects.filter(event=instance).values_list('user', flat=True)
         return User.objects.filter(pk__in=event_user_ids).values_list('id', flat=True)
 
+    def get_count_of_members(self, instance):
+        return EventUsers.objects.filter(event_id=instance.id).count()
+
     class Meta:
         model = Event
         fields = ('id', 'activity', 'place', 'city', 'start_date',
                   'end_date', 'min_people', 'max_people',
-                  'is_paid', 'cost', 'description', 'event_users')
+                  'is_paid', 'cost', 'description', 'event_users', 'count_of_members')
 
 
 #NEED TO THINK HOW TO COMBINE THIS CLASS WITH EventSerializer

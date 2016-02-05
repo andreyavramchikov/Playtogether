@@ -29,7 +29,7 @@
             <span week-date dates="dates" ng-model="currentDate" currentweek="currentweek" ></span>
         </div>
 
-        <div class="col-xs-6 col-md-4 col-lg-4 left" ng-class="{'active': event.user_done}" ng-repeat="event in events | filterUserEvents:userId">
+        <div class="col-xs-6 col-md-4 col-lg-4 left" ng-class="{'active': event.user_done}" ng-repeat="event in events">
             <figure class="relative"  >
                 <img class="event-image" src="/static/img/[[event.activity.name]].png"/>
                 <h3 class="event-bottom">[[event.activity.name]]</h3>
@@ -37,11 +37,11 @@
 
             <div class="description-left col-xs-12 col-md-6 col-lg-6 left">
                 <h3 class="bold">[[event.start_date | date:'yyyy.dd.MM HH:mm']]</h3>
-                <h3>250 000</h3>
+                <h3>[[event.cost]]</h3>
             </div>
             <div class="description-right col-xs-12 col-md-6 col-lg-6 left">
-                <h3>7 участников</h3>
-                <h3>еще 5 мест</h3>
+                <h3>[[event.count_of_members]] участников</h3>
+                <h3>еще [[event.min_people - event.count_of_members]] мест</h3>
                 <h3>[[event.place.name]]</h3>
             </div>
 
@@ -53,6 +53,7 @@
                 </figure>
                 <figure class="col-lg-6 left xs-hide md-hide">
                     <img class="right-image" src="/static/img/login.png" ng-click="goToEvent(event.id, $index)" ng-hide="event.user_done"/>
+                    <img class="right-image" src="/static/img/minus.png" ng-click="goFromEvent(event.id, $index)" ng-show="event.user_done"/>
                 </figure>
             </div>
         </div>
