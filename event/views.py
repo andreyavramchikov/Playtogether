@@ -45,12 +45,12 @@ class EventListView(generics.ListCreateAPIView):
     def get_queryset(self):
         queryset = super(EventListView, self).get_queryset()
         try:
-            start_date = datetime.strptime(self.request.QUERY_PARAMS.get('start_date'), '%d-%m-%Y').date()
+            start_date = datetime.strptime(self.request.query_params.get('start_date'), '%d-%m-%Y').date()
             queryset = queryset.filter(start_date__gt=start_date)
         except (ValueError, TypeError):
             pass
         try:
-            selected_activity_ids = self.request.QUERY_PARAMS.get('selected_activity_ids').split(',')
+            selected_activity_ids = self.request.query_params.get('selected_activity_ids').split(',')
             queryset = queryset.filter(activity__pk__in=selected_activity_ids)
         except(ValueError, TypeError, AttributeError):
             pass

@@ -88,8 +88,8 @@ class UserListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         queryset = super(UserListView, self).get_queryset()
-        selected_activity_ids = self.request.QUERY_PARAMS.get('selected_activity_ids')
-        sex = self.request.QUERY_PARAMS.get('sex')
+        selected_activity_ids = self.request.query_params.get('selected_activity_ids')
+        sex = self.request.query_params.get('sex')
 
         if sex:
             queryset = queryset.filter(sex=sex)
