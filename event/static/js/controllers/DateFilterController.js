@@ -5,6 +5,8 @@ app.controller('DateFilterController', function ($scope, $http) {
     DAYS_IN_WEEK = 7;
     $scope.dates = [];
     $scope.currentweek = moment();
+    $scope.currentDate = ({'name': $scope.currentweek.format('dddd'),
+                    'value': $scope.currentweek.format('DD-MM-YYYY')});
 
     $scope.$watch('currentDate', function(newValue, oldValue, scope){
         $scope.$parent.currentDate = $scope.currentDate;
@@ -13,7 +15,7 @@ app.controller('DateFilterController', function ($scope, $http) {
     var _generateDates = function (startDate) {
         _.times(DAYS_IN_WEEK, function (index) {
             var date = moment(startDate, "DD-MM-YYYY").add(index, 'days');
-            $scope.dates.push({'name': date.format('dddd'), 'value': date.format('DD-MM-YYYY')});
+            $scope.dates.push({'name': date.locale("ru").format('dddd'), 'value': date.locale("ru").format('DD-MM-YYYY')});
         });
     };
     _generateDates(moment());
@@ -48,8 +50,8 @@ app.directive('weekDate', function () {
                 _.times(DAYS_IN_WEEK, function (index) {
                     var date = moment(scope.currentweek, "DD-MM-YYYY").add(index, 'days');
                     scope.dates.push({
-                        'name': date.format('dddd'),
-                        'value': date.format('DD-MM-YYYY')
+                        'name': date.locale("ru").format('dddd'),
+                        'value': date.locale("ru").format('DD-MM-YYYY')
                     });
                 });
             };

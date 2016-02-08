@@ -86,11 +86,25 @@
   }
 
   .date-range-line {
-    a {
+    height: 40px;
+    line-height: 15px;
+    font-size: 14px;
+    span {
       cursor: pointer;
+      color: #252a40;
+      text-transform: uppercase;
+      float: left;
+      display: block;
+      text-align: center;
       &:hover {
-        color: green;
+        color: #20cfb1;
       }
+    }
+    span.dates {
+      width: 14.28%;
+    }
+    span.active {
+      color: #20cfb1;
     }
   }
 
@@ -100,6 +114,12 @@
 @media (min-width: 768px)
   and (max-width: 1024px) {
   #events {
+    .date-range-line {
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+    }
+
     .event-bottom {
       height: 50px;
       padding: 0 10px;
@@ -133,6 +153,13 @@
 /*Desktop*/
 @media (min-width: 1025px) {
   #events {
+
+    .date-range-line {
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+    }
+
     section {
       .actions {
         figure {

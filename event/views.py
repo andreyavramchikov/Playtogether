@@ -8,6 +8,8 @@ from event.models import Place, Team, Event, City, Activity, EventUsers
 from event.serializers import PlaceSerializer, TeamSerializer, EventSerializer, CitySerializer, EventCreateSerializer
 from rest_framework import views
 
+from mail.sender import EmailSender
+
 
 class LandingView(TemplateView):
     template_name = 'landing/index.html'
@@ -60,6 +62,12 @@ class EventListView(generics.ListCreateAPIView):
 
 class EventCreateView(generics.CreateAPIView):
     serializer_class = EventCreateSerializer
+
+    def post(self, request, *args, **kwargs):
+        create = super(EventCreateView, self).post(request, *args, **kwargs)
+        EmailSender().create_event(request.user)
+        # EmailSender().send_emails()
+        return create
 
 
 class CityListView(generics.ListCreateAPIView):

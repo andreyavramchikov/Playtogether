@@ -1,6 +1,9 @@
-<form id="create-event" name="createEventForm" ng-submit="createEvent()">
-    <dropdown class="col-xs-12" placeholder="Выбери чертов спорт.." list="activities" selected="selectedActivity" property="name"></dropdown>
-
+<form id="create-event" name="createEventForm" ng-submit="createEventForm.$valid && createEvent()">
+    <dropdown class="col-xs-12 xs-hide" placeholder="Выбери чертов спорт.." list="activities" selected="selectedActivity" property="name"></dropdown>
+    <select class="col-xs-12 md-hide lg-hide"
+            ng-options="activity as activity.name for activity in activities"
+            ng-model="selectedActivity" placeholder="sdfasdf">
+    </select>
     <div class="col-xs-12">
         <input type="text" data-field="datetime" readonly ng-model="start_date" placeholder="Когда играем?">
         <div id="dtBox"></div>
@@ -17,5 +20,5 @@
     <div class="errors" ng-model="errors.min_people">[[errors.min_people]]</div>
 
     <input type="text" id="address" ng-model="description" placeholder="Где игра будет проходить">
-    <input type="submit" ng-click="createEvent()" value="Save" class="col-xs-12">
+    <input type="submit" value="Save" class="col-xs-12">
 </form>

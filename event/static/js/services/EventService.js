@@ -11,7 +11,7 @@ app.service('EventService', function($http){
     };
 
     this.updateEventUsers = function(data){
-        return $http.post('api/v1/updateeventusers', data);
+        return $http.post('api/v1/updateeventusers/', data);
     }
 
 });

@@ -96,3 +96,13 @@ class UserListView(generics.ListCreateAPIView):
         if selected_activity_ids:
             queryset = queryset.filter(activity__pk__in=selected_activity_ids.split(','))
         return queryset
+
+
+class GetUserView(views.APIView):
+
+    def get(self, request, *args, **kwargs):
+        if not request.user.is_anonymous():
+            serializer = UserSerializer(request.user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)

@@ -48,6 +48,10 @@ app.service('AuthenticationService', function($http, $cookies, $rootScope){
     };
 
 
+    this.getUser = function(){
+        return $http.get('/api/v1/getuser/');
+    };
+
     this.isAuthenticated = function(){
         return !!$cookies.authenticatedAccount;
     };

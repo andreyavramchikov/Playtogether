@@ -18,6 +18,13 @@ app.run(function($http, $filter, $rootScope, AuthenticationService) {
         $rootScope.title = current.$$route.title;
     });
 
+    AuthenticationService.getUser().then(function(response){
+        console.log(response);
+        AuthenticationService.setAuthenticatedAccount(response.data);
+    }, function(response){
+        console.log(response);
+    });
+
     //update rootscope to get everywhere dates
     var day_offset = 24 * 60 * 60 * 1000,
         today = new Date(),

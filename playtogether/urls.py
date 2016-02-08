@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView
-from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView
+from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView, GetUserView
 from event.views import MainView, PlaceListView, TeamListView, EventListView, CityListView, ActivityListView,\
     EventCreateView, LandingView, EventUsersUpdate
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -43,7 +43,10 @@ urlpatterns = patterns('',
     url(r'^api/v1/user$', UserListView.as_view(), name='event-list'),
     url(r'^api/v1/city$', CityListView.as_view(), name='city-list'),
     url(r'^api/v1/activity$', ActivityListView.as_view(), name='activity-list'),
-    url(r'^api/v1/updateeventusers$', EventUsersUpdate.as_view(), name='update-users-event'),
+    url(r'^api/v1/updateeventusers/$', EventUsersUpdate.as_view(), name='update-users-event'),
+
+
+    url(r'^api/v1/getuser/$', GetUserView.as_view(), name='get-user'),
 )
 
 urlpatterns += staticfiles_urlpatterns()
