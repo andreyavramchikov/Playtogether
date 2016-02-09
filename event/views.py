@@ -45,6 +45,7 @@ class EventListView(generics.ListCreateAPIView):
     filter_fields = ('city', 'is_paid', 'activity__name')
 
     def get_queryset(self):
+        # EmailSender().sending_rules()
         queryset = super(EventListView, self).get_queryset()
         try:
             start_date = datetime.strptime(self.request.query_params.get('start_date'), '%d-%m-%Y').date()
@@ -65,7 +66,7 @@ class EventCreateView(generics.CreateAPIView):
 
     def post(self, request, *args, **kwargs):
         create = super(EventCreateView, self).post(request, *args, **kwargs)
-        EmailSender().create_event(request.user)
+        EmailSender().create_event(request.user, 'event_id')
         # EmailSender().send_emails()
         return create
 

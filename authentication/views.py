@@ -1,5 +1,6 @@
 import json
 
+from django.db import IntegrityError
 from rest_framework import permissions, viewsets, status, views, generics
 from rest_framework.response import Response
 
@@ -106,3 +107,58 @@ class GetUserView(views.APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class CallBackView(views.APIView):
+
+    def get(self, request, *args, **kwargs):
+        import requests
+        code = request.QUERY_PARAMS['code']
+        response = requests.post('https://github.com/login/oauth/access_token',
+                      {'client_id': '436adf1db1ea1a3b2936',
+                       'client_secret': '64f17899194c59f42861c1ece90290810bc04fd1',
+                       'code': code})
+
+        access_token = response.content.split('&')[0].split('=')[1]
+
+        # info = requests.get('https://api.github.com/user', {'params': {'access_token': access_token}})
+        info = requests.get('https://api.github.com/user?access_token=' + access_token)
+        print json.loads(info.content)['avatar_url']
+        print json.loads(info.content)['login']
+        return Response(status=status.HTTP_200_OK)
+
+
+class CallBackVKView(views.APIView):
+
+    def get(self, request, *args, **kwargs):
+        import requests
+        from django.shortcuts import redirect
+        import json
+        code = request.QUERY_PARAMS['code']
+
+        response = requests.get('https://oauth.vk.com/access_token?'
+                                 'client_id=5269479&redirect_uri=http://localhost:9000/callbackvk&'
+                                 'client_secret=GXiQkDrstC2hHGTYsfBG&code=' + code)
+
+
+        access_token = json.loads(response.content)['access_token']
+        user_id = json.loads(response.content)['user_id']
+        email = json.loads(response.content)['email']
+
+        password = 'oauthpassword'
+        try:
+            User.objects.create_user(email=email, password=password)
+            account = authenticate(email=email, password=password)
+        except IntegrityError:
+            account = authenticate(email=email, password=password)
+
+        if account.is_active:
+            login(request, account)
+
+        response = requests.get('https://api.vkontakte.ru/method/getProfiles?'
+                                'uid={}&access_token={}&fields=photo,sex,email'.format(user_id, access_token))
+
+        print json.loads(response.content)['response'][0]['photo']
+
+        return redirect('/')

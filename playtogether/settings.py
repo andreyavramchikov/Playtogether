@@ -45,8 +45,8 @@ INSTALLED_APPS = (
 )
 
 
-VK_APP_ID = '5269479'
-VK_API_SECRET = 'GXiQkDrstC2hHGTYsfBG'
+# VK_APP_ID = '5269479'
+# VK_API_SECRET = 'GXiQkDrstC2hHGTYsfBG'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

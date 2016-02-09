@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from authentication.models import User
+from event.models import Event
 
 
 class EmailUsers(models.Model):
@@ -15,4 +16,5 @@ class EmailUsers(models.Model):
     )
     email_type = models.CharField(choices=EMAIL_TYPES, max_length=255)
     user = models.ForeignKey(User)
+    event = models.ForeignKey(Event, null=True, blank=True)
     sent = models.BooleanField(default=False)

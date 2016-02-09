@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView
-from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView, GetUserView
+from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView, GetUserView, CallBackView, \
+    CallBackVKView
 from event.views import MainView, PlaceListView, TeamListView, EventListView, CityListView, ActivityListView,\
     EventCreateView, LandingView, EventUsersUpdate
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -47,6 +48,10 @@ urlpatterns = patterns('',
 
 
     url(r'^api/v1/getuser/$', GetUserView.as_view(), name='get-user'),
+
+    url(r'^callback/$', CallBackView.as_view(), name='callback'),
+    url(r'^callbackvk/$', CallBackVKView.as_view(), name='callbackvk'),
+
 )
 
 urlpatterns += staticfiles_urlpatterns()
