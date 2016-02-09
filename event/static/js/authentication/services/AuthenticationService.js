@@ -61,4 +61,11 @@ app.service('AuthenticationService', function($http, $cookies, $rootScope){
     this.unauthenticate = function() {
       delete $cookies.authenticatedAccount;
     };
+
+    this.getUserId = function(){
+        var account = $cookies.authenticatedAccount;
+        if (account){
+            return JSON.parse(account).id;
+        } else return
+    }
 });

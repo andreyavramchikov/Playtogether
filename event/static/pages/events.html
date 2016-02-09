@@ -26,7 +26,7 @@
     <section class="col-xs-12 col-md-8 col-lg-8 left">
 
         <div ng-controller="DateFilterController">
-            <span week-date dates="dates" ng-model="currentDate" currentweek="currentweek"></span>
+            <span week-date dates="dates" ng-model="currentDate" ng-change="changeDate()" currentweek="currentweek"></span>
         </div>
 
         <div class="col-xs-6 col-md-4 col-lg-4 left" ng-class="{'active': event.user_done}" ng-repeat="event in events">

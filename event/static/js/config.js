@@ -85,12 +85,6 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             controller: 'UserController',
             templateUrl: '/static/pages/users.html',
             title: 'Users'
-        })
-        .state('test', {
-            url : '/test/',
-            controller: 'TestController',
-            templateUrl: '/static/pages/test.html',
-            title: 'Venue'
         });
 
 

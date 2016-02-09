@@ -15,15 +15,10 @@ app.controller('DateFilterController', function ($scope, $http) {
     var _generateDates = function (startDate) {
         _.times(DAYS_IN_WEEK, function (index) {
             var date = moment(startDate, "DD-MM-YYYY").add(index, 'days');
-            $scope.dates.push({'name': date.locale("ru").format('dddd'), 'value': date.locale("ru").format('DD-MM-YYYY')});
+            $scope.dates.push(  {'name': date.locale("ru").format('dddd'),
+                                'value': date.locale("ru").format('DD-MM-YYYY')}
+            );
         });
     };
     _generateDates(moment());
-});
-
-
-app.filter('cutYearFilter', function () {
-    return function (value) {
-        return value.substring(0, value.length - 5);;
-    };
 });

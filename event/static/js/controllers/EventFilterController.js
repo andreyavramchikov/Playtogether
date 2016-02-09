@@ -1,6 +1,6 @@
 var app = angular.module('playTogether');
 
-app.controller('EventFilterController', function ($scope, $http) {
+app.controller('EventFilterController', function ($scope, $http, EventService, AuthenticationService) {
 
      //// CODE FOR SLIDER RANGE - all calculations in minutes
     $scope.minTime = 4 * 60;
@@ -10,15 +10,11 @@ app.controller('EventFilterController', function ($scope, $http) {
     $scope.userMaxTime = 24 * 60;
     ///// END OF SLIDER RANGE CODE
 
-    DAYS_IN_WEEK = 7;
-    $scope.dates = [];
-    $scope.currentweek = moment();
-
     $http.get('/api/v1/activity').then(function (response) {
         $scope.activities = response.data.results;
     });
-    var query_params = [];
 
+    var query_params = [];
     $scope.getQueryString = function () {
         //COPY PAST FROM USER - SHOULD BE CHANGED
         var selectedActivity = _.filter($scope.activities, function(activity){
@@ -57,54 +53,41 @@ app.controller('EventFilterController', function ($scope, $http) {
         return $.param(query_params);
     };
 
-    getFilteredEvents = function () {
+    _filterEvents = function(events){
+        var userId = AuthenticationService.getUserId();
+        _.each(events, function(event, index){
+            if ( _.some(event.event_users, function (event_user) {
+              return event_user === userId;
+            })) {
+                events[index].user_done = true;
+            }
+        });
+        return events;
+    };
+
+    _getFilteredEvents = function () {
         var queryString = $scope.getQueryString();
-        console.log(queryString);
         if (queryString) {
-            $http.get("/api/v1/event?" + queryString).then(function (response) {
-                $scope.$parent.events = response.data.results;
+            EventService.getEvents(queryString).then(function(response){
+                $scope.$parent.events = _filterEvents(response.data.results);
             });
         }
     };
 
     //I use debounce just for the slider purpose, to avoid every milisecond run http call to server
     // MUST CHANGE IT TO NG-CHANGE DIRECTIVES !!!!!
-    $scope.$watchGroup(['selectedCity', 'is_paid', 'selectedActivity',
-        'event_date', 'userMinTime',
-        'userMaxTime', 'currentDate'],
+    $scope.$watchGroup(['currentDate'],
         function(newValue, oldValue, scope){
             if (newValue != oldValue){
-                _.debounce(getFilteredEvents(), 300);
+                _.debounce(_getFilteredEvents(), 300);
             }
         });
 
     //since upper function somehow not working I use it
     $scope.changedActivities = function(){
-        getFilteredEvents();
+        _getFilteredEvents();
     };
 
-    var _generateDates = function (startDate) {
-        _.times(DAYS_IN_WEEK, function (index) {
-            var date = moment(startDate, "DD-MM-YYYY").add(index, 'days');
-            $scope.dates.push({'name': date.format('dddd'), 'value': date.format('DD-MM-YYYY')});
-        });
-    };
-    _generateDates(moment());
-});
-
-app.filter('timeRangeFilter', function () {
-    return function (value, max) {
-        if (value == max) { return 'All'; }
-
-        var h = parseInt(value / 60);
-        var m = parseInt(value % 60);
-
-        var hStr = (h > 0) ? h + ':'  : '';
-        var mStr = (m > 0) ? m + '' : '';
-        var glue = (hStr && !mStr) ? '00' : '';
-
-        return hStr + glue + mStr;
-    };
 });
 
 

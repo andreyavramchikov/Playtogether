@@ -4,18 +4,7 @@ app.controller('EventController', function ($scope, $http, EventService, Authent
 
 
     EventService.getEvents().then(function(response){
-        $scope.events = response.data.results;
-        var account = AuthenticationService.getAuthenticatedAccount();
-        if (account){
-            $scope.userId = account.id;
-        }
-        _.each($scope.events, function(event, index){
-            if ( _.some(event.event_users, function (event_user) {
-              return event_user === $scope.userId;
-            })) {
-                $scope.events[index].user_done = true;
-            }
-        });
+        //$scope.events = response.data.results;
     });
 
     $scope.goToEvent = function(eventId, index){
