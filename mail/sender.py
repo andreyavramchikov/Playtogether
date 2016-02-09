@@ -40,7 +40,7 @@ class EmailSender(object):
         EmailUsers.objects.create(email_type=EmailUsers.GO_TO_EVENT, user=user, event_id=event_id)
 
     def ungo_to_event(self, user, event_id):
-        EmailUsers.objects.create(email_type=EmailUsers.UN_GO_EVENT, user=user, event=event_id)
+        EmailUsers.objects.create(email_type=EmailUsers.UN_GO_EVENT, user=user, event_id=event_id)
 
     def sending_rules(self):
         email_users = self.get_email_users()

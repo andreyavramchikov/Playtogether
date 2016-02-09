@@ -68,16 +68,16 @@ app.controller('EventFilterController', function ($scope, $http) {
     };
 
     //I use debounce just for the slider purpose, to avoid every milisecond run http call to server
-    $scope.$watchGroup(['selectedCity', 'is_paid', 'selectedActivity', 'event_date', 'userMinTime', 'userMaxTime', 'currentDate'],
+    // MUST CHANGE IT TO NG-CHANGE DIRECTIVES !!!!!
+    $scope.$watchGroup(['selectedCity', 'is_paid', 'selectedActivity',
+        'event_date', 'userMinTime',
+        'userMaxTime', 'currentDate'],
         function(newValue, oldValue, scope){
             if (newValue != oldValue){
                 _.debounce(getFilteredEvents(), 300);
             }
         });
 
-    //$scope.$watch('activities.selected', function(newValue, oldValue, scope){
-    //    getFilteredEvents();
-    //}, true);
     //since upper function somehow not working I use it
     $scope.changedActivities = function(){
         getFilteredEvents();
@@ -108,12 +108,3 @@ app.filter('timeRangeFilter', function () {
 });
 
 
-app.directive('collapseBlock', function(){
-    return function (scope, element, attrs) {
-        element.on('click', function () {
-            scope.$apply(function () {
-                scope[attrs.model] = scope[attrs.model] == true ? false : true;
-            });
-        });
-    }
-});

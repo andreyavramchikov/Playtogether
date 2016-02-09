@@ -15,13 +15,3 @@ app.controller('RegisterStep3Controller', function ($http, $scope, $location, $s
 
     }
 });
-
-app.directive('userSchedule', function () {
-    return function (scope, element, attrs) {
-        element.on('click', function () {
-            scope.$apply(function () {
-                scope.schedule = element.data('schedule');
-            });
-        });
-    }
-});
