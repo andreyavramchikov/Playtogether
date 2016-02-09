@@ -1,7 +1,7 @@
 var app = angular.module('authentication');
 
 app.service('AuthenticationService', function($http, $cookies, $rootScope){
-    this.register = function(email, password){
+    this.registerStep1 = function(email, password){
         return $http.post('/api/v1/accounts/', {
             password: password,
             email: email
@@ -12,10 +12,8 @@ app.service('AuthenticationService', function($http, $cookies, $rootScope){
         return $http.put('api/v1/accounts/' + userId + '/', data);
     };
 
-    this.registerStep3 = function(id, sex){
-        return $http.put('api/v1/accounts/' + id + '/', {
-            'sex': 'tmp'
-        });
+    this.registerStep3 = function(userId, data){
+        return $http.put('api/v1/accounts/' + userId + '/', data);
     };
 
     this.registerStep4 = function(userId, activityId){

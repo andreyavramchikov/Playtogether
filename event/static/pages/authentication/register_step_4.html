@@ -1,4 +1,4 @@
-<form id="register-step-4" class="col-xs-12">
+<form id="register-step-4" class="col-xs-12" ng-submit="registerStep4()">
     <ng-include src="'/static/pages/utils/responsive-circle-line-circle.html'"></ng-include>
     <h3>Твои интересы</h3>
 
@@ -7,7 +7,6 @@
         <p>Парные</p>
         <img src="/static/img/expand-arrow.png" class="right-image" collapse-block model="pair">
     </div>
-
     <section ng-show="pair">
         <div class='events' ng-repeat="activity in activities | filter:{ kind: 'TEAM' }">
             <div class="col-xs-12 hidden">
@@ -31,6 +30,6 @@
         </div>
     </section>
 
-    <input type="submit" class="col-xs-12" value="Дальше" ng-click="register()">
+    <input type="submit" class="col-xs-12" value="Дальше">
 
 </form>

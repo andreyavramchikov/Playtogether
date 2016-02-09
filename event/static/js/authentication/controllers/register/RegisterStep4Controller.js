@@ -15,7 +15,7 @@ app.controller('RegisterStep4Controller', function ($http, $scope, $location, $s
     });
 
     //VERY BAD IMPLEMENTATION - MUST BE REFACTORED
-    $scope.register = function () {
+    $scope.registerStep4 = function () {
         var userId = $stateParams.userId;
         console.log(_getData());
         _(_getData()).forEach(function (activity) {

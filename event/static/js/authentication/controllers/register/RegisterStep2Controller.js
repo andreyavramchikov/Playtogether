@@ -9,7 +9,7 @@ app.controller('RegisterStep2Controller', function ($http, $scope, $location, $s
         return {'sex': $scope.sex, 'date_of_birth': $scope.date_of_birth};
     };
 
-    $scope.register = function(){
+    $scope.registerStep2 = function(){
         var userId = $stateParams.userId;
         AuthenticationService.registerStep2(userId, _getData()).then(function(response){
             $state.go('registerStep3', {'userId' : userId});

@@ -33,8 +33,14 @@ class EmailSender(object):
         for email_user in self.get_email_users()[0:2]:
             self.send_email(email_user)
 
-    def create_event(self, user, event):
-        EmailUsers.objects.create(email_type=EmailUsers.CREATE_EVENT, user=user, event=event)
+    def create_event(self, user, event_id):
+        EmailUsers.objects.create(email_type=EmailUsers.CREATE_EVENT, user=user, event_id=event_id)
+
+    def go_to_event(self, user, event_id):
+        EmailUsers.objects.create(email_type=EmailUsers.GO_TO_EVENT, user=user, event_id=event_id)
+
+    def ungo_to_event(self, user, event_id):
+        EmailUsers.objects.create(email_type=EmailUsers.UN_GO_EVENT, user=user, event=event_id)
 
     def sending_rules(self):
         email_users = self.get_email_users()
@@ -45,7 +51,6 @@ class EmailSender(object):
             if email_type == EmailUsers.CREATE_EVENT:
                 # send to event creator one email and to subscribe mailng lis
                 self.send_email(email_user)
-
                 #get all users which subscribe to this event and by the event time
                 subscribe_users = User.objects.filter(pk__in=ActivityUsers.objects.filter(activity__pk=event.activity.pk).
                                                       values_list('id', flat=True))

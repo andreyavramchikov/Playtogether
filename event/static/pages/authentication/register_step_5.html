@@ -1,4 +1,4 @@
-<form id="register-step-5" class="col-xs-12">
+<form id="register-step-5" class="col-xs-12" ng-submit="registerStep5()">
     <ng-include src="'/static/pages/utils/responsive-circle-line-circle.html'"></ng-include>
     <h3>Оповещения</h3>
 
@@ -18,6 +18,6 @@
     ng-model="phone"
     ui-mask="375 (99) 999-99-99"/>
 
-    <input type="submit" class="col-xs-12" value="Завершить" ng-click="register()">
+    <input type="submit" class="col-xs-12" value="Завершить">
 
 </form>

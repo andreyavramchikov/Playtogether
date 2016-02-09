@@ -10,7 +10,7 @@ python manage.py runserver 9000 --settings=playtogether.settings.local
 
 python manage.py loaddata users places teams activity  event activityplaces eventusers teamactivities teamusers useractivities
 
-ALTER DATABASE playtogether CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+create database playtogether CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 ALTER TABLE event_city CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 

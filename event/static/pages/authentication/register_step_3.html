@@ -1,4 +1,4 @@
-<form id="register-step-3" class="col-xs-12">
+<form id="register-step-3" class="col-xs-12" ng-submit="registerStep3()">
     <ng-include src="'/static/pages/utils/responsive-circle-line-circle.html'"></ng-include>
     <h3 class="col-xs-12">Когда хочешь заниматься? </h3>
 
@@ -17,6 +17,6 @@
         <p>Всю неделю</p>
     </div>
 
-    <input type="submit" class="col-xs-12" value="Дальше" ng-click="register()">
+    <input type="submit" class="col-xs-12" value="Дальше">
 
 </form>

@@ -1,13 +1,13 @@
-<form id="register-step-2" class="col-xs-12">
+<form id="register-step-2" class="col-xs-12" ng-submit="registerStep2()">
     <ng-include src="'/static/pages/utils/responsive-circle-line-circle.html'"></ng-include>
     <h3 class="col-xs-12">Расскажи о себе </h3>
 
     <div class="col-xs-12">
         <p>Пол</p>
-        <div class="men col-xs-6 left" data-sex="men" user-sex ng-class="sex=='men' ? 'active' : ''">
+        <div class="men col-xs-6 left" data-sex="MALE" user-sex ng-class="sex=='MALE' ? 'active' : ''">
             <img src="/static/img/mustache.png" class="center-image">
         </div>
-        <div class="women col-xs-6 left" data-sex="woman" user-sex ng-class="sex=='woman' ? 'active' : ''">
+        <div class="women col-xs-6 left" data-sex="FEMALE" user-sex ng-class="sex=='FEMALE' ? 'active' : ''">
             <img src="/static/img/kiss.png" class="center-image ">
         </div>
     </div>
@@ -18,7 +18,7 @@
 
     <div id="dtBox"></div>
 
-    <input type="submit" class="col-xs-12" value="Дальше" ng-click="register()">
+    <input type="submit" class="col-xs-12" value="Дальше">
     <div class="errors" ng-model="errors.non_field_errors">[[errors.non_field_errors]]</div>
 
 </form>

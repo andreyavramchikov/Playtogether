@@ -3,11 +3,11 @@ var app = angular.module('authentication');
 app.controller('RegisterStep1Controller', function ($http, $scope, $rootScope, $location, $state, AuthenticationService) {
 
     $scope.errors = [];
-    $scope.register = function () {
+    $scope.registerStep1 = function () {
         var email = $scope.user.email,
             password = $scope.user.password;
 
-        AuthenticationService.register(email, password).then(function (response) {
+        AuthenticationService.registerStep1(email, password).then(function (response) {
             var data = response.data;
             AuthenticationService.login(data.email, data.password).then(function (response) {
                     var data = response.data,

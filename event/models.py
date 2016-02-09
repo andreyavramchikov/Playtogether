@@ -30,7 +30,7 @@ class Activity(models.Model):
         (TEAM, 'TEAM'),
     )
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     kind = models.CharField(max_length=255, choices=KIND_CHOICES, default=TEAM)
     activity_places = models.ManyToManyField(Place, through='ActivityPlaces', through_fields=('activity', 'place'))
     activity_users = models.ManyToManyField(User, through='ActivityUsers')
