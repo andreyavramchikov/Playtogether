@@ -7,17 +7,20 @@
     <title>Landing</title>
 
     {% block fonts %}
-        <link href="{% static 'fonts/fonts.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'fonts/fonts.css' %}" rel="stylesheet" type="text/css"/>
     {% endblock %}
 
     {% block less %}
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/header.less' %}"/>
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/footer.less' %}"/>
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/mobile_menu.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/common/common.less' %}"/>
         <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/less/common/bootstrap-grid.less' %}"/>
-        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/header.less' %}" />
-        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/comming-events.less' %}" />
-        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/popular-events.less' %}" />
-        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/footer.less' %}" />
-        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/mobile_menu.less' %}" />
+
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/comming-events.less' %}"/>
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/popular-events.less' %}"/>
+        <link rel="stylesheet" type="text/less" media="all" href="{% static 'css/landing/less/header-bottom.less' %}"/>
+
         <script src="{% static 'js/libs/less.js' %}"></script>
     {% endblock %}
 
@@ -27,17 +30,31 @@
 </head>
 <body>
 
-{#    MOBILE MENU#}
-    <input type="checkbox" id="mobile-menu-input" class="lg-hide">
-    <label for="mobile-menu-input" onclick class="lg-hide menu-label"></label>
-    {% include "landing/header/mobile_menu.html" %}
-{#END MOBILE MENU#}
+    {% block mobile_menu %}
+        <input type="checkbox" id="mobile-menu-input">
+        <label for="mobile-menu-input" onclick></label>
+        {#    Should be separate from other content because of moving other content to right - effect#}
+        {% include 'mobile_menu.html' %}
+    {% endblock %}
 
-    <div id="landing">{#maybe should be avoid these div#}
-        {% include 'landing/header/header.html' %}
-        {% include 'landing/comming-events.html' %}
-        {% include 'landing/popular-events.html' %}
-        {% include 'landing/footer.html' %}
-    </div>
+    <main>
+        {% block navigation %}
+            <header>
+                {% include 'menu.html' %}
+            </header>
+        {% endblock %}
+
+        {% block main %}
+            <div id="landing">
+                {% include "landing/header/header_bottom.html" %}
+                {% include 'landing/comming-events.html' %}
+                {% include 'landing/popular-events.html' %}
+            </div>
+        {% endblock %}
+
+        {% block footer %}
+            {% include 'footer.html' %}
+        {% endblock %}
+    </main>
 </body>
 </html>

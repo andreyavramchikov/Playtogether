@@ -87,7 +87,6 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             title: 'Users'
         });
 
-
         //this is for avoiding # in urls, this is not work in all browsers
         //need to refactored to switch to basic behavior if browser not allow HTML5 history
         $locationProvider.html5Mode(true);
