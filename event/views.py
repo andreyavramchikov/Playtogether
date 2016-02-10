@@ -41,8 +41,8 @@ class EventListView(generics.ListCreateAPIView):
     serializer_class = EventSerializer
     paginate_by = 100
 
-    filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = ('city', 'is_paid', 'activity__name')
+    # filter_backends = (filters.DjangoFilterBackend,)
+    # filter_fields = ('city', 'is_paid', 'activity__name')
 
     def get_queryset(self):
         # EmailSender().sending_rules()
