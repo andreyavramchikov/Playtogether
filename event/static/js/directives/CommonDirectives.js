@@ -29,7 +29,6 @@ app.directive("dropdown", function ($rootScope) {
             };
 
             $rootScope.$on("documentClicked", function (inner, target) {
-                console.log($(target[0]).is(".dropdown-display.clicked") || $(target[0]).parents(".dropdown-display.clicked").length > 0);
                 if (!$(target[0]).is(".dropdown-display.clicked") && !$(target[0]).parents(".dropdown-display.clicked").length > 0)
                     scope.$apply(function () {
                         scope.listVisible = false;
@@ -52,4 +51,26 @@ app.directive('collapseBlock', function(){
             });
         });
     }
+});
+
+//updated title of the tabs around all sites - required param 'title' in ui-router
+app.directive('updateTitle', function($rootScope, $timeout){
+    return {
+      link: function(scope, element) {
+
+        var listener = function(event, toState) {
+
+          var title = 'Playtogether.by';
+          if (toState.title){
+            title = toState.title;
+          }
+
+          $timeout(function() {
+            element.text(title);
+          }, 0, false);
+        };
+
+        $rootScope.$on('$stateChangeSuccess', listener);
+      }
+    };
 });

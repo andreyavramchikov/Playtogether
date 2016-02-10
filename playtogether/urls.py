@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', RedirectView.as_view(url='/landing'), name='index'),
 
-    url(r'^landing/$', LandingView.as_view(), name='landing'),
+    url(r'^landing/$', MainView.as_view(), name='landing'),
     url(r'^home/$', MainView.as_view(), name='index'),
 
     url(r'^places/$', MainView.as_view(), name='index'),

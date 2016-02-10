@@ -12,14 +12,16 @@
 header {
   .box-size;
   height: @xs-header-height;
-  > h3 {
+
+  .sports-club {
     float: left;
-    font-family: @sports-club-font;
+    font-family:  @sports-club-font;;
     font-style: italic;
     font-weight: bold;
     font-size: 32px;
     text-align: center;
     line-height: @xs-header-height;
+    color: black;
   }
 
   .signin {
@@ -34,7 +36,7 @@ header {
   //  and (max-width: 1024px) {
   header {
     height: @md-lg-header-height;
-    > h3 {
+    .sports-club {
       line-height: @md-lg-header-height;
     }
 

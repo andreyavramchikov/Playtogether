@@ -1,5 +1,3 @@
-{% load staticfiles %}
-
 <div id="popular-events">
     <div class="black-line">
         <div>БОЛЕЕ 300</div>
@@ -9,11 +7,10 @@
     <div class="row text-center popular-text">ПОПУЛЯРНЫЕ ВИДЫ СПОРТА</div>
 
     <div class="row" ng-repeat="x in [2,4,5]">
-        {# First event #}
         <div class="col-xs-6 col-md-4 col-lg-3 col-lg-offset-1 event-container left">
             <div class="row-95">
                 <div class="event relative row">
-                    <img class="row" src="{% static 'img/event.png' %}"/>
+                    <img class="row" src="/static/img/event.png"/>
 
                     <div class="absolute event-bottom">
                         <span class="event-name">Волейбол</span>
@@ -22,11 +19,10 @@
             </div>
         </div>
 
-        {# Second event #}
         <div class="col-xs-6 col-md-4 col-lg-3 col-lg-offset-0-5 event-container left">
             <div class="row-95">
                 <div class="event relative row">
-                    <img class="row" src="{% static 'img/event.png' %}"/>
+                    <img class="row" src="/static/img/event.png"/>
 
                     <div class="absolute event-bottom">
                         <span class="event-name">Волейбол</span>
@@ -36,11 +32,10 @@
             </div>
         </div>
 
-        {# Third event - not visible on mobile #}
         <div class="col-xs-6 col-md-4 col-lg-3 col-lg-offset-0-5 event-container left xs-hide">
             <div class="row-95">
                 <div class="event relative row">
-                    <img class="row" src="{% static 'img/event.png' %}"/>
+                    <img class="row" src="/static/img/event.png"/>
 
                     <div class="absolute event-bottom">
                         <span class="event-name">Волейбол</span>
@@ -51,4 +46,4 @@
         </div>
     </div>
 
-</div>{# end of popular-events block #}
+</div>

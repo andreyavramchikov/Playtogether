@@ -4,7 +4,5 @@ app.controller('LogoutController', function ($http, $scope, $rootScope, $locatio
     AuthenticationService.logout().then(function(response){
         AuthenticationService.unauthenticate();
         $state.go('events');
-    }, function(){
-
     });
 });
