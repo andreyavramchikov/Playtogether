@@ -1,6 +1,6 @@
 <article id="events">
 
-    <div id="filters" class="col-xs-12 col-md-4 col-lg-4 left" ng-controller="EventFilterController">
+    <div id="filters" class="col-xs-12 col-md-4 col-lg-3 left" ng-controller="EventFilterController">
         <div class="activities">
             <div class="relative" collapse-block model="openactivity">
                 <h3>Activities</h3>
@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <section class="col-xs-12 col-md-8 col-lg-8 left">
+    <section class="col-xs-12 col-md-8 col-lg-9 left">
 
         <div ng-controller="DateFilterController">
             <span week-date dates="dates" ng-model="currentDate" ng-change="changeDate()" currentweek="currentweek"></span>
@@ -46,15 +46,28 @@
             </div>
 
             <div class="actions">
-                <a class="col-xs-12 col-md-6 left lg-hide">Иду</a>
-                <a class="col-xs-12 col-md-6 left lg-hide">Пригласить</a>
+                <a class="col-xs-12 col-md-6 left lg-hide go"
+                   ng-click="goToEvent(event.id, $index)"
+                   ng-hide="event.user_done">
+                    Иду
+                </a>
+                <a class="col-xs-12 col-md-6 left lg-hide ungo"
+                   ng-click="goFromEvent(event.id, $index)"
+                   ng-show="event.user_done">
+                    Не пойду
+                </a>
+                <a class="col-xs-12 col-md-6 left lg-hide invite">
+                    Пригласить
+                </a>
                 <figure class="col-lg-6 left xs-hide md-hide">
                     <img class="left-image" src="/static/img/menu.png"/>
                 </figure>
                 <figure class="col-lg-6 left xs-hide md-hide">
-                    <img class="right-image" src="/static/img/login.png" ng-click="goToEvent(event.id, $index)"
+                    <img class="right-image" src="/static/img/login.png"
+                         ng-click="goToEvent(event.id, $index)"
                          ng-hide="event.user_done"/>
-                    <img class="right-image" src="/static/img/minus.png" ng-click="goFromEvent(event.id, $index)"
+                    <img class="right-image" src="/static/img/minus.png"
+                         ng-click="goFromEvent(event.id, $index)"
                          ng-show="event.user_done"/>
                 </figure>
             </div>

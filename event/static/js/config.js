@@ -51,6 +51,12 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             templateUrl: '/static/pages/authentication/login.html',
             title: 'Войти'
         })
+        .state('profile', {
+            url : '/profile/',
+            controller: 'ProfileController',
+            templateUrl: '/static/pages/authentication/profile.html',
+            title: 'Войти'
+        })
         .state('logout', {
             url : '/logout',
             controller: 'LogoutController',

@@ -89,8 +89,8 @@ class EventUsersUpdate(views.APIView):
 
     def post(self, request, *args, **kwargs):
         try:
-            event_id = request.DATA['event_id']
-            action = request.DATA['action']
+            event_id = request.data['event_id']
+            action = request.data['action']
         except KeyError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
         user = request.user
@@ -110,7 +110,7 @@ class UserActivitiesUpdate(views.APIView):
 
     def post(self, request, *args, **kwargs):
         try:
-            activities = request.DATA['activities']
+            activities = request.data['activities']
         except KeyError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 

@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^teams/$', MainView.as_view(), name='index'),
     url(r'^events/$', MainView.as_view(), name='index'),
     url(r'^users/$', MainView.as_view(), name='index'),
+    url(r'^profile/$', MainView.as_view(), name='index'),
 
     url(r'^createevent/$', MainView.as_view(), name='index'),
     url(r'^register/step-1/$', MainView.as_view(), name='index'),
