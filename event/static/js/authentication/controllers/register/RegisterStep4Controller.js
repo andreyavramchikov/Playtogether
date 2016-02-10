@@ -18,7 +18,7 @@ app.controller('RegisterStep4Controller', function ($http, $scope, $location, $s
     };
 
     ActivityService.getActivities().then(function (response) {
-        $scope.activities = response.data.results;
+        $scope.activities = response.data;
     });
 
     //VERY BAD IMPLEMENTATION - MUST BE REFACTORED

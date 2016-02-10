@@ -4,7 +4,7 @@ app.controller('EventController', function ($scope, $http, EventService, Authent
 
 
     EventService.getEvents().then(function(response){
-        //$scope.events = response.data.results;
+        //$scope.events = response.data;
     });
 
     $scope.goToEvent = function(eventId, index){

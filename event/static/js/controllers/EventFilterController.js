@@ -11,7 +11,7 @@ app.controller('EventFilterController', function ($scope, $http, EventService, A
     ///// END OF SLIDER RANGE CODE
 
     $http.get('/api/v1/activity').then(function (response) {
-        $scope.activities = response.data.results;
+        $scope.activities = response.data;
     });
 
     var query_params = [];
@@ -69,7 +69,7 @@ app.controller('EventFilterController', function ($scope, $http, EventService, A
         var queryString = $scope.getQueryString();
         if (queryString) {
             EventService.getEvents(queryString).then(function(response){
-                $scope.$parent.events = _filterEvents(response.data.results);
+                $scope.$parent.events = _filterEvents(response.data);
             });
         }
     };

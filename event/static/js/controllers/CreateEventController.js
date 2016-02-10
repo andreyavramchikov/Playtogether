@@ -33,11 +33,11 @@ app.controller('CreateEventController', function ($scope, $rootScope, $http, $st
     };
 
     ActivityService.getActivities().then(function (response) {
-        $scope.activities = response.data.results;
+        $scope.activities = response.data;
     });
 
     PlaceService.getPlaces().then(function (response) {
-        $scope.places = response.data.results;
+        $scope.places = response.data;
     });
 });
 

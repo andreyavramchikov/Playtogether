@@ -2,11 +2,11 @@ var app = angular.module('playTogether');
 
 app.controller('UserController', function ($scope, UserService, ActivityService) {
     UserService.getUsers().then(function(response){
-        $scope.users = response.data.results;
+        $scope.users = response.data;
     });
 
     ActivityService.getActivities().then(function(response){
-        $scope.activities = response.data.results;
+        $scope.activities = response.data;
     });
 
     _getFilterData = function(){
@@ -36,7 +36,7 @@ app.controller('UserController', function ($scope, UserService, ActivityService)
 
     _filterUsers = function(){
         UserService.filterUsers(_getFilterData()).then(function(response){
-            $scope.users = response.data.results;
+            $scope.users = response.data;
         });
     };
 
