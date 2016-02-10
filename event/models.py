@@ -135,3 +135,6 @@ class ActivityUsers(models.Model):
 
     def __unicode__(self):
         return 'Activity - {}; User - {}'.format(self.activity, self.user)
+
+    class Meta:
+        unique_together = (('user', 'activity'),)

@@ -4,7 +4,7 @@ from django.views.generic.base import RedirectView
 from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView, GetUserView, CallBackView, \
     CallBackVKView
 from event.views import MainView, PlaceListView, TeamListView, EventListView, CityListView, ActivityListView,\
-    EventCreateView, LandingView, EventUsersUpdate
+    EventCreateView, LandingView, EventUsersUpdate, UserActivitiesUpdate
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework import routers
 
@@ -28,6 +28,7 @@ urlpatterns = patterns('',
 
     url(r'^createevent/$', MainView.as_view(), name='index'),
     url(r'^register/step-1/$', MainView.as_view(), name='index'),
+    url(r'^register/step-5/$', MainView.as_view(), name='index'),
     url(r'^login/$', MainView.as_view(), name='index'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
@@ -39,7 +40,9 @@ urlpatterns = patterns('',
     url(r'^api/v1/user$', UserListView.as_view(), name='event-list'),
     url(r'^api/v1/city$', CityListView.as_view(), name='city-list'),
     url(r'^api/v1/activity$', ActivityListView.as_view(), name='activity-list'),
+
     url(r'^api/v1/updateeventusers/$', EventUsersUpdate.as_view(), name='update-users-event'),
+    url(r'^api/v1/updateuseractivities/$', UserActivitiesUpdate.as_view(), name='update-users-activities'),
 
 
     url(r'^api/v1/getuser/$', GetUserView.as_view(), name='get-user'),

@@ -106,7 +106,13 @@
   }
   // end circle line
 
-  //  STYLIZATION OF PLACEHOLDER - MAYBE SHOULD PLACE THIS CODE INTO COMMON.LESS?????
+}
+
+form#register-step-1, form#login-form {
+
+  .forms-common-mixin;
+
+    //  STYLIZATION OF PLACEHOLDER - MAYBE SHOULD PLACE THIS CODE INTO COMMON.LESS?????
   ::-webkit-input-placeholder {
     line-height: 10px;
     color: gray;
@@ -120,14 +126,12 @@
     transition: line-height 0.5s ease;
   }
   /* Firefox 19+ */
-
   :-ms-input-placeholder {
     color: gray;
     text-overflow: ellipsis;
     line-height: 10px;
     transition: line-height 0.5s ease;
   }
-
   //hide the text in placeholder not working on my current Chrome 45 version
   :focus::-webkit-input-placeholder {
     color: transparent
@@ -148,12 +152,6 @@
     line-height: 100px;
   }
   // END PLACEHOLDERS STYLES
-
-}
-
-form#register-step-1, form#login-form {
-
-  .forms-common-mixin;
 
   input {
     height: 30px;

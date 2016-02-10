@@ -9,6 +9,10 @@ app.service('ActivityService', function($http){
 
     this.createActivity = function(data){
         return $http.post('/api/v1/activity', data)
+    };
+
+    this.updateUserActivities = function(data) {
+      return $http.post('/api/v1/updateuseractivities/', data);
     }
 
 });
