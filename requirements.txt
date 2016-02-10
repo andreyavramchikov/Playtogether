@@ -2,4 +2,4 @@ Django
 MySQL-python==1.2.5
 djangorestframework
 Fabric
-django_filters
+django-filter
