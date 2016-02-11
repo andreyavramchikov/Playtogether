@@ -1,6 +1,6 @@
 var app = angular.module('playTogether');
 
-app.controller('EventFilterController', function ($scope, $http, EventService, AuthenticationService) {
+app.controller('EventFilterController', function ($scope, $http, EventService, ActivityService, AuthenticationService) {
 
      //// CODE FOR SLIDER RANGE - all calculations in minutes
     $scope.minTime = 4 * 60;
@@ -10,7 +10,7 @@ app.controller('EventFilterController', function ($scope, $http, EventService, A
     $scope.userMaxTime = 24 * 60;
     ///// END OF SLIDER RANGE CODE
 
-    $http.get('/api/v1/activity').then(function (response) {
+    ActivityService.getActivities().then(function (response) {
         $scope.activities = response.data;
     });
 
@@ -53,23 +53,11 @@ app.controller('EventFilterController', function ($scope, $http, EventService, A
         return $.param(query_params);
     };
 
-    _filterEvents = function(events){
-        var userId = AuthenticationService.getUserId();
-        _.each(events, function(event, index){
-            if ( _.some(event.event_users, function (event_user) {
-              return event_user === userId;
-            })) {
-                events[index].user_done = true;
-            }
-        });
-        return events;
-    };
-
     _getFilteredEvents = function () {
         var queryString = $scope.getQueryString();
         if (queryString) {
             EventService.getEvents(queryString).then(function(response){
-                $scope.$parent.events = _filterEvents(response.data);
+                $scope.$parent.events = EventService.filterEventsByUser(response.data);
             });
         }
     };

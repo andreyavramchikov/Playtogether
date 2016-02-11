@@ -5,7 +5,7 @@
               ng-click="dateSelected(date)"
               class="dates"
               ng-class="current.value==date.value ? 'active' : ''">
-            [[date.name | limitTo:3]] [[date.value | cutYearFilter]]
+            [[date.name | weekDayFilter]] [[date.value | dateFormatFilter]]
         </span>
     </div>
     <span href="#" ng-click="clickNextWeek()" class="col-xs-1"> > </span>

@@ -2,41 +2,39 @@ var app = angular.module('playTogether',['ui.router','infinite-scroll',
     'authentication', 'ui-rangeSlider',
     'ui.mask', 'ui.bootstrap']);
 
-app.run(function($http, $filter, $rootScope, AuthenticationService) {
+app.run(function($http, $filter, $rootScope, $state, AuthenticationService) {
     //for csrf protection
     $http.defaults.xsrfHeaderName = 'X-CSRFToken';
     $http.defaults.xsrfCookieName = 'csrftoken';
-
-
-    //for DROPDOWN DIRECTIVE ONLY  - WHY? SH
-    //angular.element(document).on("click", function(e) {
-		//$rootScope.$broadcast("documentClicked", angular.element(e.target));
-    //});
 
     //when url changes then dynamicly change the title
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
     });
 
-    AuthenticationService.getUser().then(function(response){
-        console.log(response);
-        AuthenticationService.setAuthenticatedAccount(response.data);
-    }, function(response){
-        console.log(response);
+    $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+        if (!fromState.name){
+            // if we refresh the page then we need huck because .getUser not complited when self function called so
+            // we need to recall it here
+            AuthenticationService.getUser().then(function(response){}, function(){
+                $state.transitionTo("login");
+                event.preventDefault();
+            });
+        }else {
+            if (toState.loginRequired && !AuthenticationService.isAuthenticated()) {
+                // User isn’t authenticated
+                $state.transitionTo("login");
+                event.preventDefault();
+            }
+        }
     });
 
-    //update rootscope to get everywhere dates
-    var day_offset = 24 * 60 * 60 * 1000,
-        today = new Date(),
-        tomorrow = new Date(today.getTime() + day_offset),
-        after_tomorrow = new Date(tomorrow + day_offset),
-        later = new Date(tomorrow - 1000 * day_offset);
-
-    $rootScope.TODAY_DATE = $filter('date')(today, 'yyyy-MM-dd'),
-    $rootScope.TOMORROW_DATE = $filter('date')(tomorrow, 'yyyy-MM-dd'),
-    $rootScope.AFTER_TOMORROW_DATE = $filter('date')(after_tomorrow, 'yyyy-MM-dd'),
-    $rootScope.LATER_DATE = $filter('date')(later, 'yyyy-MM-dd');
-
-    $rootScope.IS_AUTHENTICATED = AuthenticationService.isAuthenticated();
+    AuthenticationService.getUser().then(function(response){
+        AuthenticationService.setAuthenticatedAccount(response.data);
+        $rootScope.authenticatedUser = response.data;
+        $rootScope.IS_AUTHENTICATED = true;
+    }, function(){
+        $rootScope.IS_AUTHENTICATED = false;
+    });
 
 });

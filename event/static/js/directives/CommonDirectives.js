@@ -36,7 +36,8 @@ app.directive("dropdown", function ($rootScope) {
             });
 
             scope.$watch("selected", function (value) {
-                scope.isPlaceholder = scope.selected[scope.property] === undefined;
+                //custom changes - before was scope.isPlaceholder = scope.selected[scope.property] === undefined;
+                scope.isPlaceholder = ((scope.selected[scope.property] === undefined) || (scope.selected[scope.property] === null) );
                 scope.display = scope.selected[scope.property];
             });
         }
@@ -72,5 +73,69 @@ app.directive('updateTitle', function($rootScope, $timeout){
 
         $rootScope.$on('$stateChangeSuccess', listener);
       }
+    };
+});
+
+app.directive('editUpdate', function(AuthenticationService){
+    return {
+        restrict: 'EA',
+        templateUrl: '/static/pages/utils/update_model.html',
+        scope: {
+            field: '=ngModel',
+            label: '@label'
+        },
+        link: function (scope, element, attr) {
+            scope.editClick = function(){
+
+            };
+            scope.save = function(){
+                var data = {};
+                data[attr.name] = scope.field;
+                AuthenticationService.updateProfile(AuthenticationService.getUserId(), data).then(function(){
+                    scope.show = false;
+                });
+            }
+        }
+    };
+});
+
+app.directive('editUpdateselect', function(AuthenticationService){
+    return {
+        restrict: 'EA',
+        templateUrl: '/static/pages/utils/update_select.html',
+        scope: {
+            field: '=ngModel',
+            label: '@label',
+            placeholders: '@placeholders',
+            choices: '=choices'
+        },
+        link: function (scope, element, attr) {
+            scope.save = function(){
+                var data = {};
+                data[attr.name] = scope.field['name'];
+                AuthenticationService.updateProfile(AuthenticationService.getUserId(), data).then(function(){
+                    scope.show = false;
+                });
+            }
+        }
+    };
+});
+
+app.directive('updatePhone', function(AuthenticationService){
+    return {
+        restrict: 'EA',
+        templateUrl: '/static/pages/utils/update_phone_info.html',
+        scope: {
+            account: '=account'
+        },
+        link: function (scope, element, attr) {
+            scope.save = function(){
+                var data = {'phone': scope.account.phone,
+                'sms_notification': scope.account.sms_notification};
+                AuthenticationService.updateProfile(AuthenticationService.getUserId(), data).then(function(){
+                    scope.show = false;
+                });
+            }
+        }
     };
 });

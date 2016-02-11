@@ -114,7 +114,7 @@ class CallBackView(views.APIView):
 
     def get(self, request, *args, **kwargs):
         import requests
-        code = request.QUERY_PARAMS['code']
+        code = request.query_params['code']
         response = requests.post('https://github.com/login/oauth/access_token',
                       {'client_id': '436adf1db1ea1a3b2936',
                        'client_secret': '64f17899194c59f42861c1ece90290810bc04fd1',
@@ -135,7 +135,7 @@ class CallBackVKView(views.APIView):
         import requests
         from django.shortcuts import redirect
         import json
-        code = request.QUERY_PARAMS['code']
+        code = request.query_params['code']
 
         response = requests.get('https://oauth.vk.com/access_token?'
                                  'client_id=5269479&redirect_uri=http://localhost:9000/callbackvk&'

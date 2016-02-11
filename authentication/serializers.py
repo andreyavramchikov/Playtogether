@@ -23,7 +23,7 @@ class ActivityUsersSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
-    phone = serializers.IntegerField(write_only=True, required=False)
+    # phone = serializers.IntegerField(write_only=True, required=False)
     confirm_password = serializers.CharField(write_only=True, required=False)
     activity_users = ActivityUsersSerializer(source='activityusers_set', many=True, read_only=True)
     date_of_birth = serializers.DateField(required=False)

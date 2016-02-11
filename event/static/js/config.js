@@ -9,12 +9,6 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
     $interpolateProvider.endSymbol(']]');
 
     $stateProvider
-        //.state('home', {
-        //    url : '/',
-        //    templateUrl: 'static/pages/main.html',
-        //    controller: 'MainController',
-        //    title: 'Home'
-        //})
         .state('registerStep1', {
             url : '/register/step-1/',
             controller: 'RegisterStep1Controller',
@@ -49,18 +43,21 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             url : '/login/',
             controller: 'LoginController',
             templateUrl: '/static/pages/authentication/login.html',
-            title: 'Войти'
+            title: 'Войти',
+            loginRequired: false
         })
         .state('profile', {
             url : '/profile/',
             controller: 'ProfileController',
             templateUrl: '/static/pages/authentication/profile.html',
-            title: 'Войти'
+            title: 'Аккаунт',
+            loginRequired: true
         })
         .state('logout', {
             url : '/logout',
             controller: 'LogoutController',
-            title: 'Выйти'
+            title: 'Выйти',
+            loginRequired: true
         })
         .state('events', {
             url : '/events/',
@@ -72,7 +69,8 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             url : '/createevent/',
             controller: 'CreateEventController',
             templateUrl: '/static/pages/create_event.html',
-            title: 'Создай событие'
+            title: 'Создай событие',
+            loginRequired: true
         })
         .state('places', {
             url : '/places/',

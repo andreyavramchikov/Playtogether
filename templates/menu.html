@@ -14,14 +14,14 @@
 </nav>
 
 <section class="xs-hide col-md-4 col-lg-3 left">
-    {% if user.is_authenticated %}
-        <div class="col-md-11 col-lg-12 right userinfo ">
-            <a class="right" href="/logout"> Выйти</a>
-            <a class="right" href="/profile/">{{ user.email }}  | </a>
-        </div>
-    {% else %}
-        <a class="col-md-8 col-lg-6 right" href="/register/step-1/">Войти | Регистрация</a>
-    {% endif %}
+    <div class="col-md-11 col-lg-12 right userinfo" ng-show="IS_AUTHENTICATED">
+        <a class="right" href="/logout"> Выйти</a>
+        <a class="right" href="/profile/">[[authenticatedUser.email]]  | </a>
+    </div>
+    <div class="col-md-8 col-lg-6 right" ng-hide="IS_AUTHENTICATED">
+        <a  href="/login/">Войти </a>
+        <a href="/register/step-1/"> | Регистрация</a>
+    </div>
 </section>
 
 <div class="signin col-xs-2 md-hide lg-hide">

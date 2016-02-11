@@ -8,6 +8,10 @@ app.service('AuthenticationService', function($http, $cookies, $rootScope){
         });
     };
 
+    this.updateProfile = function(userId, data){
+        return $http.put('api/v1/accounts/' + userId + '/', data);
+    };
+
     this.registerStep2 = function(userId, data){
         return $http.put('api/v1/accounts/' + userId + '/', data);
     };
