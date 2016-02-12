@@ -1,28 +1,25 @@
 <section id="profile" class="col-xs-12">
-    <div class="col-xs-8">
-        <span>Базовая информация</span>
 
-        <div edit-update ng-model="account.email" label="Email" name="email"></div>
-        <div edit-updateselect
+    <div class="col-xs-11 profile-form">
+        <div update-email ng-model="account.email" label="Email" name="email"></div>
+        <div update-choicefield
              ng-model="account.schedule_to_play"
              choices="schedule_choices"
              label="Частота игры"
              name="schedule_to_play"
              placeholders="Выберите частоту с которой играете">
-
         </div>
-
-        <div edit-updateselect
+        <div update-choicefield
              ng-model="account.sex"
              choices="sex_choices"
              label="Пол"
              name="sex"
              placeholders="Выберите пол">
         </div>
-
         <div update-phone
              account="account">
         </div>
 
     </div>
+
 </section>

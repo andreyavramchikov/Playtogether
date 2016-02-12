@@ -13,6 +13,15 @@ class EmailSender(object):
     def __init__(self):
         pass
 
+    def send_forgot_password_email(self, email, email_msg):
+
+        send_mail(
+            'Forgot your password?',
+            email_msg,
+            settings.EMAIL_HOST_USER,
+            [email],
+        )
+
     def send_email(self, email_user):
         data = {'username': email_user.user.email}
         msg_html = render_to_string('emails/create_event.html', data)

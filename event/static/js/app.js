@@ -13,7 +13,7 @@ app.run(function($http, $filter, $rootScope, $state, AuthenticationService) {
     });
 
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
-        if (!fromState.name){
+        if (toState.loginRequired && !fromState.name){
             // if we refresh the page then we need huck because .getUser not complited when self function called so
             // we need to recall it here
             AuthenticationService.getUser().then(function(response){}, function(){

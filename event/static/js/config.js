@@ -95,6 +95,24 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             controller: 'UserController',
             templateUrl: '/static/pages/users.html',
             title: 'Участники'
+        })
+        .state('forgot-password', {
+            url : '/forgot_password/',
+            controller: 'ForgotPasswordController',
+            templateUrl: '/static/pages/authentication/forgot_password/forgot_password.html',
+            title: 'Забыли пароль'
+        })
+        .state('forgot-password-confirmation', {
+            url : '/forgot_confirmation/:email/',
+            controller: 'ForgotConfirmationController',
+            templateUrl: '/static/pages/authentication/forgot_password/forgot_password_confirmation.html',
+            title: 'Забыли пароль'
+        })
+        .state('reset-password-confirm', {
+            url : '/account/reset_password_confirm/:uidb64;:token/',
+            controller: 'ResetPasswordController',
+            templateUrl: '/static/pages/authentication/forgot_password/reset_password_confirm.html',
+            title: 'Сменить пароль'
         });
 
         //this is for avoiding # in urls, this is not work in all browsers

@@ -70,6 +70,15 @@ app.service('AuthenticationService', function($http, $cookies, $rootScope){
         var account = $cookies.authenticatedAccount;
         if (account){
             return JSON.parse(account).id;
-        } else return
+        } else return;
+    };
+
+    this.forgotPassword = function(data){
+        return $http.post('/api/v1/forgot_password/', data);
+    };
+
+    this.resetConfirm = function(data){
+        return $http.post('/api/v1/reset-confirm/', data);
     }
+
 });

@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView
 from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView, GetUserView, CallBackView, \
-    CallBackVKView
+    CallBackVKView, ForgotPasswordView, ResetPasswordConfirmView
 from event.views import MainView, PlaceListView, TeamListView, EventListView, CityListView, ActivityListView,\
     EventCreateView, LandingView, EventUsersUpdate, UserActivitiesUpdate
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -30,6 +30,7 @@ urlpatterns = patterns('',
     url(r'^createevent/$', MainView.as_view(), name='index'),
     url(r'^register/step-1/$', MainView.as_view(), name='index'),
     url(r'^register/step-5/$', MainView.as_view(), name='index'),
+                       url(r'^forgot_password/$', MainView.as_view(), name='index'),
     url(r'^login/$', MainView.as_view(), name='index'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
@@ -44,6 +45,11 @@ urlpatterns = patterns('',
 
     url(r'^api/v1/updateeventusers/$', EventUsersUpdate.as_view(), name='update-users-event'),
     url(r'^api/v1/updateuseractivities/$', UserActivitiesUpdate.as_view(), name='update-users-activities'),
+
+    url(r'^api/v1/forgot_password/$', ForgotPasswordView.as_view(), name='forgot-password'),
+    url(r'^account/reset_password_confirm/(?P<uidb64>[0-9A-Za-z]+);(?P<token>.+)/$',
+        MainView.as_view(), name='reset_password_confirm'),
+    url(r'^api/v1/reset-confirm/$', ResetPasswordConfirmView.as_view(), name='reset-confirm-api'),
 
 
     url(r'^api/v1/getuser/$', GetUserView.as_view(), name='get-user'),

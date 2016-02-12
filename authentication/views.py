@@ -1,14 +1,23 @@
 import json
 
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from rest_framework import permissions, viewsets, status, views, generics
 from rest_framework.response import Response
+
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.template import loader
+
 
 from authentication.models import User
 from authentication.permissions import IsAccountOwner
 from authentication.serializers import UserSerializer
 
 from django.contrib.auth import authenticate, login, logout
+
+from mail.sender import EmailSender
 
 
 class AccountViewSet(viewsets.ModelViewSet):
@@ -99,6 +108,49 @@ class UserListView(generics.ListCreateAPIView):
         return queryset
 
 
+class ForgotPasswordView(views.APIView):
+
+    def post(self, request, *args, **kwargs):
+        email_template_name = 'emails/reset_password_email.html'
+        email = request.data['email']
+        try:
+            user = User.objects.get(email=email)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            token = default_token_generator.make_token(user)
+            data = {'email': email,
+                    'domain': request.META['HTTP_HOST'],
+                    'site_name': 'Playtogether',
+                    'uid': uid,
+                    'token': token}
+            email_msg = loader.render_to_string(email_template_name, data)
+            EmailSender().send_forgot_password_email(email, email_msg)
+            return Response(status=status.HTTP_200_OK)
+        except ObjectDoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={'errors': {'email': 'No such email in system'}})
+
+
+class ResetPasswordConfirmView(views.APIView):
+
+    def post(self,request, *args, **kwargs):
+        try:
+            uidb64 = request.data['uidb64']
+            token = request.data['token']
+            password = request.data['password']
+            confirm_password = request.data['confirm_password']
+        except KeyError:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        uid = urlsafe_base64_decode(uidb64)
+        user = User.objects.get(pk=uid)
+        if user and default_token_generator.check_token(user, token):
+            # MUST BE CHANGE TO VALIDATE BY FORM
+            if password == confirm_password:
+                user.set_password(confirm_password)
+                user.save()
+                return Response(status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
 class GetUserView(views.APIView):
 
     def get(self, request, *args, **kwargs):
@@ -107,9 +159,6 @@ class GetUserView(views.APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
-
-
 class CallBackView(views.APIView):
 
     def get(self, request, *args, **kwargs):
@@ -127,8 +176,6 @@ class CallBackView(views.APIView):
         print json.loads(info.content)['avatar_url']
         print json.loads(info.content)['login']
         return Response(status=status.HTTP_200_OK)
-
-
 class CallBackVKView(views.APIView):
 
     def get(self, request, *args, **kwargs):

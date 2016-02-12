@@ -1,3 +1,56 @@
-#profile >div{
-  margin: 0 auto;
+.action_button(@color, @background-color, @border, @difference) {
+  display: block;
+  background-color: @background-color;
+  font-family: Courier New;
+  font-size: 20px;
+  line-height: 40px - @difference;
+  text-align: center;
+  color: @color;
+  border: @border;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+#profile {
+  font-size: 13px;
+  input[type='text'] {
+    width: 100%;
+    height: 40px;
+    border: 1px solid gainsboro;
+  }
+
+  .profile-form {
+    margin: 0 auto;
+
+    > div:first-of-type {
+      margin: 20px 0 0 0;
+    }
+
+    header {
+      border-top: 1px solid gainsboro;
+      height: 70px;
+      p {
+        margin: 0;
+        line-height: 70px;
+      }
+      a {
+        line-height: 70px;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    .actions {
+      input[type='button'] {
+        &:nth-child(1) {
+          .action_button(white, #20cfb1, 0, 0);
+        }
+        &:nth-child(2) {
+          .action_button(white, #FF3F45, 0, 0);
+        }
+      }
+    }
+
+  }
+
 }

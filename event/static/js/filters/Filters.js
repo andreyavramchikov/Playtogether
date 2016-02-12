@@ -61,3 +61,15 @@ app.filter('timeRangeFilter', function () {
         return hStr + glue + mStr;
     };
 });
+
+app.filter('boolPresentationFilter', function(){
+    return function (value) {
+        if (value==false){
+            return 'Нет'
+        } else if (value==true){
+            return 'Да'
+        } else {
+            return value
+        }
+    }
+})
