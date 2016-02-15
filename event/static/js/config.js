@@ -90,6 +90,12 @@ app.config(function($locationProvider, $httpProvider, $interpolateProvider, $sta
             templateUrl: '/static/pages/landing/landing.html',
             title: 'Старт'
         })
+        .state('users-to-event', {
+            url : '/users/:eventId',
+            controller: 'UserController',
+            templateUrl: '/static/pages/users.html',
+            title: 'Участники'
+        })
         .state('users', {
             url : '/users/',
             controller: 'UserController',

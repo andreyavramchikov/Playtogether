@@ -87,15 +87,15 @@ class EventUsersUpdate(views.APIView):
         try:
             event_id = request.data['event_id']
             action = request.data['action']
+            user_id = request.data['user_id']
         except KeyError:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-        user = request.user
-        if event_id and user:
+        if event_id and user_id:
             if action == 'create':
-                EventUsers.objects.create(user=user, event_id=event_id)
+                EventUsers.objects.create(user_id=user_id, event_id=event_id)
                 EmailSender().go_to_event(request.user, event_id)
             elif action == 'delete':
-                EventUsers.objects.get(user=user, event_id=event_id).delete()
+                EventUsers.objects.get(user_id=user_id, event_id=event_id).delete()
                 EmailSender().ungo_to_event(request.user, event_id)
             return Response(status=status.HTTP_200_OK)
 

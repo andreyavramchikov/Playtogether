@@ -100,6 +100,11 @@ class UserListView(generics.ListCreateAPIView):
         queryset = super(UserListView, self).get_queryset()
         selected_activity_ids = self.request.query_params.get('selected_activity_ids')
         sex = self.request.query_params.get('sex')
+        event_id = self.request.query_params.get('event_id')
+
+        # get all users which still available to invite to Event
+        if event_id:
+            queryset = queryset.exclude(event__pk=event_id)
 
         if sex:
             queryset = queryset.filter(sex=sex)

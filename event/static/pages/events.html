@@ -56,11 +56,13 @@
                    ng-show="event.user_done">
                     Не пойду
                 </a>
-                <a class="col-xs-12 col-md-6 left lg-hide invite">
+                <a class="col-xs-12 col-md-6 left lg-hide invite"
+                   ng-click="inviteToEvent(event.id)">
                     Пригласить
                 </a>
                 <figure class="col-lg-6 left xs-hide md-hide">
-                    <img class="left-image" src="/static/img/menu.png"/>
+                    <img class="left-image" src="/static/img/menu.png"
+                         ng-click="inviteToEvent(event.id)"/>
                 </figure>
                 <figure class="col-lg-6 left xs-hide md-hide">
                     <img class="right-image" src="/static/img/login.png"

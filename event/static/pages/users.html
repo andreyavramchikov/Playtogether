@@ -40,7 +40,8 @@
                         ></div>
                     </div>
                 </div>
-                <input type="button" class="col-xs-12" value="Пригласить"/>
+                <input type="button" class="col-xs-12" value="Пригласить" ng-click="inviteToEvent(user.id)"/>
+                <input type="button" class="col-xs-12" value="Отприглосить" ng-click="removeFromEvent(user.id)"/>
             </div>
         </div>
     </section>

@@ -1,10 +1,14 @@
 var app = angular.module('playTogether');
 
-app.controller('UserController', function ($scope, UserService, ActivityService) {
+app.controller('UserController', function ($scope, $stateParams, UserService, $state, ActivityService, EventService) {
 
-    UserService.getUsers().then(function(response){
-        $scope.users = response.data;
-    });
+    $scope.eventId = $stateParams.eventId;
+
+    if (!$scope.eventId){
+        UserService.getUsers().then(function(response){
+            $scope.users = response.data;
+        });
+    }
 
     ActivityService.getActivities().then(function(response){
         $scope.activities = response.data;
@@ -29,8 +33,9 @@ app.controller('UserController', function ($scope, UserService, ActivityService)
             selectedActivityIds = _.map(selectedActivity, 'id')
         }
         data = [
-            {name : "selected_activity_ids", value: selectedActivityIds},
-            {name : "sex", value: sex}
+            {name: "selected_activity_ids", value: selectedActivityIds},
+            {name: "sex", value: sex},
+            {name: "event_id", value: $scope.eventId}
         ];
         return $.param(data);
     };
@@ -41,12 +46,28 @@ app.controller('UserController', function ($scope, UserService, ActivityService)
         });
     };
 
-    $scope.$watchGroup(['male', 'female'], function(newValues, oldValues, scope) {
+    $scope.$watchGroup(['male', 'female', 'eventId'], function(newValues, oldValues, scope) {
         _filterUsers();
     });
 
     $scope.$watch('activities', function(newValue, oldValue, scope){
         _filterUsers();
     }, true);
+
+    $scope.inviteToEvent = function(userId){
+        EventService.updateEventUsers({event_id: $scope.eventId,
+            user_id: userId,
+            action: 'create' }).then(function(){
+            alert('success');
+        });
+    };
+
+    $scope.removeFromEvent = function(userId){
+        EventService.updateEventUsers({event_id: $scope.eventId,
+            user_id: userId,
+            action: 'delete' }).then(function(){
+            alert('success');
+        });
+    }
 
 });
