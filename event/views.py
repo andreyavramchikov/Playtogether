@@ -11,10 +11,6 @@ from rest_framework import views
 from mail.sender import EmailSender
 
 
-class LandingView(TemplateView):
-    template_name = 'landing/index.html'
-
-
 class MainView(TemplateView):
     template_name = 'index.html'
 

@@ -105,7 +105,7 @@ class UserListView(generics.ListCreateAPIView):
             queryset = queryset.filter(sex=sex)
         if selected_activity_ids:
             queryset = queryset.filter(activity__pk__in=selected_activity_ids.split(','))
-        return queryset
+        return queryset.distinct()
 
 
 class ForgotPasswordView(views.APIView):

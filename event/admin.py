@@ -18,6 +18,10 @@ class PlaceAdmin(admin.ModelAdmin):
 
 
 class UserAdmin(admin.ModelAdmin):
+
+    list_display = ('email', 'phone', 'sex', 'sms_notification', 'email_notification', 'schedule_to_play', )
+    list_filter = ('sms_notification',)
+
     inlines = (UserEventsInline, UserTeamsInline, ActivityUsersInline)
     save_as = True
 

@@ -1,0 +1,51 @@
+.action_button(@color, @background-color, @border, @difference) {
+  display: block;
+  background-color: @background-color;
+  font-family: Courier New;
+  font-size: 20px;
+  line-height: 40px - @difference;
+  text-align: center;
+  color: @color;
+  border: @border;
+  cursor: pointer;
+  margin-top:5px;
+}
+
+
+#users section {
+  .container {
+    border: 1px solid aliceblue;
+    box-sizing: border-box;
+    max-height: 300px;
+    padding: 15px;
+
+    width: 30%;
+    margin: 20px 0 20px 3.333333%;
+
+    .info {
+      border-bottom: 1px solid gainsboro;
+      margin-bottom: 10px;
+    }
+
+    figure {
+      height: 40px;
+      span {
+        line-height: 40px;
+        float: right;
+      }
+    }
+
+    .activity {
+      &>div{
+        height: 30px;
+      }
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    input[type='button'] {
+      .action_button(white, #FF3F45, 0, 0);
+    }
+
+  }
+}

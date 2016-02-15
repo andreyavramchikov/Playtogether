@@ -259,44 +259,6 @@ form#register-step-4 {
     }
   }
 
-
-  //RATING STARS
-  ul.star-rating {
-    margin:0;
-    padding:0;
-    float: right;
-    .box-size;
-
-    //highlight all but then unhighlight all which goes after element on which we hover; Please look to li{ $:hover} code
-    &:hover li{
-      color: #fd0;
-    }
-
-    li {
-      float: left;
-      display: inline-block;
-      list-style-type: none;
-      font-size: 20px;
-      padding: 1px;
-      color: gray;
-
-      &.filled {
-        color: #fd0;
-      }
-
-      &:hover ~ li {
-        color: gray;
-      }
-
-      i {
-        &:before {
-          content: "\f005";
-          font-family: FontAwesome;
-        }
-      }
-    }
-  }
-
 }
 
 form#register-step-5 {

@@ -1,6 +1,6 @@
 <article id="users">
 
-    <section id="user-filters">
+    <section id="user-filters" class="col-xs-2 left">
         <div class="sex-filter">
             <lable for="">Male</lable>
             <input type="checkbox" name="male" ng-model="male" ng-true-value="'MALE'"/>
@@ -9,23 +9,39 @@
         </div>
         <div class="activities">
             <h3>Activities</h3>
-            <input type="search" ng-model="searchActivity.name" />
+            <input type="search" ng-model="searchActivity.name"/>
             <div ng-repeat="activity in activities | filter: searchActivity">
                 <input type="checkbox" ng-model="activity.selected">
-                <label >[[activity.name]]</label>
+                <label>[[activity.name]]</label>
             </div>
         </div>
     </section>
 
-    <section>
-        <div ng-repeat="user in users" class="col-xs-4 left" style="border: 1px solid gray; margin: 20px; height: 150px; width: 25%;">
-            <p style="margin:0; padding:0">[[user.email]]</p>
-            <p style="margin:0; padding:0">[[user.sex]]</p>
-            <p style="margin:0; padding:0">[[user.phone]]</p>
-            <p style="margin:0; padding:0">sms - [[user.sms_notification]]</p>
-            <p style="margin:0; padding:0">[[user.date_of_birth]]</p>
-            <p style="margin:0; padding:0" ng-repeat="activity_user in user.activity_users">Activity: [[activity_user.activity.name]]</p>
-            <p style="margin:0; padding:0">schedule_to_play - [[user.schedule_to_play]]</p>
+    <section class="col-xs-10 left">
+        <div class="col-xs-11 auto">
+            <div ng-repeat="user in users" class="left container">
+                <div class="info">
+                    <figure>
+                        <img src="/static/img/email.png"/> <span> [[user.email]] </span>
+                    </figure>
+                    <figure>
+                        <img src="/static/img/phone.png"/> <span>[[user.phone || 'Не указан']] </span>
+                    </figure>
+                </div>
+
+                <div class="activity">
+                    <div ng-repeat="activity_user in user.activity_users" class="col-xs-12 hidden">
+                        <label class="col-xs-6 col-md-4 col-lg-4 left">[[activity_user.activity.name]]</label>
+                        <div star-rating
+                             class="col-xs-6 col-md-8 col-lg-8 right"
+                             ng-model="activity_user.activity.level"
+                             data-initial-rating="[[activity_user.level || '0']]"
+                             mode="read"
+                        ></div>
+                    </div>
+                </div>
+                <input type="button" class="col-xs-12" value="Пригласить"/>
+            </div>
         </div>
     </section>
 </article>

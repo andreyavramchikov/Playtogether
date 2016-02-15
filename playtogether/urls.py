@@ -4,7 +4,7 @@ from django.views.generic.base import RedirectView
 from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView, GetUserView, CallBackView, \
     CallBackVKView, ForgotPasswordView, ResetPasswordConfirmView
 from event.views import MainView, PlaceListView, TeamListView, EventListView, CityListView, ActivityListView,\
-    EventCreateView, LandingView, EventUsersUpdate, UserActivitiesUpdate
+    EventCreateView, EventUsersUpdate, UserActivitiesUpdate
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework import routers
 
@@ -29,7 +29,7 @@ urlpatterns = patterns('',
 
     url(r'^createevent/$', MainView.as_view(), name='index'),
     url(r'^register/step-1/$', MainView.as_view(), name='index'),
-    url(r'^register/step-5/$', MainView.as_view(), name='index'),
+    url(r'^register/step-4/$', MainView.as_view(), name='index'),
                        url(r'^forgot_password/$', MainView.as_view(), name='index'),
     url(r'^login/$', MainView.as_view(), name='index'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

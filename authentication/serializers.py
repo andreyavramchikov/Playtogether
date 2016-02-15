@@ -18,7 +18,7 @@ class ActivityUsersSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ActivityUsers
-        fields = ('user', 'activity')
+        fields = ('user', 'activity', 'level')
 
 
 class UserSerializer(serializers.ModelSerializer):
