@@ -54,6 +54,8 @@ app.controller('UserController', function ($scope, $stateParams, UserService, $s
         _filterUsers();
     }, true);
 
+
+    //SHOULD BE CHANGED TO JUST SEND EMAIL OF INVITATION
     $scope.inviteToEvent = function(userId, index){
         EventService.updateEventUsers({event_id: $scope.eventId,
             user_id: userId,
@@ -62,6 +64,7 @@ app.controller('UserController', function ($scope, $stateParams, UserService, $s
         });
     };
 
+    //SHOULD BE CHANGED TO JUST SEND EMAIL OF INVITATION
     $scope.removeFromEvent = function(userId, index){
         EventService.updateEventUsers({event_id: $scope.eventId,
             user_id: userId,

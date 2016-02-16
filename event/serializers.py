@@ -1,13 +1,7 @@
 from rest_framework import serializers
 from authentication.models import User
 from authentication.serializers import UserSerializer
-from event.models import Place, Team, Event, Activity, EventUsers, TeamActivities, TeamUsers, City
-
-
-class CitySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = City
+from event.models import Place, Team, Event, Activity, EventUsers, TeamActivities, TeamUsers
 
 
 class ActivitySerializer(serializers.ModelSerializer):
@@ -68,8 +62,8 @@ class EventSerializer(serializers.ModelSerializer):
     activity = ActivitySerializer(read_only=True, required=False)
     place = EventPlaceSerializer(read_only=True)
     event_users = serializers.SerializerMethodField(read_only=True)
-    city = CitySerializer(required=False)
     count_of_members = serializers.SerializerMethodField(read_only=True)
+    remaining_spots = serializers.SerializerMethodField(read_only=True)
 
     """
     BAD Example of serializing ManyToMany model - need to be refactored
@@ -81,11 +75,14 @@ class EventSerializer(serializers.ModelSerializer):
     def get_count_of_members(self, instance):
         return EventUsers.objects.filter(event_id=instance.id).count()
 
+    def get_remaining_spots(self, instance):
+        return instance.min_people - self.get_count_of_members(instance)
+
     class Meta:
         model = Event
-        fields = ('id', 'activity', 'place', 'city', 'start_date',
+        fields = ('id', 'activity', 'place', 'start_date',
                   'end_date', 'min_people', 'max_people',
-                  'is_paid', 'cost', 'description', 'event_users', 'count_of_members')
+                  'is_paid', 'cost', 'description', 'event_users', 'count_of_members', 'remaining_spots')
 
 
 #NEED TO THINK HOW TO COMBINE THIS CLASS WITH EventSerializer

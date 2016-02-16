@@ -11,11 +11,11 @@ app.controller('ProfileController', function ($scope, $rootScope, TeamService, A
         $rootScope.$broadcast("documentClicked", angular.element(e.target));
     });
 
-    $scope.schedule_choices = [{name: 'ALWAYS'},
-        {name: 'WEEKDAY'},
-        {name: 'WEEKEND'}];
+    $scope.schedule_choices = [{name: 'ВСЕГДА'},
+        {name: 'БУДНИ'},
+        {name: 'ВЫХОДНЫЕ'}];
 
-    $scope.sex_choices = [{name: 'MALE'},
-        {name: 'FEMALE'}];
+    $scope.sex_choices = [{name: 'МУЖСКОЙ'},
+        {name: 'ЖЕНСКИЙ'}];
 
 });

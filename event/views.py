@@ -4,8 +4,8 @@ from django.views.generic.base import TemplateView
 from rest_framework import generics, filters, status
 from rest_framework.response import Response
 from authentication.serializers import ActivitySerializer
-from event.models import Place, Team, Event, City, Activity, EventUsers, ActivityUsers
-from event.serializers import PlaceSerializer, TeamSerializer, EventSerializer, CitySerializer, EventCreateSerializer
+from event.models import Place, Team, Event, Activity, EventUsers, ActivityUsers
+from event.serializers import PlaceSerializer, TeamSerializer, EventSerializer, EventCreateSerializer
 from rest_framework import views
 
 from mail.sender import EmailSender
@@ -67,12 +67,6 @@ class EventCreateView(generics.CreateAPIView):
         except (AttributeError, KeyError):
             pass
         return create
-
-
-class CityListView(generics.ListCreateAPIView):
-    queryset = City.objects.all()
-    serializer_class = CitySerializer
-    paginate_by = 100
 
 
 class ActivityListView(generics.ListCreateAPIView):

@@ -26,13 +26,17 @@
     <section class="col-xs-12 col-md-8 col-lg-9 left">
 
         <div ng-controller="DateFilterController">
-            <span week-date dates="dates" ng-model="currentDate" ng-change="changeDate()" currentweek="currentweek"></span>
+            <span week-date dates="dates" ng-model="currentDate" ng-change="changeDate()"
+                  currentweek="currentweek"></span>
         </div>
-        <div class="col-xs-6 col-md-6 col-lg-4 left" ng-class="{'active': event.user_done}" ng-repeat="event in events">
-            <figure class="relative">
+
+        <div class="col-xs-6 col-md-6 col-lg-4 left"
+             ng-repeat="event in events">
+
+            <figure class="relative" ng-class="{'active': event.user_done}">
                 <img class="event-image" src="/static/img/[[event.activity.name]].png"/>
-                <div class="remaining-spots absolute">
-                    <h3>[[event.min_people - event.count_of_members]]</h3>
+                <div class="remaining-spots count-[[event.remaining_spots]]  absolute">
+                    <h3>[[event.remaining_spots]]</h3>
                     <h3>мест(a)</h3>
                 </div>
                 <h3 class="event-bottom">[[event.activity.name]]</h3>
@@ -44,11 +48,10 @@
             </div>
             <div class="description-right col-xs-12 col-md-6 col-lg-6 left">
                 <h3>[[event.count_of_members]] участников</h3>
-                <h3>еще [[event.min_people - event.count_of_members]] мест</h3>
+                <h3>еще [[event.remaining_spots]] мест</h3>
                 <h3>[[event.place.name]]</h3>
             </div>
-
-            <div class="actions">
+            <div class="actions" ng-hide="!event.user_done && event.remaining_spots==0">
                 <a class="col-xs-12 col-md-6 left lg-hide go"
                    ng-click="goToEvent(event.id, $index)"
                    ng-hide="event.user_done">

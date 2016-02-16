@@ -1,17 +1,11 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from authentication.models import User
 
 
-class City(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-
-    def __unicode__(self):
-        return self.name
-
-
 class Place(models.Model):
     name = models.CharField(max_length=255)
-    city = models.ForeignKey(City)
     address = models.TextField()
     website = models.CharField(max_length=255, blank=True)
     email = models.EmailField(unique=True, blank=True)
@@ -20,6 +14,10 @@ class Place(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = u'Место'
+        verbose_name_plural = u'Места'
 
 
 class Activity(models.Model):
@@ -38,6 +36,10 @@ class Activity(models.Model):
     def __unicode__(self):
         return self.name
 
+    class Meta:
+        verbose_name = u'Активность'
+        verbose_name_plural = u'Активности'
+
 
 class ActivityPlaces(models.Model):
     activity = models.ForeignKey(Activity)
@@ -45,6 +47,7 @@ class ActivityPlaces(models.Model):
 
     def __unicode__(self):
         return 'Activity - {}; Place - {}'.format(self.activity, self.place)
+
 
 
 class Team(models.Model):
@@ -55,7 +58,6 @@ class Team(models.Model):
         (CLOSED, 'CLOSED'),
     )
     name = models.CharField(max_length=255)
-    city = models.ForeignKey(City, null=True, blank=True)
     type = models.CharField(max_length=255, choices=TYPE_CHOICES, default=OPENED)
     max_people = models.IntegerField(null=True, blank=True)
     is_captain = models.BooleanField(default=False)
@@ -64,6 +66,10 @@ class Team(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        verbose_name = u'Команда'
+        verbose_name_plural = u'Команды'
 
 
 class TeamActivities(models.Model):
@@ -86,7 +92,6 @@ class TeamActivities(models.Model):
 class Event(models.Model):
     activity = models.ForeignKey(Activity)
     place = models.ForeignKey(Place, null=True, blank=True)
-    city = models.ForeignKey(City, null=True, blank=True)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField(null=True, blank=True)
     min_people = models.IntegerField()
@@ -98,6 +103,10 @@ class Event(models.Model):
 
     def __unicode__(self):
         return '{} - {}'.format(self.activity.name, self.start_date)
+
+    class Meta:
+        verbose_name = u'Событие'
+        verbose_name_plural = u'События'
 
 
 class EventUsers(models.Model):

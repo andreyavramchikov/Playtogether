@@ -26,13 +26,6 @@ app.controller('EventFilterController', function ($scope, $http, EventService, A
             {name : "selected_activity_ids", value: selectedActivityIds}
         ];
 
-        if ($scope.selectedCity != undefined && $scope.selectedCity != null) {
-            query_params.city = $scope.selectedCity;
-        }
-        if ($scope.is_paid != undefined && $scope.is_paid != null) {
-            query_params.is_paid = $scope.is_paid;
-        }
-
         if ($scope.selectedActivity != undefined && $scope.selectedActivity != null) {
             query_params.activity__name = $scope.selectedActivity;
         }

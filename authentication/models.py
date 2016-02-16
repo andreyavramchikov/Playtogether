@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import BaseUserManager
 from django.db import models
@@ -25,19 +27,19 @@ class AccountManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    ALWAYS = 'ALWAYS'
-    WEEKDAY = 'WEEKDAY'
-    WEEKEND = 'WEEKEND'
+    ALWAYS = u'ВСЕГДА'
+    WEEKDAY = u'БУДНИ'
+    WEEKEND = u'ВЫХОДНЫЕ'
     FREQUENCY_CHOICES = (
-        (ALWAYS, 'ALWAYS'),
-        (WEEKDAY, 'WEEKDAY'),
-        (WEEKEND, 'WEEKEND'),
+        (ALWAYS, u'ВСЕГДА'),
+        (WEEKDAY, u'БУДНИ'),
+        (WEEKEND, u'ВЫХОДНЫЕ'),
     )
-    MALE = 'MALE'
-    FEMALE = 'FEMALE'
+    MALE = u'МУЖСКОЙ'
+    FEMALE = u'ЖЕНСКИЙ'
     SEX_CHOICES = (
-        (MALE, 'MALE'),
-        (FEMALE, 'FEMALE'),
+        (MALE, u'МУЖСКОЙ'),
+        (FEMALE, u'ЖЕНСКИЙ'),
     )
 
     email = models.EmailField(unique=True)
@@ -83,4 +85,8 @@ class User(AbstractBaseUser):
 
     def __unicode__(self):
         return self.email
+
+    class Meta:
+        verbose_name = u'Пользователь'
+        verbose_name_plural = u'Пользователи'
 
