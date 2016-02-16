@@ -1,6 +1,6 @@
 <article id="users">
 
-    <section id="user-filters" class="col-xs-2 left">
+    <section id="user-filters" class="col-xs-12 col-md-2 col-lg-2 left">
         <div class="sex-filter">
             <lable for="">Male</lable>
             <input type="checkbox" name="male" ng-model="male" ng-true-value="'MALE'"/>
@@ -17,9 +17,9 @@
         </div>
     </section>
 
-    <section class="col-xs-10 left">
-        <div class="col-xs-11 auto">
-            <div ng-repeat="user in users" class="left container">
+    <section class="col-xs-12 col-md-10 col-lg-10 left">
+        <div class="col-xs-11 col-md-11 col-lg-11 auto">
+            <div ng-repeat="user in users" class="left container col-xs-12 col-md-6">
                 <div class="info">
                     <figure>
                         <img src="/static/img/email.png"/> <span> [[user.email]] </span>
@@ -40,8 +40,15 @@
                         ></div>
                     </div>
                 </div>
-                <input type="button" class="col-xs-12" value="Пригласить" ng-click="inviteToEvent(user.id)"/>
-                <input type="button" class="col-xs-12" value="Отприглосить" ng-click="removeFromEvent(user.id)"/>
+                <div class="actions" ng-show="eventId">
+                    <input type="button" class="col-xs-12"
+                           value="Пригласить" ng-hide='user.come_to_event'
+                           ng-click="inviteToEvent(user.id, $index)"/>
+
+                    <input type="button" class="col-xs-12"
+                           value="Отприглосить" ng-show="user.come_to_event"
+                           ng-click="removeFromEvent(user.id, $index)"/>
+                </div>
             </div>
         </div>
     </section>

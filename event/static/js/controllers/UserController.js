@@ -54,19 +54,19 @@ app.controller('UserController', function ($scope, $stateParams, UserService, $s
         _filterUsers();
     }, true);
 
-    $scope.inviteToEvent = function(userId){
+    $scope.inviteToEvent = function(userId, index){
         EventService.updateEventUsers({event_id: $scope.eventId,
             user_id: userId,
             action: 'create' }).then(function(){
-            alert('success');
+                $scope.users[index].come_to_event = true;
         });
     };
 
-    $scope.removeFromEvent = function(userId){
+    $scope.removeFromEvent = function(userId, index){
         EventService.updateEventUsers({event_id: $scope.eventId,
             user_id: userId,
             action: 'delete' }).then(function(){
-            alert('success');
+                $scope.users[index].come_to_event = false;
         });
     }
 

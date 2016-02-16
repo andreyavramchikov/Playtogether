@@ -1,5 +1,21 @@
 var app = angular.module('playTogether');
 
+app.directive("customSelect", function(){
+    return {
+        restrict: 'E',
+        templateUrl: '/static/pages/utils/custom-select.html',
+        scope: {
+            elements: '=elements',
+            selected: '=ngModel',
+            placeholder: '@placeholder'
+        },
+        replace: true,
+        link: function(scope){
+
+        }
+    }
+});
+
 //Directive to create custom beautiful dropdown
 app.directive("dropdown", function ($rootScope) {
     return {

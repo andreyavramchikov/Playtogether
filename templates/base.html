@@ -42,13 +42,14 @@
 
 </head>
 
-<body>
+<body ng-controller="BodyController">
 
 {% block mobile_menu %}
     <input type="checkbox" id="mobile-menu-input">
     <label for="mobile-menu-input" onclick></label>
     {#    Should be separate from other content because of moving other content to right - effect#}
-    {% include 'mobile_menu.html' %}
+{#    {% include 'mobile_menu.html' %}#}
+    <mobile-menu menuitems="menuitems"></mobile-menu>
 {% endblock %}
 
 <main>

@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^profile/$', MainView.as_view(), name='index'),
 
     url(r'^createevent/$', MainView.as_view(), name='index'),
+    url(r'^users/(?P<id>[0-9]+)/$', MainView.as_view(), name='index'),
     url(r'^register/step-1/$', MainView.as_view(), name='index'),
     url(r'^register/step-4/$', MainView.as_view(), name='index'),
                        url(r'^forgot_password/$', MainView.as_view(), name='index'),

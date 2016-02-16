@@ -68,7 +68,7 @@
     left: -600px;
     overflow-y: auto;
     opacity: 0;
-    background-color: #455868;
+    background-color: #131b4d;
     transition-duration: .3s, .5s;
     transition-timing-function: ease-in-out;
     transition-property: left, opacity, box-shadow;
@@ -81,18 +81,25 @@
       li {
         display: block;
         padding: 7px 0 7px 0;
-        border-bottom: 1px solid white;
+        border-bottom: 2px solid #131b4d;
         width: 100%;
         text-align: left;
         margin: 0;
-        background-color: #455868;
+        background-color: #101742;
 
         a {
-          color: #fff;
           text-decoration: none;
           font: 1.4em 'Open Sans', sans-serif;
-          transition: color .3s ease-in-out;
-          padding: 0 10px 0 10px;
+          transition: color 0.3s ease-in-out;
+          width: 100%;
+          display: block;
+          box-sizing: border-box;
+          padding: 0 10px 0 20px;
+          margin: 0;
+          color: #FFF;
+          font-size: 16px;
+          line-height: 42px;
+          background: #101742;
 
           &:after {
             position: absolute;

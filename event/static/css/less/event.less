@@ -61,6 +61,19 @@
       font-size: 20px;
     }
 
+    .remaining-spots {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      background-color: rgba(255, 255, 255, 0.65);
+      padding: 5px 10px;
+      h3 {
+        font-size: 15px;
+        line-height: 20px;
+        text-align: center;
+      }
+    }
+
 
     > div {
       .box_sizing;
@@ -123,16 +136,29 @@
       font-size: 16px;
     }
 
-    .event-bottom {
-      height: 50px;
-      padding: 0 10px;
-      line-height: 50px - 4px;  // the bug with differences between div and inline image on 4px;MUST FIX THIS
-      font-family: "Courier New";
-      font-weight: normal;
-      font-size: 25px;
+
+
+    .remaining-spots {
+        padding: 10px 20px;
+        left: 20px;
+      h3 {
+        font-size: 20px;
+        line-height: 30px;
+      }
     }
 
+
     section {
+
+      .event-bottom {
+        height: 50px;
+        padding: 0 10px;
+        line-height: 50px - 4px;  // the bug with differences between div and inline image on 4px;MUST FIX THIS
+        font-family: "Courier New";
+        font-weight: normal;
+        font-size: 25px;
+      }
+
       .description-left h3{
         text-align: left;
         border-right: 1px solid gray;
@@ -157,6 +183,9 @@
 @media (min-width: 1025px) {
   #events {
 
+
+
+
     .date-range-line {
       height: 40px;
       line-height: 40px;
@@ -164,10 +193,19 @@
     }
 
     section {
+      .remaining-spots {
+        padding: 10px 20px;
+        left: 20px;
+      h3 {
+        font-size: 20px;
+        line-height: 30px;
+      }
+    }
+
       .actions {
         figure {
           position: relative;
-          height: 30px;
+          height: 40px;
         }
       }
 

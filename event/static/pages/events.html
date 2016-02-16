@@ -28,10 +28,13 @@
         <div ng-controller="DateFilterController">
             <span week-date dates="dates" ng-model="currentDate" ng-change="changeDate()" currentweek="currentweek"></span>
         </div>
-
-        <div class="col-xs-6 col-md-4 col-lg-4 left" ng-class="{'active': event.user_done}" ng-repeat="event in events">
+        <div class="col-xs-6 col-md-6 col-lg-4 left" ng-class="{'active': event.user_done}" ng-repeat="event in events">
             <figure class="relative">
                 <img class="event-image" src="/static/img/[[event.activity.name]].png"/>
+                <div class="remaining-spots absolute">
+                    <h3>[[event.min_people - event.count_of_members]]</h3>
+                    <h3>мест(a)</h3>
+                </div>
                 <h3 class="event-bottom">[[event.activity.name]]</h3>
             </figure>
 
@@ -61,11 +64,11 @@
                     Пригласить
                 </a>
                 <figure class="col-lg-6 left xs-hide md-hide">
-                    <img class="left-image" src="/static/img/menu.png"
+                    <img class="left-image" src="/static/img/invite.png"
                          ng-click="inviteToEvent(event.id)"/>
                 </figure>
                 <figure class="col-lg-6 left xs-hide md-hide">
-                    <img class="right-image" src="/static/img/login.png"
+                    <img class="right-image" src="/static/img/Go.png"
                          ng-click="goToEvent(event.id, $index)"
                          ng-hide="event.user_done"/>
                     <img class="right-image" src="/static/img/minus.png"

@@ -1,9 +1,9 @@
 <form id="create-event" name="createEventForm" ng-submit="createEventForm.$valid && createEvent()">
+
     <dropdown class="col-xs-12 xs-hide" placeholder="Выбери чертов спорт.." list="activities" selected="selectedActivity" property="name"></dropdown>
-    <select class="col-xs-12 md-hide lg-hide"
-            ng-options="activity as activity.name for activity in activities"
-            ng-model="selectedActivity" placeholder="sdfasdf">
-    </select>
+
+    <custom-select elements="activities" ng-model="selectedActivity" placeholder="Выбери чертов спорт.."></custom-select>
+
     <div class="col-xs-12">
         <input type="text" data-field="datetime" readonly ng-model="start_date" placeholder="Когда играем?">
         <div id="dtBox"></div>
@@ -19,6 +19,9 @@
 
     <div class="errors" ng-model="errors.min_people">[[errors.min_people]]</div>
 
-    <input type="text" id="address" ng-model="description" placeholder="Где игра будет проходить">
-    <input type="submit" value="Save" class="col-xs-12">
+    <input type="text" id="address" ng-model="description" placeholder="Где игра будет проходить!">
+    <label>Ищите на карте! Затем кликните чтобы поставить маркер! После перетяните маркер на местро где вы хотите играть </label>
+    <div id="map" style="width:100%; height: 300px;"></div>
+
+    <input type="submit" value="Создать" class="col-xs-12">
 </form>
