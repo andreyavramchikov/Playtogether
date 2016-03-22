@@ -1,7 +1,9 @@
+"use strict";
+
 var app = angular.module('authentication');
 
-app.controller('LogoutController', function ($http, $scope, $rootScope, $location, $state, AuthenticationService) {
-    AuthenticationService.logout().then(function(response){
+app.controller('LogoutController', function ($rootScope, $state, AuthenticationService) {
+    AuthenticationService.logout().then(function () {
         AuthenticationService.unauthenticate();
 
         //this two lines duplicate cookie functionality - maybe I should delete all cookie functionality

@@ -1,242 +1,60 @@
-.box_sizing {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+@import "share.less";
 
-}
+section#event {
 
-.action_button(@color, @background-color, @border, @difference) {
-  display: block;
-  background-color: @background-color;
-  font-family: Courier New;
-  font-size: 20px;
-  line-height: 40px - @difference;
-  text-align: center;
-  color: @color;
-  border: @border;
-  cursor: pointer;
-  margin-top:5px;
-}
-
-#events {
-
-  #filters {
-    .box_sizing;
-    padding: 0px 1%;
-    .activities {
-      h3 {
-        font-family: serif;
-        font-size: 24px;
-        color: gray;
-        text-align: center;
-      }
-      .collapsed-activities {
-        input[type='checkbox'] {
-          width: 25px;
-          height: 25px;
-        }
-        label {
-          float: right;
-          font-size: 24px;
-        }
-      }
-    }
+  header {
+    height: 30px;
+    background-color: black;
+    color: white;
   }
 
-  section {
+  .container {
+    padding: 40px;
+  }
 
-    .active {
-        opacity: 0.5;
+  .info {
+    .box-sizing;
+    padding: 0 2%;
+    .block {
+      .box-sizing;
+      padding: 10px;
+      border-bottom: 1px solid gainsboro;
+      font-family: Arial, Helvetica, sans-serif;
+      color: gray;
+      font-size: 14px;
+      height: 60px;
+      span {
+        line-height: 40px;
       }
+      .label {
 
-    .event-image {
-      max-width: 100%;
-    }
-    .event-bottom {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      background-color: rgba(255, 255, 255, 0.65);
-      height: 35px;
-      padding: 0 10px;
-      line-height: 35px - 4px;
-      font-family: "Courier New";
-      font-weight: normal;
-      font-size: 20px;
-    }
-
-    .remaining-spots {
-      position: absolute;
-      top: 0;
-      left: 10px;
-      background-color: rgba(255, 255, 255, 0.65);
-      padding: 5px 10px;
-      h3 {
-        font-size: 15px;
-        line-height: 20px;
-        text-align: center;
       }
-    }
+      .value {
 
-    .remaining-spots.count-0 {
-      h3 {
-        color: white;
       }
-      background-color: rgba(255, 0, 0, 0.65);
-    }
+      .change {
 
-
-    > div {
-      .box_sizing;
-      padding: 10px 1% 20px 1%;
-    }
-
-    div h3 {
-      font-family: "Courier New";
-      font-size: 18px;
-      font-weight: normal;
-      text-align: right;
+      }
     }
 
     .actions {
-      a.go{
-        .action_button(white, #20cfb1, 0, 0);
-      }
-      a.ungo{
-        .action_button(white, #FF3F45, 0, 0);
-      }
-      a.invite{
-        .action_button(#FF3F45, white, 2px solid #20cfb1, 4);
-        .box_sizing;
-      }
-    }
-  }
-
-  .date-range-line {
-    height: 40px;
-    line-height: 15px;
-    font-size: 14px;
-    span {
-      cursor: pointer;
-      color: #252a40;
-      text-transform: uppercase;
-      float: left;
-      display: block;
-      text-align: center;
-      &:hover {
-        color: #20cfb1;
-      }
-    }
-    span.dates {
-      width: 14.28%;
-    }
-    span.active {
-      color: #20cfb1;
-    }
-  }
-
-}
-
-/*Tablet*/
-@media (min-width: 768px)
-  and (max-width: 1024px) {
-  #events {
-    .date-range-line {
-      height: 40px;
-      line-height: 40px;
-      font-size: 16px;
-    }
-
-
-
-    .remaining-spots {
-        padding: 10px 20px;
-        left: 20px;
-      h3 {
-        font-size: 20px;
-        line-height: 30px;
-      }
-    }
-
-
-    section {
-
-      .event-bottom {
-        height: 50px;
-        padding: 0 10px;
-        line-height: 50px - 4px;  // the bug with differences between div and inline image on 4px;MUST FIX THIS
-        font-family: "Courier New";
-        font-weight: normal;
-        font-size: 25px;
-      }
-
-      .description-left h3{
-        text-align: left;
-        border-right: 1px solid gray;
-        .box_sizing;
-      }
-
-      .description-right h3{
-        text-align: right;
-      }
-
-      .actions {
-        a:nth-child(1) {
-          float: right;
+      input[type='button'] {
+        &:nth-child(1) {
+          .action_button(white, #20cfb1, 0, 0);
+        }
+        &:nth-child(2) {
+          .action_button(white, #FF3F45, 0, 0);
         }
       }
-
     }
+
   }
-}
 
-/*Desktop*/
-@media (min-width: 1025px) {
-  #events {
-
-
-
-
-    .date-range-line {
-      height: 40px;
-      line-height: 40px;
-      font-size: 16px;
-    }
-
-    section {
-      .remaining-spots {
-        padding: 10px 20px;
-        left: 20px;
-      h3 {
-        font-size: 20px;
-        line-height: 30px;
-      }
-    }
-
-      .actions {
-        figure {
-          position: relative;
-          height: 40px;
-        }
-      }
-
-//      copy past from tablet styles - need to read best practice and organize in ONE SAMPLE OF CODE
-      .description-left h3{
-        text-align: left;
-        border-right: 1px solid gray;
-        .box_sizing;
-      }
-
-      .description-right h3{
-        text-align: right;
-      }
-
-
-
-//  END COPY PAST
-    }
-    #filters {
-
+  .actions {
+    padding: 0 1%;
+    .box-sizing;
+    a {
+      .action_button(white, #FF3F45, 0, 0);
     }
   }
 }

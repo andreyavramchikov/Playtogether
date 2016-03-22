@@ -1,0 +1,9 @@
+<section class="relative">
+    <input type="text"
+           placeholder="Выберите адрес или название места"
+           name="openstreetsearch"
+           ng-change="search()"
+           ng-model="model"
+    />
+    <custom-autocomplete data-items="items" selected-name="model"></custom-autocomplete>
+</section>

@@ -1,0 +1,15 @@
+<nav id="mobile-menu" class="lg-hide md-hide">
+    <ul ng-click="closeMobileMenu()">
+        <li ng-show="IS_AUTHENTICATED"><a ui-sref="profile">Аккаунт</a></li>
+        <li ng-hide="IS_AUTHENTICATED"><a ui-sref="login">Войти</a></li>
+        <li ng-hide="IS_AUTHENTICATED"><a ui-sref="register-step-1">Регистрация</a></li>
+
+        <li><a ui-sref="events">События</a></li>
+        <li><a ui-sref="createevent">Новое</a></li>
+        <li><a ui-sref="users">Участники</a></li>
+        <li><a ui-sref="teams">Команды</a></li>
+        <li><a ui-sref="places">Места</a></li>
+
+        <li ng-show="IS_AUTHENTICATED"><a ui-sref="logout">Выйти</a></li>
+    </ul>
+</nav>

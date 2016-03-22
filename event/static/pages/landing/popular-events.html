@@ -4,46 +4,16 @@
         <div>СОСТОЯВШИХСЯ СОБЫТИЙ ЗА ГОД!</div>
     </div>
 
-    <div class="row text-center popular-text">ПОПУЛЯРНЫЕ ВИДЫ СПОРТА</div>
+    <div class="text-center popular-text">ПОПУЛЯРНЫЕ ВИДЫ СПОРТА</div>
 
-    <div class="row" ng-repeat="x in [2,4,5]">
-        <div class="col-xs-6 col-md-4 col-lg-3 col-lg-offset-1 event-container left">
-            <div class="row-95">
-                <div class="event relative row">
-                    <img class="row" src="/static/img/event.png"/>
-
-                    <div class="absolute event-bottom">
-                        <span class="event-name">Волейбол</span>
-                    </div>
-                </div>
-            </div>
+    <section class="sports col-xs-12 col-md-12 col-lg-12">
+        <div class="col-xs-4 col-md-3 col-lg-3"
+             ng-repeat="activity in activities | limitTo : 8" ng-click="goToActivityEvents(activity.id)">
+            <figure class="relative">
+                <img class="image" ng-src="/static/img/[[activity.name]].png"/>
+                <h3 class="bottom">[[activity.name]]</h3>
+            </figure>
         </div>
-
-        <div class="col-xs-6 col-md-4 col-lg-3 col-lg-offset-0-5 event-container left">
-            <div class="row-95">
-                <div class="event relative row">
-                    <img class="row" src="/static/img/event.png"/>
-
-                    <div class="absolute event-bottom">
-                        <span class="event-name">Волейбол</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-xs-6 col-md-4 col-lg-3 col-lg-offset-0-5 event-container left xs-hide">
-            <div class="row-95">
-                <div class="event relative row">
-                    <img class="row" src="/static/img/event.png"/>
-
-                    <div class="absolute event-bottom">
-                        <span class="event-name">Волейбол</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
+    </section>
 
 </div>

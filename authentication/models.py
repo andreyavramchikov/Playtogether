@@ -8,7 +8,7 @@ from django.db import models
 class AccountManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
         if not email:
-            raise ValueError('Users must have a valid email address.')
+            raise ValueError(u'Users must have a valid email address.')
 
         account = self.model(email=self.normalize_email(email))
 

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from authentication.models import User
 from authentication.serializers import UserSerializer
-from event.models import Place, Team, Event, Activity, EventUsers, TeamActivities, TeamUsers
+from event.models import Place, Event, Activity, EventUsers
 
 
 class ActivitySerializer(serializers.ModelSerializer):
@@ -18,36 +18,6 @@ class PlaceSerializer(serializers.ModelSerializer):
         model = Place
         fields = ('id', 'name', 'city', 'address',
                   'website', 'email', 'phone', 'is_paid')
-
-
-class TeamActivitiesSerializer(serializers.ModelSerializer):
-    activity = ActivitySerializer()
-
-    class Meta:
-        model = TeamActivities
-        fields = ('activity', 'team', 'level')
-
-
-class TeamUsersSerializer(serializers.ModelSerializer):
-
-    user = UserSerializer()
-
-    class Meta:
-        model = TeamUsers
-        fields = ('team', 'user')
-
-
-class TeamSerializer(serializers.ModelSerializer):
-
-    """
-    Example of serializing ManyToMany model
-    """
-    team_activities = TeamActivitiesSerializer(source='teamactivities_set', many=True)
-    team_users = TeamUsersSerializer(source='teamusers_set', many=True)
-
-    class Meta:
-        model = Team
-        fields = ('team_activities', 'team_users', 'name', 'city', 'type')
 
 
 class EventPlaceSerializer(serializers.ModelSerializer):

@@ -1,17 +1,19 @@
+"use strict";
+
 var app = angular.module('authentication');
 
-app.controller('RegisterStep3Controller', function ($http, $scope, $location, $state, $stateParams, AuthenticationService) {
+app.controller('RegisterStep3Controller', function ($scope, $state,
+    $stateParams, AuthenticationService) {
     $scope.registerStep3 = function () {
-        var _getData = function () {
+        var getData = function () {
             return {'schedule_to_play': $scope.schedule};
-        };
+        },
+            userId = $stateParams.userId;
 
-        var userId = $stateParams.userId;
-        AuthenticationService.registerStep3(userId, _getData()).then(function (response) {
-            $state.go('registerStep4', {'userId': userId});
-        }, function (response) {
+        AuthenticationService.registerStep3(userId, getData()).then(function () {
+            $state.go('register-step-4', {'userId': userId});
+        }, function () {
             console.log('Error');
         });
-
-    }
+    };
 });

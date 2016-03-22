@@ -21,11 +21,11 @@ class Place(models.Model):
 
 
 class Activity(models.Model):
-    PAIR = 'PAIR'
-    TEAM = 'TEAM'
+    PAIR = u'ПАРНЫЙ'
+    TEAM = u'КОМАНДНЫЙ'
     KIND_CHOICES = (
-        (PAIR, 'PAIR'),
-        (TEAM, 'TEAM'),
+        (PAIR, u'ПАРНЫЙ'),
+        (TEAM, u'КОМАНДНЫЙ'),
     )
 
     name = models.CharField(max_length=255, unique=True)
@@ -46,47 +46,7 @@ class ActivityPlaces(models.Model):
     place = models.ForeignKey(Place)
 
     def __unicode__(self):
-        return 'Activity - {}; Place - {}'.format(self.activity, self.place)
-
-
-
-class Team(models.Model):
-    OPENED = 'NEW'
-    CLOSED = 'MIDDLE'
-    TYPE_CHOICES = (
-        (OPENED, 'OPENED'),
-        (CLOSED, 'CLOSED'),
-    )
-    name = models.CharField(max_length=255)
-    type = models.CharField(max_length=255, choices=TYPE_CHOICES, default=OPENED)
-    max_people = models.IntegerField(null=True, blank=True)
-    is_captain = models.BooleanField(default=False)
-    team_users = models.ManyToManyField(User, through='TeamUsers')
-    team_activities = models.ManyToManyField(Activity, through='TeamActivities', through_fields=('team', 'activity'))
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = u'Команда'
-        verbose_name_plural = u'Команды'
-
-
-class TeamActivities(models.Model):
-    NEW = 'NEW'
-    MIDDLE = 'MIDDLE'
-    ADVANCED = 'ADVANCED'
-    TEAM_LEVEL_CHOICES = (
-        (NEW, 'NEW'),
-        (MIDDLE, 'MIDDLE'),
-        (ADVANCED, 'ADVANCED'),
-    )
-    activity = models.ForeignKey(Activity)
-    team = models.ForeignKey(Team)
-    level = models.CharField(max_length=255, blank=True, choices=TEAM_LEVEL_CHOICES, default=NEW)
-
-    def __unicode__(self):
-        return 'Team - {}; Activity - {}'.format(self.team, self.activity)
+        return u'Activity - {}; Place - {}'.format(self.activity, self.place)
 
 
 class Event(models.Model):
@@ -102,7 +62,7 @@ class Event(models.Model):
     users = models.ManyToManyField(User, through='EventUsers')
 
     def __unicode__(self):
-        return '{} - {}'.format(self.activity.name, self.start_date)
+        return u'{} - {}'.format(self.activity.name, self.start_date)
 
     class Meta:
         verbose_name = u'Событие'
@@ -112,38 +72,21 @@ class Event(models.Model):
 class EventUsers(models.Model):
     event = models.ForeignKey(Event)
     user = models.ForeignKey(User)
-    team = models.ForeignKey(Team, null=True, blank=True)
 
     class Meta:
         unique_together = (("event", "user"),)
 
     def __unicode__(self):
-        return 'Event - {}; User - {}'.format(self.event, self.user)
-
-
-class TeamUsers(models.Model):
-    team = models.ForeignKey(Team)
-    user = models.ForeignKey(User)
-
-    def __unicode__(self):
-        return 'Team - {}; User - {}'.format(self.team, self.user)
+        return u'Event - {}; User - {}'.format(self.event, self.user)
 
 
 class ActivityUsers(models.Model):
-    NEW = 'NEW'
-    MIDDLE = 'MIDDLE'
-    ADVANCED = 'ADVANCED'
-    LEVEL_CHOICES = (
-        (NEW, 'NEW'),
-        (MIDDLE, 'MIDDLE'),
-        (ADVANCED, 'ADVANCED'),
-    )
     user = models.ForeignKey(User)
     activity = models.ForeignKey(Activity)
-    level = models.CharField(max_length=255, blank=True, choices=LEVEL_CHOICES, default=NEW)
+    level = models.CharField(max_length=255, blank=True)
 
     def __unicode__(self):
-        return 'Activity - {}; User - {}'.format(self.activity, self.user)
+        return u'Activity - {}; User - {}'.format(self.activity, self.user)
 
     class Meta:
         unique_together = (('user', 'activity'),)

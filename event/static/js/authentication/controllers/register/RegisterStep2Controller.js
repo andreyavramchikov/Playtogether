@@ -1,19 +1,31 @@
+"use strict";
+
 var app = angular.module('authentication');
 
-app.controller('RegisterStep2Controller', function ($http, $scope, $location, $state, $cookies, $stateParams, AuthenticationService, ActivityService) {
-    $("#dtBox").DateTimePicker( {isPopup : false,dateFormat: "yyyy-MM-dd"});
+app.controller('RegisterStep2Controller', function ($scope, $state,
+                                                    $stateParams, AuthenticationService) {
+
+    $("#dtBox").DateTimePicker({
+        isPopup : false,
+        dateFormat: "yyyy-MM-dd", // this parameter not working with ru.localization of Datetimepicker.js.
+                                    // Overrided in source code of this lib DateTimePicker-i18n-ru.js
+        language: "ru"
+    });
 
     $scope.errors = [];
 
-    var _getData = function(){
-        return {'sex': $scope.sex, 'date_of_birth': $scope.date_of_birth};
+    var getData = function () {
+        return {
+            'sex': $scope.sex,
+            'date_of_birth': $scope.date_of_birth
+        };
     };
 
-    $scope.registerStep2 = function(){
+    $scope.registerStep2 = function () {
         var userId = $stateParams.userId;
-        AuthenticationService.registerStep2(userId, _getData()).then(function(response){
-            $state.go('registerStep3', {'userId' : userId});
-        }, function(response){
+        AuthenticationService.registerStep2(userId, getData()).then(function () {
+            $state.go('register-step-3', {'userId' : userId});
+        }, function (response) {
             var errors = response.data;
             if (errors) {
                 _.each(errors, function (value, key) {

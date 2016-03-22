@@ -1,16 +1,27 @@
 <article id="events">
-
-    <div id="filters" class="col-xs-12 col-md-4 col-lg-3 left" ng-controller="EventFilterController">
+    <div class="date-filter" ng-controller="EventDateFilterController">
+        <div class="col-xs-12 col-md-8 col-lg-9 right">
+            <week-date dates="dates" ng-model="date.currentDate" ng-change="changeDate()"
+              currentweek="currentweek"></week-date>
+        </div>
+    </div>
+    <div class="event-container">
+        <div id="filters" class="col-xs-12 col-md-4 col-lg-3 left" ng-controller="EventFilterController">
         <div class="activities">
-            <div class="relative" collapse-block model="openactivity">
-                <h3>Activities</h3>
-                <img src="/static/img/expand-arrow.png" class="right-image">
+            <div class="relative pointer" collapse-block model="openactivity">
+                <h3>Виды спорта</h3>
+                <img ng-src="/static/img/arrow.svg" class="right-image collapse-arrow">
             </div>
-            <div ng-show="openactivity" class="collapsed-activities">
-                <input type="search" ng-model="searchActivity.name" class="col-xs-12"/>
-                <div ng-repeat="activity in activities | filter: searchActivity" class="col-xs-12">
-                    <input type="checkbox" ng-model="activity.selected" ng-change="changedActivities()">
-                    <label>[[activity.name]]</label>
+            <div ng-show="!openactivity" class="collapsed-activities">
+                <input type="search" ng-model="searchActivity.name" class="col-xs-12" placeholder="Выбери спорт..."/>
+                <div class="activity-checking">
+                    <div ng-repeat="activity in activities | filter: searchActivity" class="col-xs-12 left activity">
+                        <custom-checkbox ng-model="activity.selected"
+                                         change-fn="changedActivities()">
+
+                        </custom-checkbox>
+                        <label class="left">[[activity.name]]</label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -22,64 +33,47 @@
              prevent-equal-min-max="true">
         </div>
     </div>
+        <section class="col-xs-12 col-md-8 col-lg-9 left">
 
-    <section class="col-xs-12 col-md-8 col-lg-9 left">
+            <div class="col-xs-6 col-md-6 col-lg-4 left"
+                 ng-repeat="event in events">
 
-        <div ng-controller="DateFilterController">
-            <span week-date dates="dates" ng-model="currentDate" ng-change="changeDate()"
-                  currentweek="currentweek"></span>
-        </div>
+                <figure class="relative" ng-class="{'active': event.user_done}" ng-click="openEvent(event.id)">
+                    <img class="event-image" ng-src="/static/img/[[event.activity.name]].png"/>
+                    <div class="remaining-spots count-[[event.remaining_spots]]  absolute">
+                        <h3>[[event.min_people - event.count_of_members]]</h3>
+                        <h3>мест(a)</h3>
+                    </div>
+                    <h3 class="event-bottom">[[event.activity.name]]</h3>
+                </figure>
 
-        <div class="col-xs-6 col-md-6 col-lg-4 left"
-             ng-repeat="event in events">
-
-            <figure class="relative" ng-class="{'active': event.user_done}">
-                <img class="event-image" src="/static/img/[[event.activity.name]].png"/>
-                <div class="remaining-spots count-[[event.remaining_spots]]  absolute">
-                    <h3>[[event.remaining_spots]]</h3>
-                    <h3>мест(a)</h3>
+                <div class="description-left col-xs-12 col-md-6 col-lg-6 left">
+                    <h3 class="bold">[[event.start_date | date:'yyyy.dd.MM HH:mm']]</h3>
+                    <h3>[[event.cost]]</h3>
                 </div>
-                <h3 class="event-bottom">[[event.activity.name]]</h3>
-            </figure>
-
-            <div class="description-left col-xs-12 col-md-6 col-lg-6 left">
-                <h3 class="bold">[[event.start_date | date:'yyyy.dd.MM HH:mm']]</h3>
-                <h3>[[event.cost]]</h3>
+                <div class="description-right col-xs-12 col-md-6 col-lg-6 left">
+                    <h3>[[event.count_of_members]] участников</h3>
+                    <h3>еще [[event.min_people - event.count_of_members]] мест</h3>
+                    <h3>[[event.place.name]]</h3>
+                </div>
+                <div class="actions" ng-hide="!event.user_done && event.remaining_spots==0">
+                    <a class="col-xs-12 col-md-6 col-lg-6 left invite"
+                       ng-click="inviteToEvent(event.id)">
+                        Пригласить
+                    </a>
+                    <a class="col-xs-12 col-md-6 col-lg-6  left go"
+                       ng-click="goToEvent(event.id, $index)"
+                       ng-hide="event.user_done">
+                        Иду
+                    </a>
+                    <a class="col-xs-12 col-md-6 col-lg-6 left ungo"
+                       ng-click="goFromEvent(event.id, $index)"
+                       ng-show="event.user_done">
+                        Не пойду
+                    </a>
+                </div>
             </div>
-            <div class="description-right col-xs-12 col-md-6 col-lg-6 left">
-                <h3>[[event.count_of_members]] участников</h3>
-                <h3>еще [[event.remaining_spots]] мест</h3>
-                <h3>[[event.place.name]]</h3>
-            </div>
-            <div class="actions" ng-hide="!event.user_done && event.remaining_spots==0">
-                <a class="col-xs-12 col-md-6 left lg-hide go"
-                   ng-click="goToEvent(event.id, $index)"
-                   ng-hide="event.user_done">
-                    Иду
-                </a>
-                <a class="col-xs-12 col-md-6 left lg-hide ungo"
-                   ng-click="goFromEvent(event.id, $index)"
-                   ng-show="event.user_done">
-                    Не пойду
-                </a>
-                <a class="col-xs-12 col-md-6 left lg-hide invite"
-                   ng-click="inviteToEvent(event.id)">
-                    Пригласить
-                </a>
-                <figure class="col-lg-6 left xs-hide md-hide">
-                    <img class="left-image" src="/static/img/invite.png"
-                         ng-click="inviteToEvent(event.id)"/>
-                </figure>
-                <figure class="col-lg-6 left xs-hide md-hide">
-                    <img class="right-image" src="/static/img/Go.png"
-                         ng-click="goToEvent(event.id, $index)"
-                         ng-hide="event.user_done"/>
-                    <img class="right-image" src="/static/img/minus.png"
-                         ng-click="goFromEvent(event.id, $index)"
-                         ng-show="event.user_done"/>
-                </figure>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
 </article>

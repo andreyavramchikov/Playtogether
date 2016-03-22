@@ -60,7 +60,9 @@ dropdown {
 				text-align:right;
 			}
 		}
-
+		>div.dropdown-list.clicked {
+			min-height: 120px;
+		}
 		>div.dropdown-list {
 			float:left;
 			width:100%;
@@ -126,4 +128,26 @@ dropdown {
 	>div.show>div.dropdown-list {
 		transform:scale(1, 1);
 	}
+}
+
+.autocomplete-dropdown {
+	overflow-y: auto;
+    max-height: 150px;
+	border-color: #ececec;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    width: 100%;
+    padding: 6px;
+    cursor: pointer;
+    z-index: 9999;
+    position: absolute;
+    background-color: #ffffff;
+
+	div.items {
+		padding: 5px;
+		/* color: #000000; */
+		margin-bottom: 4px;
+	}
+
 }

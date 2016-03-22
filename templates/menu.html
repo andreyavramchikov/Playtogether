@@ -1,26 +1,26 @@
 {% load staticfiles %}
 
-<a class="col-xs-9 col-md-3 col-lg-3 col-xs-offset-1 col-md-offset-0 col-lg-offset-0 sports-club" href="/landing/">
+<a class="col-xs-9 col-md-3 col-lg-3 col-xs-offset-1 col-md-offset-0 col-lg-offset-0 sports-club" ui-sref="landing">
     Sports Club
 </a>
 
-<nav class="xs-hide col-md-5 col-lg-6 left">
+<nav class="xs-hide col-md-5 col-lg-6">
     <ul class="col-md-12 col-lg-12">
-        <li class="col-md-3 col-lg-3"><a href="/events/">События</a></li>
-        <li class="col-md-3 col-lg-3"><a href="/createevent/">Новое</a></li>
-        <li class="col-md-3 col-lg-3"><a href="/users/">Участники</a></li>
-        <li class="col-md-3 col-lg-3"><a href="/places/">Места</a></li>
+        <li class="col-md-3 col-lg-3"><a ui-sref="events">События</a></li>
+        <li class="col-md-3 col-lg-3"><a ui-sref="createevent">Новое</a></li>
+        <li class="col-md-3 col-lg-3"><a ui-sref="users">Участники</a></li>
+        <li class="col-md-3 col-lg-3"><a ui-sref="places">Места</a></li>
     </ul>
 </nav>
 
-<section class="xs-hide col-md-4 col-lg-3 left">
+<section class="xs-hide col-md-4 col-lg-3">
     <div class="col-md-11 col-lg-12 right userinfo" ng-show="IS_AUTHENTICATED">
-        <a class="right" href="/logout"> Выйти</a>
-        <a class="right" href="/profile/">[[authenticatedUser.email]]  | </a>
+        <a class="col-md-9 col-lg-9 account" ui-sref="profile">[[authenticatedUser.email]]</a>
+        <a class="col-md-3 col-lg-3 right" ui-sref="logout"> Выйти</a>
     </div>
-    <div class="col-md-8 col-lg-6 right" ng-hide="IS_AUTHENTICATED">
-        <a  href="/login/">Войти </a>
-        <a href="/register/step-1/"> | Регистрация</a>
+    <div class="col-md-11 col-lg-12 right" ng-hide="IS_AUTHENTICATED">
+        <a  ui-sref="login">Войти </a>
+        <a  ui-sref="register-step-1"> | Регистрация</a>
     </div>
 </section>
 

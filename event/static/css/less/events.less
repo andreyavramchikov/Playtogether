@@ -1,0 +1,273 @@
+@import "share.less";
+
+#events {
+  .date-filter {
+    width: 100%;
+    background-color: black;
+    overflow: auto;
+    .date-range-line {
+      height: 40px;
+      line-height: 40px;
+      font-size: 14px;
+      span {
+        cursor: pointer;
+        color: white;
+        text-transform: uppercase;
+        float: left;
+        display: block;
+        text-align: center;
+        &:hover {
+          color: #20cfb1;
+        }
+      }
+      span.dates {
+        width: 14.28%;
+      }
+      span.active {
+        color: #20cfb1;
+      }
+    }
+  }
+  .event-container {
+      #filters {
+      background-color: #252a40;
+      color: white;
+      font-family: Arial sans-serif;
+      font-size: 14px;
+
+      //SHOULD APPLY ONLY FOR MOBILE
+      max-height: 200px; // in descktop and table = none
+      overflow-y: auto;
+
+      .box-sizing;
+      padding: 0 1%;
+      .collapse-arrow {
+        width: 25px;
+      }
+      .activities {
+        overflow: hidden;
+        h3 {
+          font-family: inherit;
+          font-size: 16px;
+          font-weight: normal;
+          text-align: left;
+          margin-top: 10px;
+        }
+        .collapsed-activities {
+          font-family: inherit;
+
+          .activity-checking {
+            .activity {
+              height: 20px;
+              margin: 5px 0;
+            }
+            label {
+              font-size: 14px;
+              font-family: inherit;
+              padding-left: 5px;
+              height: 20px;
+              line-height: 20px;
+            }
+          }
+          input[type='search'] {
+            width: 100%;
+            margin: 18px 0;
+            border: none;
+            color: #fff;
+            background: url(../../img/magnifying-glass.svg) 13px no-repeat #383e5a;
+            background-size: 15px 15px;
+            font-size: .8rem;
+            border-radius: 5px;
+            padding: 12px 9px 9px 30px;
+          }
+
+          .custom-checkbox {
+            width: 15px;
+            height: 15px;
+            border: 1px solid #6b88c5;
+          }
+
+          .custom-checkbox.checked {
+            background-color: #20cfb1;
+            border-color: #20cfb1;
+          }
+
+        }
+      }
+    }
+      section {
+
+      .active {
+        opacity: 0.5;
+      }
+
+      .event-image {
+        max-width: 100%;
+      }
+      .event-bottom {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.65);
+        height: 35px;
+        padding: 0 10px;
+        line-height: 35px - 4px;
+        font-family: "Courier New";
+        font-weight: normal;
+        font-size: 20px;
+      }
+
+      .remaining-spots {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        background-color: rgba(255, 255, 255, 0.65);
+        padding: 5px 10px;
+        h3 {
+          font-size: 15px;
+          line-height: 20px;
+          text-align: center;
+        }
+      }
+
+      .remaining-spots.count-0 {
+        h3 {
+          color: white;
+        }
+        background-color: rgba(255, 0, 0, 0.65);
+      }
+
+      > div {
+        .box-sizing;
+        padding: 10px 1% 20px 1%;
+      }
+
+      div h3 {
+        font-family: "Courier New";
+        font-size: 18px;
+        font-weight: normal;
+        text-align: right;
+      }
+
+      .actions {
+        a.go {
+          .action_button(white, #20cfb1, 0, 0);
+        }
+        a.ungo {
+          .action_button(white, #FF3F45, 0, 0);
+        }
+        a.invite {
+          .action_button(#FF3F45, white, 2px solid #20cfb1, 4);
+          .box-sizing;
+        }
+      }
+    }
+  }
+}
+
+/*Tablet*/
+@media (min-width: 768px)
+and (max-width: 1024px) {
+  #events {
+    .date-range-line {
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+    }
+    .remaining-spots {
+      padding: 10px 20px;
+      left: 20px;
+      h3 {
+        font-size: 20px;
+        line-height: 30px;
+      }
+    }
+    .event-container {
+        //min-height: 500px; //for left border line
+        #filters {
+      max-height: none;
+      }
+        section {
+      .box-sizing;
+      border-left: 2px solid gray;
+
+      .event-bottom {
+        height: 50px;
+        padding: 0 10px;
+        line-height: 50px - 4px; // the bug with differences between div and inline image on 4px;MUST FIX THIS
+        font-family: "Courier New";
+        font-weight: normal;
+        font-size: 25px;
+      }
+
+      .description-left h3 {
+        text-align: left;
+        border-right: 1px solid gray;
+        .box-sizing;
+      }
+
+      .description-right h3 {
+        text-align: right;
+      }
+
+      .actions {
+        a:nth-child(1) {
+          float: right;
+        }
+      }
+
+      }
+    }
+  }
+}
+
+/*Desktop*/
+@media (min-width: 1025px) {
+  #events {
+    .date-range-line {
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+    }
+    .event-container {
+        #filters {
+          min-height: 500px; //for left border line
+          max-height: none;
+        }
+        section {
+      .box-sizing;
+      border-left: 2px solid gray;
+      min-height: 500px; //for left border line
+
+      .remaining-spots {
+        padding: 10px 20px;
+        left: 20px;
+        h3 {
+          font-size: 20px;
+          line-height: 30px;
+        }
+      }
+
+      .actions {
+        figure {
+          position: relative;
+          height: 40px;
+        }
+      }
+
+      //      copy past from tablet styles - need to read best practice and organize in ONE SAMPLE OF CODE
+      .description-left h3 {
+        text-align: left;
+        border-right: 1px solid gray;
+        .box-sizing;
+      }
+
+      .description-right h3 {
+        text-align: right;
+      }
+
+      //  END COPY PAST
+    }
+    }
+  }
+}

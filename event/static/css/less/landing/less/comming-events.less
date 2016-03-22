@@ -1,0 +1,93 @@
+@import "../../share.less";
+
+#landing {
+    #comming-events {
+        max-width: 100%;
+        position: relative;
+        overflow: hidden; /*huck need to thin how to avoid it;*/
+        /*Somewhy without this line all events block has no height which cause a lot of issues with next blocks*/
+
+
+        // copy past from events page
+        section.events {
+
+            .active {
+                opacity: 0.5;
+            }
+
+            .event-image {
+                max-width: 100%;
+            }
+            .event-bottom {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background-color: rgba(255, 255, 255, 0.65);
+                height: 35px;
+                padding: 0 10px;
+                line-height: 35px - 4px;
+                font-family: "Courier New";
+                font-weight: normal;
+                font-size: 20px;
+            }
+
+            .remaining-spots {
+                position: absolute;
+                top: 0;
+                left: 10px;
+                background-color: rgba(255, 255, 255, 0.65);
+                padding: 5px 10px;
+                h3 {
+                    font-size: 15px;
+                    line-height: 20px;
+                    text-align: center;
+                }
+            }
+
+            .remaining-spots.count-0 {
+                h3 {
+                    color: white;
+                }
+                background-color: rgba(255, 0, 0, 0.65);
+            }
+
+            > div {
+                .box-sizing;
+                padding: 10px 1% 20px 1%;
+            }
+
+            div h3 {
+                font-family: "Courier New";
+                font-size: 18px;
+                font-weight: normal;
+                text-align: right;
+            }
+        }
+
+    }
+
+    .look-all-events {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 2px solid #666666;
+        font-family: Georgia;
+        font-size: 18px;
+        color: #1E1E1E;
+        line-height: 40px;
+        margin: 20px auto;
+    }
+
+}
+
+/*FOR DESKTOP*/
+@media only screen
+and (min-width: 1024px) {
+
+    #landing {
+        #comming-events {
+
+        }
+    }
+
+}

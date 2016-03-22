@@ -8,3 +8,8 @@
     font-family: Courier New;
     src: url('cour.ttf');
 }
+
+@font-face {
+    font-family: Montserrat;
+    src: url('Montserrat-Regular.otf');
+}

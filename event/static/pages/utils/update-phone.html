@@ -1,0 +1,27 @@
+<div class="col-xs-12 text-left">
+    <header ng-show="show" class="col-xs-12">
+        <p class="col-xs-4">Телефон</p>
+        <p class="col-xs-3 ">[[account.sms_notification | boolPresentationFilter]]</p>
+        <p class="col-xs-3 ">[[account.phone]]</p>
+        <a class="col-xs-2 right" ng-click="show = !show">Редактировать</a>
+
+    </header>
+    <div ng-show="show">
+        <label for="yes">Да</label>
+        <input type="radio" ng-model="account.sms_notification" id='yes' name="sms_notification" ng-value="true">
+        <label for="no">Нет</label>
+        <input type="radio" ng-model="account.sms_notification" id='no' name="sms_notification" ng-value="false">
+
+        <input type="text"
+               class="form-control"
+               id="register__phone"
+               ng-model="account.phone"
+               ui-mask="375 (99) 999-99-99"/>
+
+        <div class="col-xs-12 actions">
+            <input type="button" class="col-xs-6" value="Сохранить" ng-click="save()"/>
+            <input type="button" class="col-xs-6" value="Отменить" ng-click="show=false"/>
+        </div>
+
+    </div>
+</div>

@@ -1,16 +1,12 @@
 from django.contrib import admin
 from authentication.models import User
-from event.inlines import ActivityPlacesInline, TeamActivitiesInline, UserEventsInline, UserTeamsInline, \
-    ActivityUsersInline, TeamUsersInline
-from event.models import Place, Activity, Team, Event
+from event.inlines import ActivityPlacesInline, UserEventsInline, ActivityUsersInline
+from event.models import Place, Activity, Event
 
 
 class ActivityAdmin(admin.ModelAdmin):
     inlines = (ActivityPlacesInline, ActivityUsersInline)
 
-
-class TeamAdmin(admin.ModelAdmin):
-    inlines = (TeamActivitiesInline, TeamUsersInline)
 
 
 class PlaceAdmin(admin.ModelAdmin):
@@ -22,7 +18,7 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('email', 'phone', 'sex', 'sms_notification', 'email_notification', 'schedule_to_play', )
     list_filter = ('sms_notification',)
 
-    inlines = (UserEventsInline, UserTeamsInline, ActivityUsersInline)
+    inlines = (UserEventsInline, ActivityUsersInline)
     save_as = True
 
 
@@ -32,6 +28,5 @@ class EventAdmin(admin.ModelAdmin):
 
 admin.site.register(Activity, ActivityAdmin)
 admin.site.register(Place, PlaceAdmin)
-admin.site.register(Team, TeamAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(User, UserAdmin)

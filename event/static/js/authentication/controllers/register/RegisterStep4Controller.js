@@ -1,19 +1,21 @@
+"use strict";
+
 var app = angular.module('authentication');
 
-app.controller('RegisterStep4Controller', function ($http, $scope, $location, $state,
-                                                    $stateParams, AuthenticationService,
-                                                    ActivityService) {
+app.controller('RegisterStep4Controller', function ($scope, $state,
+                                                    $stateParams, ActivityService) {
 
-    var _getData = function () {
-        var selectedActivities = _.filter($scope.activities, function (activity) {
-            return activity.selected;
-        });
-        var activities = selectedActivities.map(function (activity) {
-            return {
-                'id': activity['id'],
-                'level': activity['level']
-            }
-        });
+    var getData = function () {
+        var selectedActivities =
+            _.filter($scope.activities, function (activity) {
+                return activity.selected;
+            }),
+            activities = selectedActivities.map(function (activity) {
+                return {
+                    'id': activity.id,
+                    'level': activity.id
+                };
+            });
         return {'activities': activities};
     };
 
@@ -24,7 +26,7 @@ app.controller('RegisterStep4Controller', function ($http, $scope, $location, $s
     //VERY BAD IMPLEMENTATION - MUST BE REFACTORED
     $scope.registerStep4 = function () {
         var userId = $stateParams.userId;
-        ActivityService.updateUserActivities(_getData());
-        $state.go('registerStep5', {'userId': userId});
-    }
+        ActivityService.updateUserActivities(getData());
+        $state.go('register-step-5', {'userId': userId});
+    };
 });

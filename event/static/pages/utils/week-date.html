@@ -1,0 +1,12 @@
+<div class="col-xs-12 date-range-line">
+    <span ng-click="clickLastWeek()" class="col-xs-1"><</span>
+    <div class="col-xs-10">
+        <span ng-repeat="date in dates"
+              ng-click="dateSelected(date)"
+              class="dates"
+              ng-class="current.value==date.value ? 'active' : ''">
+            [[date.name | weekDayFilter]] [[date.value | dateFormatFilter]]
+        </span>
+    </div>
+    <span href="#" ng-click="clickNextWeek()" class="col-xs-1"> > </span>
+</div>

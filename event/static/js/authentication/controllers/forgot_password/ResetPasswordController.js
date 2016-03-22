@@ -1,6 +1,9 @@
+"use strict";
+
 var app = angular.module('authentication');
 
-app.controller('ResetPasswordController', function ($http, $scope, $state, $stateParams, AuthenticationService) {
+app.controller('ResetPasswordController', function ($scope, $state, $stateParams,
+                                                    AuthenticationService) {
     $scope.reset = function () {
         var data = {
             'uidb64': $stateParams.uidb64,
@@ -8,14 +11,12 @@ app.controller('ResetPasswordController', function ($http, $scope, $state, $stat
             'password': $scope.user.password,
             'confirm_password': $scope.user.confirm_password
         };
-        AuthenticationService.resetConfirm(data).then(function (response) {
+        AuthenticationService.resetConfirm(data).then(function () {
             $state.go('login');
             alert('successfully updated');
-        }, function(response){
+        }, function (response) {
             console.log(response);
         });
-    }
-
-
+    };
 });
 

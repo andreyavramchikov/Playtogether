@@ -4,7 +4,7 @@
 		<span class="placeholder" ng-if="isPlaceholder">[[placeholder]] </span>
 		<i class="fa fa-angle-down"></i>
 	</div>
-	<div class="dropdown-list">
+	<div class="dropdown-list" ng-class="{ clicked: listVisible }">
 		<div>
 			<div ng-repeat="item in list" ng-click="select(item)" ng-class="{ selected: isSelected(item) }">
 				<span>[[property !== undefined ? item[property] : item]]</span>

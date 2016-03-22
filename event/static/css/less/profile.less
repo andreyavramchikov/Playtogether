@@ -1,22 +1,25 @@
-.action_button(@color, @background-color, @border, @difference) {
-  display: block;
-  background-color: @background-color;
-  font-family: Courier New;
-  font-size: 20px;
-  line-height: 40px - @difference;
-  text-align: center;
-  color: @color;
-  border: @border;
-  cursor: pointer;
-  margin-top: 5px;
-}
+
+@import "share.less";
 
 #profile {
+
+  input, span, div, header, a, p{
+    font-size: 13px;
+    font-family: "Courier New", Courier, monospace;
+  }
+
   font-size: 13px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 400;
+  .box-sizing;
+
   input[type='text'] {
     width: 100%;
     height: 40px;
     border: 1px solid gainsboro;
+    font-family:inherit;
+    padding-left: 10px;
+    box-sizing: border-box;
   }
 
   .profile-form {
@@ -36,7 +39,7 @@
       a {
         line-height: 70px;
         text-decoration: underline;
-        cursor: pointer;
+        text-align: right;
       }
     }
 
@@ -57,13 +60,25 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   #profile {
-    font-size: 18px;
+    input, span, div, header, a, p{
+      font-size: 18px;
+      font-family: "Courier New", Courier, monospace;
+    }
+    padding: 0 10%;
   }
 }
 
 
 @media (min-width: 1025px) {
-  #profile {
-    font-size: 18px;
+
+  #wrapper-profile {
+    overflow: hidden;
+    #profile {
+      input, span, div, header, a, p{
+        font-size: 18px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      padding: 0 20%;
+    }
   }
 }

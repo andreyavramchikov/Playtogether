@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import json
 
 from django.core.exceptions import ObjectDoesNotExist
@@ -9,14 +11,14 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.template import loader
-
+from django.utils.translation import ugettext_lazy as _
 
 from authentication.models import User
 from authentication.permissions import IsAccountOwner
 from authentication.serializers import UserSerializer
 
 from django.contrib.auth import authenticate, login, logout
-
+from authentication.utils import _translate_dict
 from mail.sender import EmailSender
 
 
@@ -46,10 +48,11 @@ class AccountViewSet(viewsets.ModelViewSet):
             serializer.validated_data.update({'pk': user.pk})
             return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
 
+        # val = _(serializer.errors)
         return Response({
-            'status': 'Bad request',
-            'message': 'Account could not be created with received data.',
-            'errors': serializer.errors
+            'status': _('Bad request'),
+            'message': _('Account could not be created with received data.'),
+            'errors': _translate_dict(serializer.errors)
         }, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -72,13 +75,13 @@ class LoginView(views.APIView):
                 return Response(serialized.data)
             else:
                 return Response({
-                    'status': 'Unauthorized',
-                    'message': 'This account has been disabled.'
+                    'status': _('Unauthorized'),
+                    'message': _('This account has been disabled.')
                 }, status=status.HTTP_401_UNAUTHORIZED)
         else:
             return Response({
-                'status': 'Unauthorized',
-                'message': 'Username/password combination invalid.'
+                'status': _('Unauthorized'),
+                'message': _(u'Комбинация пароля и email не правильная.')
             }, status=status.HTTP_401_UNAUTHORIZED)
 
 
@@ -116,7 +119,7 @@ class UserListView(generics.ListCreateAPIView):
 class ForgotPasswordView(views.APIView):
 
     def post(self, request, *args, **kwargs):
-        email_template_name = 'emails/reset_password_email.html'
+        email_template_name = 'emails/reset-password-email.html'
         email = request.data['email']
         try:
             user = User.objects.get(email=email)
@@ -124,7 +127,7 @@ class ForgotPasswordView(views.APIView):
             token = default_token_generator.make_token(user)
             data = {'email': email,
                     'domain': request.META['HTTP_HOST'],
-                    'site_name': 'Playtogether',
+                    'site_name': _('Playtogether'),
                     'uid': uid,
                     'token': token}
             email_msg = loader.render_to_string(email_template_name, data)
@@ -164,6 +167,8 @@ class GetUserView(views.APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
 class CallBackView(views.APIView):
 
     def get(self, request, *args, **kwargs):

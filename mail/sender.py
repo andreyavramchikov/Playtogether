@@ -1,5 +1,4 @@
 from django.core.mail import send_mail
-from django.core.mail.message import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
 
@@ -16,15 +15,27 @@ class EmailSender(object):
     def send_forgot_password_email(self, email, email_msg):
 
         send_mail(
-            'Forgot your password?',
+            u'Forgot your password?',
             email_msg,
             settings.EMAIL_HOST_USER,
             [email],
         )
 
+
+    def send_email_template(self, email):
+        data = {'username': email}
+        msg_html = render_to_string('emails/create-event.html', data)
+        send_mail(
+            'email title',
+            'message',
+            settings.EMAIL_HOST_USER,
+            [email],
+            html_message=msg_html,
+        )
+
     def send_email(self, email_user):
         data = {'username': email_user.user.email}
-        msg_html = render_to_string('emails/create_event.html', data)
+        msg_html = render_to_string('emails/create-event.html', data)
         send_mail(
             'email title',
             'message',
@@ -43,13 +54,16 @@ class EmailSender(object):
             self.send_email(email_user)
 
     def create_event(self, user, event_id):
-        EmailUsers.objects.create(email_type=EmailUsers.CREATE_EVENT, user=user, event_id=event_id)
+        if not user.is_anonymous():
+            EmailUsers.objects.create(email_type=EmailUsers.CREATE_EVENT, user=user, event_id=event_id)
 
-    def go_to_event(self, user, event_id):
-        EmailUsers.objects.create(email_type=EmailUsers.GO_TO_EVENT, user=user, event_id=event_id)
+    def go_to_event(self, user_id, event_id):
+        if user_id:
+            EmailUsers.objects.create(email_type=EmailUsers.GO_TO_EVENT, user_id=user_id, event_id=event_id)
 
     def ungo_to_event(self, user, event_id):
-        EmailUsers.objects.create(email_type=EmailUsers.UN_GO_EVENT, user=user, event_id=event_id)
+        if not user.is_anonymous():
+            EmailUsers.objects.create(email_type=EmailUsers.UN_GO_EVENT, user=user, event_id=event_id)
 
     def sending_rules(self):
         email_users = self.get_email_users()

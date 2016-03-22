@@ -1,0 +1,137 @@
+
+@import "share.less";
+
+#mobile-menu, #mobile-menu-input, #mobile-menu-label {
+  display: none;
+}
+
+@media only screen and (max-width: 767px) {
+
+  #mobile-menu, #mobile-menu-label {
+    display: block;
+  }
+
+  /* custom scrollbar need to explore MORE */
+  ::-webkit-scrollbar {
+    width: .95em;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: rgba(217, 217, 217, .5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(184, 184, 184, .5);
+    box-shadow: inset .05em .05em 0 rgba(0, 0, 0, .1),
+    inset 0 -.05em 0 rgba(0, 0, 0, .07);
+  }
+
+  html, body {
+    //   It appears that browsers
+    //   that parse the <meta name="viewport"> tag simply ignore overflow attributes on the html and body tags.
+    overflow-x: hidden
+  }
+
+  label[for=mobile-menu-input] {
+    //            transition: color .3s ease-in-out;
+    position: absolute;
+    left: 0;
+    width: 2em;
+    height: 40px;
+    font-size: 1.1em;
+    color: gray;
+    cursor: pointer;
+    margin: 0;
+    background: white;
+    z-index: 100000;
+
+    &:after {
+      position: absolute;
+      right: .25em;
+      top: 0;
+      content: "\2261";
+      font-size: 2em;
+    }
+  }
+
+  //MOBILE MENU;
+  #mobile-menu {
+    .box-sizing;
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    top: -600px;
+    left: -600px;
+    overflow-y: auto;
+    opacity: 0;
+    background-color: #131b4d;
+    transition-duration: .3s, .5s;
+    transition-timing-function: ease-in-out;
+    transition-property: left, opacity, box-shadow;
+    ul {
+
+      padding: 0;
+      margin: 0 auto;
+      width: 100%;
+
+      li {
+        display: block;
+        padding: 7px 0 7px 0;
+        border-bottom: 2px solid #131b4d;
+        width: 100%;
+        text-align: left;
+        margin: 0;
+        background-color: #101742;
+
+        a {
+          text-decoration: none;
+          font: 1.4em 'Open Sans', sans-serif;
+          transition: color 0.3s ease-in-out;
+          width: 100%;
+          display: block;
+          box-sizing: border-box;
+          padding: 0 10px 0 20px;
+          margin: 0;
+          color: #FFF;
+          font-size: 16px;
+          line-height: 42px;
+          background: #101742;
+
+          &:after {
+            position: absolute;
+            right: .25em;
+            content: "\203A";
+            font: bold 1.4em sans-serif;
+            color: inherit;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+  //END MOBILE MENU
+
+//  Actions with mobile menu when hack input checked
+  #mobile-menu-input:checked ~ label {
+    margin-left: 80%;
+  }
+
+  #mobile-menu-input:checked ~ #mobile-menu {
+    display: block;
+    opacity: 1;
+    left: 0;
+    top: 0;
+  }
+
+  #mobile-menu-input:checked ~ main {
+    margin-left: 80%;
+    width: 100%;
+    position:fixed;
+    top:0;
+  }
+}
+
+

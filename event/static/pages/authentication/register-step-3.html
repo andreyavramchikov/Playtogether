@@ -1,0 +1,22 @@
+<form id="register-step-3" class="col-xs-12" ng-submit="registerStep3()">
+    <ng-include ng-src="'/static/pages/utils/responsive-circle-line-circle.html'"></ng-include>
+    <h3 class="col-xs-12">Когда хочешь заниматься? </h3>
+
+    <user-schedule class="schedule" data-schedule="БУДНИ" ng-class="schedule=='БУДНИ' ? 'active' : ''">
+        <img ng-src="/static/img/calendar-red.png" class="left-image">
+        <p>По будням</p>
+    </user-schedule>
+
+    <user-schedule class="schedule"  data-schedule="ВЫХОДНЫЕ" ng-class="schedule=='ВЫХОДНЫЕ' ? 'active' : ''">
+        <img ng-src="/static/img/calendar-black.png" class="left-image">
+        <p>По выходным</p>
+    </user-schedule>
+
+    <user-schedule class="schedule"  data-schedule="ВСЕГДА"  ng-class="schedule=='ВСЕГДА' ? 'active' : ''">
+        <img ng-src="/static/img/calendar-gray.png" class="left-image">
+        <p>Всю неделю</p>
+    </user-schedule>
+
+    <input type="submit" class="col-xs-12" value="Дальше">
+
+</form>

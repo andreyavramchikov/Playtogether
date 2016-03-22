@@ -24,20 +24,20 @@
         <link href="{% static 'fonts/fonts.css' %}" rel="stylesheet" type="text/css"/>
     {% endblock %}
 
-    {% block less %}
-        {% include 'styles/css_custom.html' %}
+     {% block lib_css %}
+        {% include 'styles/css-libs.html' %}
     {% endblock %}
 
-    {% block lib_css %}
-        {% include 'styles/css_libs.html' %}
+    {% block less %}
+        {% include 'styles/css-custom.html' %}
     {% endblock %}
 
     {% block js_libs %}
-        {% include 'scripts/js_libs.html' %}
+        {% include 'scripts/js-libs.html' %}
     {% endblock %}
 
     {% block js_custom %}
-        {% include 'scripts/js_custom.html' %}
+        {% include 'scripts/js-custom.html' %}
     {% endblock %}
 
 </head>
@@ -45,11 +45,10 @@
 <body ng-controller="BodyController">
 
 {% block mobile_menu %}
-    <input type="checkbox" id="mobile-menu-input">
-    <label for="mobile-menu-input" onclick></label>
+    <input type="checkbox" id="mobile-menu-input" class="lg-hide md-hide">
+    <label for="mobile-menu-input" class="lg-hide md-hide" onclick ></label>
     {#    Should be separate from other content because of moving other content to right - effect#}
-{#    {% include 'mobile_menu.html' %}#}
-    <mobile-menu menuitems="menuitems"></mobile-menu>
+    {% include 'mobile-menu.html' %}
 {% endblock %}
 
 <main>

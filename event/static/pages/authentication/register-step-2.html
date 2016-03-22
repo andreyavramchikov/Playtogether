@@ -1,0 +1,24 @@
+<form id="register-step-2" class="col-xs-12" ng-submit="registerStep2()">
+    <ng-include src="'/static/pages/utils/responsive-circle-line-circle.html'"></ng-include>
+    <h3 class="col-xs-12">Расскажи о себе </h3>
+
+    <div class="col-xs-12">
+        <h3>Пол</h3>
+        <user-sex class="men col-xs-6" data-sex="МУЖСКОЙ"  ng-class="sex=='МУЖСКОЙ' ? 'active' : ''">
+            <img ng-src="/static/img/mustache.png" class="center-image">
+        </user-sex>
+        <user-sex class="women col-xs-6" data-sex="ЖЕНСКИЙ"  ng-class="sex=='ЖЕНСКИЙ' ? 'active' : ''">
+            <img ng-src="/static/img/kiss.png" class="center-image ">
+        </user-sex>
+    </div>
+
+    <h3 class="col-xs-12">Дата рождения</h3>
+    <input type="text" class="col-xs-12" data-field="date" ng-model="date_of_birth"  placeholder="Выберите дату рождения">
+    <span class="errors" ng-model="errors.date_of_birth">[[errors.date_of_birth]]</span>
+
+    <datetime-box></datetime-box>
+
+    <input type="submit" class="col-xs-12" value="Дальше">
+    <div class="errors" ng-model="errors.non_field_errors">[[errors.non_field_errors]]</div>
+
+</form>

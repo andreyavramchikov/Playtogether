@@ -1,0 +1,10 @@
+<div class="autocomplete-dropdown" ng-show="items.length>0">
+    <div class="angucomplete-row" ng-repeat="item in items"
+         ng-mousedown="selectItem(item)"
+         ng-mouseover="hoverRow()"
+         ng-class="{'angucomplete-selected-row': $index == currentIndex}">
+        <div class="angucomplete-title">
+            [[item.itemCustomName | join:', ']]
+        </div>
+    </div>
+</div>

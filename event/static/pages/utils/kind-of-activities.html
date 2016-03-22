@@ -1,0 +1,17 @@
+<div class="kind-activities col-xs-12">
+    <img ng-src="/static/img/[[kind]].png" class="left-image">
+    <p>Парные</p>
+    <img ng-src="/static/img/expand-arrow.png" class="right-image" collapse-block model="[[kind]]">
+</div>
+<section ng-show="[[kind]]">
+    <div class='events col-xs-12' ng-repeat="activity in activities | filter:{ kind: kindru }">
+        <div class="col-xs-12 hidden">
+            <input type="checkbox" class="col-xs-2" ng-model="activity.selected">
+            <label class="col-xs-6">[[activity.name]]</label>
+            <star-rating
+                 ng-model="activity.level"
+                 data-initial-rating=0
+                 mode="edit"></star-rating>
+        </div>
+    </div>
+</section>

@@ -22,22 +22,21 @@
             <div ng-repeat="user in users" class="left container col-xs-12 col-md-6">
                 <div class="info">
                     <figure>
-                        <img src="/static/img/email.png"/> <span> [[user.email]] </span>
+                        <img ng-src="/static/img/email.png"/> <span> [[user.email]] </span>
                     </figure>
                     <figure>
-                        <img src="/static/img/phone.png"/> <span>[[user.phone || 'Не указан']] </span>
+                        <img ng-src="/static/img/phone.png"/> <span>[[user.phone || 'Не указан']] </span>
                     </figure>
                 </div>
 
                 <div class="activity">
                     <div ng-repeat="activity_user in user.activity_users" class="col-xs-12 hidden">
                         <label class="col-xs-6 col-md-4 col-lg-4 left">[[activity_user.activity.name]]</label>
-                        <div star-rating
+                        <star-rating
                              class="col-xs-6 col-md-8 col-lg-8 right"
                              ng-model="activity_user.activity.level"
                              data-initial-rating="[[activity_user.level || '0']]"
-                             mode="read"
-                        ></div>
+                             mode="read"></star-rating>
                     </div>
                 </div>
                 <div class="actions" ng-show="eventId">

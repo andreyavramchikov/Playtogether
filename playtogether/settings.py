@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    # 'djcelery',
+
     'authentication',
     'event',
     'mail',
@@ -49,6 +51,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -104,19 +107,28 @@ TEMPLATE_DIRS = (
 AUTH_USER_MODEL = 'authentication.User'
 
 REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
 }
 
 # BROKER_URL = "amqp://myuser:mypassword@localhost:5672/vhost"
-BROKER_URL = 'amqp://guest:guest@localhost:5672/'
-CELERY_ACCEPT_CONTENT = ["json"]
-CELERY_TASK_SERIALIZER = "json"
-
-CELERY_RESULT_SERIALIZER = "json"
-CELERY_TIMEZONE = "Europe/Madrid"
-
+# BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+# CELERY_ACCEPT_CONTENT = ["json"]
+# CELERY_TASK_SERIALIZER = "json"
+#
+# CELERY_RESULT_SERIALIZER = "json"
+# CELERY_TIMEZONE = "Europe/Madrid"
+#
 # import djcelery
 # djcelery.setup_loader()
+
+# CELERY STUFF
+# BROKER_URL = 'redis://localhost:6379'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+# CELERY_ACCEPT_CONTENT = ['application/json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_TIMEZONE = 'Africa/Nairobi'
 
 
 
@@ -180,3 +192,22 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'aldrson@gmail.com'
 EMAIL_HOST_PASSWORD = 'andreypasan'
+
+from django.utils.translation import ugettext_lazy as _
+LANGUAGES = (
+    ('en', _('English')),
+    ('ca', _('Catalan')),
+)
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+# import sys
+# if 'test' in sys.argv:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(os.path.dirname(__file__), 'test.db'),
+#             'TEST_NAME': os.path.join(os.path.dirname(__file__), 'test.db'),
+#        }
+#     }
