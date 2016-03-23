@@ -1,12 +1,14 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.base import RedirectView
+from rest_framework import routers
+
+
 from authentication.views import AccountViewSet, LoginView, LogoutView, UserListView, GetUserView, CallBackView, \
     CallBackVKView, ForgotPasswordView, ResetPasswordConfirmView
 from event.views import MainView, EventListView, ActivityListView,\
     EventCreateView, UpdateEventUsers, UserActivitiesUpdate
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from rest_framework import routers
 
 
 router = routers.SimpleRouter()
@@ -14,9 +16,7 @@ router.register(r'accounts', AccountViewSet)
 
 
 urlpatterns = patterns('',
-
     url(r'^api/v1/', include(router.urls), name='accounts'),
-
     url(r'^api/v1/auth/login/$', LoginView.as_view(), name='login'),
     url(r'^api/v1/auth/logout/$', LogoutView.as_view(), name='logout'),
 
@@ -27,7 +27,7 @@ urlpatterns = patterns('',
     url(r'^api/v1/event/create/$', EventCreateView.as_view(), name='event-create'),
     url(r'^api/v1/update/eventusers/$', UpdateEventUsers.as_view(), name='update-event-users'),
 
-    url(r'^api/v1/updateuseractivities/$', UserActivitiesUpdate.as_view(), name='update-users-activities'),
+    url(r'^api/v1/update/useractivities/$', UserActivitiesUpdate.as_view(), name='update-users-activities'),
     url(r'^api/v1/forgot_password/$', ForgotPasswordView.as_view(), name='forgot-password'),
 
     url(r'^api/v1/account/reset_password_confirm/(?P<uidb64>[0-9A-Za-z]+);(?P<token>.+)/$',

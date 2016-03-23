@@ -1,3 +1,6 @@
+"use strict";
+
+
 var app = angular.module('playTogether');
 
 
@@ -12,7 +15,7 @@ app.service('ActivityService', function ($http) {
     };
 
     this.updateUserActivities = function (data) {
-        return $http.post('/api/v1/updateuseractivities/', data);
+        return $http.post('/api/v1/update/useractivities/', data);
     };
 
 });
