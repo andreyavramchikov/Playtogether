@@ -1,27 +1,24 @@
 "use strict";
 
-var app = angular.module('playTogether');
+var filters = angular.module('filters', []);
 
-app.filter('isPaidString', function () {
-    return function (is_paid) {
-        if (is_paid === undefined) {
-            return '';
-        }
-        if (is_paid) {
-            return 'Платно';
-        }
-        return 'Бесплатно';
-    };
-});
 
-app.filter('dateFormatFilter', function () {
+/*
+    incoming value format 20-11-2016
+    return format 20/11
+*/
+filters.filter('dateFormatFilter', function () {
     return function (value) {
-        //regular expression to delete all 0 from string - not correct
-        return value.substring(0, value.length - 5).replace('-', '/').replace(/0/g, '');
+        value = value.slice(0, -5); //removed -year
+        value = value.replace('-', '/');
+        value = value.replace(/((0)([0-9]))/g, '$3'); // replaced 0 if it comes before number
+        return value;
     };
 });
 
-app.filter('weekDayFilter', function () {
+
+// presentation filter
+filters.filter('weekDayFilter', function () {
     return function (value) {
         switch (value) {
         case 'Понедельник':
@@ -44,7 +41,11 @@ app.filter('weekDayFilter', function () {
     };
 });
 
-app.filter('timeRangeFilter', function () {
+
+/*
+    presentation filter for time left on progress bar
+*/
+filters.filter('timeRangeFilter', function () {
     return function (value, max) {
         if (value === max) {
             return 'All';
@@ -59,7 +60,9 @@ app.filter('timeRangeFilter', function () {
     };
 });
 
-app.filter('boolPresentationFilter', function(){
+
+// presentation filter
+filters.filter('boolPresentationFilter', function(){
     return function (value) {
         if (value === false) {
             return 'Нет';
@@ -71,21 +74,11 @@ app.filter('boolPresentationFilter', function(){
     };
 });
 
-app.filter('getActivityRating', function() {
-    return function (items, name) {
-        //COPY PAST FROM USER - SHOULD BE CHANGED
-        var activity = _.filter(items, function (item) {
-            return item.activity.name === name;
-        });
-        return activity ? activity.level : 0;
-    };
-});
-
-
-app.filter('join', function () {
+//presentation of array with separator
+filters.filter('join', function () {
     return function join(array, separator, prop) {
         if (!Array.isArray(array)) {
-            return array; // if not array return original - can also throw error
+            return array; // if not array return original
         }
         return (!!prop ? array.map(function (item) {
             return item;

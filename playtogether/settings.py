@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -71,9 +72,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'playtogether',
         'USER': 'root',
-        'PASSWORD': 'andreypasan',
-        'HOST': 'main.csp4igjcxamw.us-east-1.rds.amazonaws.com',
-        'PORT': '3306',
+        'PASSWORD': 'pass',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

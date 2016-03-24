@@ -70,10 +70,7 @@ app.controller('EventFilterController',['$scope', 'EventService', 'ActivityServi
     // MUST CHANGE IT TO NG-CHANGE DIRECTIVES !!!!!
     $scope.$watchGroup(['date.currentDate'],
         function (newValue, oldValue, scope) {
-            //if (newValue != oldValue) {
                 getFilteredEvents();
-
-            //}
         }
     );
 

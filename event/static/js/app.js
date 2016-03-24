@@ -18,7 +18,7 @@ momentModule.factory('moment', function () {
 var app = angular.module('playTogether', ['ui.router', 'infinite-scroll',
     'ui-rangeSlider', 'ui.mask',
     'ui.bootstrap', 'angucomplete',
-    'lodash','moment', 'authentication'
+    'lodash','moment', 'authentication','filters'
 ]);
 
 app.run(function ($http, $rootScope, $state, AuthenticationService) {

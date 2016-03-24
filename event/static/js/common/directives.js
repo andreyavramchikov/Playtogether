@@ -94,7 +94,7 @@ app.directive('updateTitle', function($rootScope, $timeout){
 });
 
 
-app.directive('openstreetSearch', function($http, $timeout){
+app.directive('openstreetSearch', ['$http',  '$timeout', '_', function($http, $timeout, _){
     var OPENSTREETURL = 'https://nominatim.openstreetmap.org/search' +
         '?q=минск&' +
         'format=json&' +
@@ -138,11 +138,10 @@ app.directive('openstreetSearch', function($http, $timeout){
 
             //should be run this function just when user finished typing - that's why used timer'
             scope.search = function(){
-                if(scope._timeout){ //if there is already a timeout in process cancel it
+                if (scope._timeout) { //if there is already a timeout in process cancel it
                   $timeout.cancel(scope._timeout);
                 }
                 scope._timeout = $timeout(function () {
-                    //scope._timeout = null; - don't understand why I should use this line
                     var searchUrl = OPENSTREETURL.replace('?q=минск', '?q=' + ngModel.$viewValue);
                     $http.get(searchUrl).then(function (response) {
                         scope.items = addCustomPlaceName(response.data);
@@ -151,7 +150,7 @@ app.directive('openstreetSearch', function($http, $timeout){
             }
         }
     }
-});
+}]);
 
 
 // please check autocomplete.js to more info and to expand more functionality
@@ -167,7 +166,7 @@ app.directive("customAutocomplete", function () {
         replace: true,
         link: function (scope) {
             scope.hideResults = function() {
-                scope.showDropdown = false;
+
             };
 
             scope.hoverRow = function(index) {
@@ -177,7 +176,6 @@ app.directive("customAutocomplete", function () {
             scope.selectItem = function(item) {
                 scope.selectedObject = item;
                 scope.selectedName = item.itemCustomName;
-                scope.showDropdown = false;
                 scope.items = [];
             }
 
@@ -185,6 +183,11 @@ app.directive("customAutocomplete", function () {
     }
 });
 
+
+/*
+    shows beautifully css customized custom starts
+    which is bind to model in values from [0-5] by default;
+*/
 app.directive('starRating', function () {
     return {
         restrict: 'E',
@@ -222,14 +225,16 @@ app.directive('starRating', function () {
     };
 });
 
+
+//initialize responsive datatimebox
 app.directive('datetimeBox', function () {
     return {
         restrict: 'E',
         link: function (scope, element) {
             element.DateTimePicker({
                 isPopup: false,
-                dateFormat: "yyyy-MM-dd", // this parameter not working with ru.localization of Datetimepicker.js.
-                // Overrided in source code of this lib DateTimePicker-i18n-ru.js
+                dateFormat: "yyyy-MM-dd",   // this parameter not working with ru.localization of Datetimepicker.js.
+                                            // Overrided in source code of this lib DateTimePicker-i18n-ru.js
                 language: "ru"
             });
         }
