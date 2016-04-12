@@ -5,13 +5,6 @@ var app = angular.module('authentication');
 app.controller('RegisterStep2Controller', function ($scope, $state,
                                                     $stateParams, AuthenticationService) {
 
-    $("#dtBox").DateTimePicker({
-        isPopup : false,
-        dateFormat: "yyyy-MM-dd", // this parameter not working with ru.localization of Datetimepicker.js.
-                                    // Overrided in source code of this lib DateTimePicker-i18n-ru.js
-        language: "ru"
-    });
-
     $scope.errors = [];
 
     var getData = function () {

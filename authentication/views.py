@@ -186,6 +186,8 @@ class CallBackView(views.APIView):
         print json.loads(info.content)['avatar_url']
         print json.loads(info.content)['login']
         return Response(status=status.HTTP_200_OK)
+
+
 class CallBackVKView(views.APIView):
 
     def get(self, request, *args, **kwargs):

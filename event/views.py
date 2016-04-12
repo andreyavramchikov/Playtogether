@@ -30,7 +30,6 @@ class PlaceListView(generics.ListCreateAPIView):
     serializer_class = PlaceSerializer
     paginate_by = 100
 
-
 class EventListView(generics.ListCreateAPIView):
     queryset = Event.objects.all().select_related('activity')
     serializer_class = EventSerializer
@@ -102,6 +101,7 @@ class UpdateEventUsers(views.APIView):
 class UserActivitiesUpdate(views.APIView):
 
     def post(self, request, *args, **kwargs):
+
         try:
             activities = request.data['activities']
         except KeyError:

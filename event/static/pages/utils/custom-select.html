@@ -1,7 +1,7 @@
 <span class="custom-select col-xs-12 md-hide lg-hide">
     <select ng-options="element as element.name for element in elements"
-            ng-model="selected">
+            ng-model="model">
     </select>
     <i class="b-icon icon-down"></i>
-    <span class="val">[[selected.name || placeholder]]</span>
+    <span class="val">[[model.name || placeholder]]</span>
 </span>

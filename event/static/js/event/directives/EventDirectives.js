@@ -50,36 +50,7 @@ app.directive('weekDate', function () {
     };
 });
 
-app.directive('customCheckbox', function () {
-    return {
-        restrict: 'E',
-        template: '<div class="custom-checkbox left" ng-class="{\'checked\': isChecked}" ng-click="toggle()" ng-change="change()"></div>',
-        replace: true,
-        scope: {
-            changeFn: '&' // example how to call function of controller from the directive
-        },
-        require: 'ngModel',
-        link: function (scope, element, attrs, model) {
-
-            model.$formatters.unshift(function (value) {
-                scope.isChecked = value == true;
-                return value;
-            });
-
-            scope.toggle = function () {
-                scope.isChecked = !scope.isChecked; // for UI
-                // update model - I mean activity.selected = true/false
-                model.$setViewValue(scope.isChecked);
-            };
-
-            scope.change = function () {
-                scope.changeFn(); // actually calling changedActivities() function from EventFilterController.js
-            };
-        }
-    };
-});
-
-app.directive('eventDateupdate', function () {
+app.directive('eventdateUpdate', function () {
     return {
         restrict: 'E',
         templateUrl: '/static/pages/utils/event-date-update.html',
@@ -89,12 +60,6 @@ app.directive('eventDateupdate', function () {
         link: function (scope, element, attr) {
             scope.edit = function () {
                 scope.show = !scope.show;
-                $("#dtBox2").DateTimePicker({
-                    isPopup: false,
-                    dateFormat: "yyyy-MM-dd", // this parameter not working with ru.localization of Datetimepicker.js.
-                    // Overrided in source code of this lib DateTimePicker-i18n-ru.js
-                    language: "ru"
-                });
             };
             scope.save = function () {
                 //var data = {'phone': scope.account.phone,
@@ -107,7 +72,7 @@ app.directive('eventDateupdate', function () {
     };
 });
 
-app.directive('eventPlaceupdate', function () {
+app.directive('eventplaceUpdate', function () {
     return {
         restrict: 'E',
         templateUrl: '/static/pages/utils/event-place-update.html',
@@ -122,7 +87,7 @@ app.directive('eventPlaceupdate', function () {
     };
 });
 
-app.directive('eventPriceupdate', function () {
+app.directive('eventpriceUpdate', function () {
     return {
         restrict: 'E',
         templateUrl: '/static/pages/utils/event-price-update.html',

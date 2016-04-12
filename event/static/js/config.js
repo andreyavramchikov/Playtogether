@@ -16,7 +16,7 @@ app.config(function ($locationProvider, $httpProvider, $interpolateProvider, $st
             title: 'Регистрация'
         })
         .state('register-step-2', {
-            url: '/register/step-2',//without slash because we have params
+            url: '/register/step-2',
             params: {
                 userId: null
             },
@@ -25,7 +25,7 @@ app.config(function ($locationProvider, $httpProvider, $interpolateProvider, $st
             title: 'Регистрация шаг 2'
         })
         .state('register-step-3', {
-            url: '/register/step-3', //without slash because we have params
+            url: '/register/step-3',
             params: {
                 userId: null
             },
@@ -34,7 +34,7 @@ app.config(function ($locationProvider, $httpProvider, $interpolateProvider, $st
             title: 'Регистрация шаг 3'
         })
         .state('register-step-4', {
-            url: '/register/step-4',//without slash because we have params
+            url: '/register/step-4',
             params: {
                 userId: null
             },
@@ -137,7 +137,6 @@ app.config(function ($locationProvider, $httpProvider, $interpolateProvider, $st
         });
 
         //this is for avoiding # in urls, this is not work in all browsers
-        //need to refactored to switch to basic behavior if browser not allow HTML5 history
         $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('!');
 });

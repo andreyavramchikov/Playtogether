@@ -8,7 +8,7 @@ app.directive("customSelect", function(){
         templateUrl: '/static/pages/utils/custom-select.html',
         scope: {
             elements: '=elements',
-            selected: '=ngModel',
+            model: '=ngModel',
             placeholder: '@placeholder'
         },
         replace: true,
@@ -18,7 +18,7 @@ app.directive("customSelect", function(){
     };
 });
 
-//Directive to create custom beautiful dropdown
+//Directive to create custom beautiful dropdown not for mobile
 app.directive("dropdown", function ($rootScope) {
     return {
         restrict: "E",
@@ -47,10 +47,13 @@ app.directive("dropdown", function ($rootScope) {
             };
 
             $rootScope.$on("documentClicked", function (inner, target) {
-                if (!$(target[0]).is(".dropdown-display.clicked") && !$(target[0]).parents(".dropdown-display.clicked").length > 0)
+                if (!$(target[0]).is(".dropdown-display.clicked") &&
+                    !$(target[0]).parents(".dropdown-display.clicked").length > 0
+                ) {
                     scope.$apply(function () {
                         scope.listVisible = false;
                     });
+                }
             });
 
             scope.$watch("selected", function (value) {
@@ -94,7 +97,7 @@ app.directive('updateTitle', function($rootScope, $timeout){
 });
 
 
-app.directive('openstreetSearch', ['$http',  '$timeout', '_', function($http, $timeout, _){
+app.directive('openstreetSearch', function($http, $timeout){
     var OPENSTREETURL = 'https://nominatim.openstreetmap.org/search' +
         '?q=минск&' +
         'format=json&' +
@@ -150,7 +153,7 @@ app.directive('openstreetSearch', ['$http',  '$timeout', '_', function($http, $t
             }
         }
     }
-}]);
+});
 
 
 // please check autocomplete.js to more info and to expand more functionality
@@ -166,7 +169,7 @@ app.directive("customAutocomplete", function () {
         replace: true,
         link: function (scope) {
             scope.hideResults = function() {
-
+                scope.showDropdown = false;
             };
 
             scope.hoverRow = function(index) {
@@ -176,6 +179,7 @@ app.directive("customAutocomplete", function () {
             scope.selectItem = function(item) {
                 scope.selectedObject = item;
                 scope.selectedName = item.itemCustomName;
+                scope.showDropdown = false;
                 scope.items = [];
             }
 
@@ -186,7 +190,7 @@ app.directive("customAutocomplete", function () {
 
 /*
     shows beautifully css customized custom starts
-    which is bind to model in values from [0-5] by default;
+    which is boi
 */
 app.directive('starRating', function () {
     return {
@@ -225,18 +229,46 @@ app.directive('starRating', function () {
     };
 });
 
-
-//initialize responsive datatimebox
 app.directive('datetimeBox', function () {
     return {
         restrict: 'E',
         link: function (scope, element) {
             element.DateTimePicker({
                 isPopup: false,
-                dateFormat: "yyyy-MM-dd",   // this parameter not working with ru.localization of Datetimepicker.js.
-                                            // Overrided in source code of this lib DateTimePicker-i18n-ru.js
+                dateFormat: "yyyy-MM-dd", // this parameter not working with ru.localization of Datetimepicker.js.
+                    // Overrided in source code of this lib DateTimePicker-i18n-ru.js
                 language: "ru"
             });
         }
     }
+});
+
+
+app.directive('customCheckbox', function () {
+    return {
+        restrict: 'E',
+        template: '<div class="custom-checkbox left" ng-class="{\'checked\': isChecked}" ng-click="toggle()" ng-change="change()"></div>',
+        replace: true,
+        scope: {
+            changeFn: '&' // example how to call function of controller from the directive
+        },
+        require: 'ngModel',
+        link: function (scope, element, attrs, model) {
+
+            model.$formatters.unshift(function (value) {
+                scope.isChecked = value == true;
+                return value;
+            });
+
+            scope.toggle = function () {
+                scope.isChecked = !scope.isChecked; // for UI
+                // update model - I mean activity.selected = true/false
+                model.$setViewValue(scope.isChecked);
+            };
+
+            scope.change = function () {
+                scope.changeFn(); // actually calling changedActivities() function from EventFilterController.js
+            };
+        }
+    };
 });

@@ -1,8 +1,18 @@
 <form id="create-event" name="createEventForm" ng-submit="createEventForm.$valid && createEvent()">
 
-    <dropdown class="col-xs-12 xs-hide" placeholder="Выбери чертов спорт.." list="activities" selected="selectedActivity" property="name"></dropdown>
+    <dropdown
+            class="col-xs-12 xs-hide"
+            list="activities"
+            selected="selectedActivity"
+            property="name"
+            placeholder="Выбери чертов спорт..">
+    </dropdown>
 
-    <custom-select elements="activities" ng-model="selectedActivity" placeholder="Выбери чертов спорт.."></custom-select>
+    <custom-select
+            elements="activities"
+            ng-model="selectedActivity"
+            placeholder="Выбери чертов спорт..">
+    </custom-select>
 
     <div class="col-xs-12">
         <input type="text" class="col-xs-12"

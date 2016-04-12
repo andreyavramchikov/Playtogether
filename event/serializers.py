@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from authentication.models import User
-from authentication.serializers import UserSerializer
 from event.models import Place, Event, Activity, EventUsers
 
 
@@ -39,7 +38,7 @@ class EventSerializer(serializers.ModelSerializer):
     BAD Example of serializing ManyToMany model - need to be refactored
     """
     def get_event_users(self, instance):
-        event_user_ids = EventUsers.objects.filter(event=instance).values_list('user', flat=True)
+        event_user_ids = instance.eventusers_set.filter(event=instance).values_list('user', flat=True)
         return User.objects.filter(pk__in=event_user_ids).values_list('id', flat=True)
 
     def get_count_of_members(self, instance):
