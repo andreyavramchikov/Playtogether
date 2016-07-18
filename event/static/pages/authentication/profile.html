@@ -1,0 +1,41 @@
+<section id="wrapper-profile" class="col-xs-12">
+   <section id="profile" class="col-xs-12">
+        <div class="col-xs-11 profile-form">
+            <update-email
+                    ng-model="account.email"
+                    label="Email"
+                    default-email="account.defaultEmail"
+                    name="email">
+            </update-email>
+            <update-choicefield
+                 ng-model="account.schedule_to_play"
+                 default-value="account.defaultSchedule"
+                 choices="schedule_choices"
+                 label="Частота игры"
+                 name="schedule_to_play"
+                 placeholders="Выберите частоту с которой играете">
+
+            </update-choicefield>
+            <update-choicefield
+                 ng-model="account.sex"
+                 default-value="account.defaultSex"
+                 choices="sex_choices"
+                 label="Пол"
+                 name="sex"
+                 placeholders="Выберите пол">
+            </update-choicefield>
+            <update-phone
+                 account="account">
+            </update-phone>
+
+            <update-activities ng-if="account.activity_users.length > 0" account="account"></update-activities>
+
+            <div add-activities account="account">
+
+            </div>
+
+        </div>
+
+    </section>
+</section>
+

@@ -1,3 +1,25 @@
 mkvirtualenv playtogether --no-site-packages
 django-admin startproject playtogether
 pip install -r requirements.txt
+python manage.py startapp event
+
+drop database playtogether
+create database playtogether
+
+python manage.py runserver 9000 --settings=playtogether.settings.local
+
+python manage.py loaddata users places teams activity  event activityplaces eventusers teamactivities teamusers useractivities
+
+create database playtogether CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+ALTER TABLE event_city CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+python manage.py makemigrations --empty event
+
+celery -A playtogether worker -l info
+celery -A proj worker -l info
+
+
+CREATE DATABASE playtogether
+  DEFAULT CHARACTER SET utf8
+  DEFAULT COLLATE utf8_general_ci;

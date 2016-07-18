@@ -1,0 +1,68 @@
+@import "../../share.less";
+
+/*START POPULAR EVENTS */
+#landing {
+    #popular-events {
+        width: 100%;
+        overflow: hidden;
+        .black-line {
+            background-image: url('../../../../img/black_line.png');
+        }
+        div {
+            font-family: Georgia;
+            color: white;
+            text-align: center;
+        }
+        .popular-text {
+            line-height: 60px;
+            font-family: Georgia;
+            font-size: 17px;
+            color: black;
+        }
+
+        section.sports {
+            .image {
+                max-width: 100%;
+            }
+            .bottom {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background-color: rgba(255, 255, 255, 0.65);
+                height: 35px;
+                padding: 0 10px;
+                line-height: 35px - 4px;
+                font-family: "Courier New";
+                font-weight: normal;
+                font-size: 14px;
+            }
+             > div {
+                .box-sizing;
+                padding: 10px 1% 20px 1%;
+            }
+
+            div h3 {
+                font-family: "Courier New";
+                font-size: 18px;
+                font-weight: normal;
+                text-align: right;
+            }
+        }
+    }
+}
+
+/*FOR TABLE AND DESKTOP*/
+@media only screen
+and (min-width: 768px) {
+
+    #landing {
+        #popular-events {
+            section.sports {
+                .bottom {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+}

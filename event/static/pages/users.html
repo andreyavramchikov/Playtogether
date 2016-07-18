@@ -1,0 +1,54 @@
+<article id="users">
+
+    <section id="user-filters" class="col-xs-12 col-md-2 col-lg-2 left">
+        <div class="sex-filter">
+            <lable for="">МУЖСКОЙ</lable>
+            <input type="checkbox" name="male" ng-model="male" ng-true-value="'МУЖСКОЙ'"/>
+            <lable for="">ЖЕНСКИЙ</lable>
+            <input type="checkbox" name="female" ng-model="female" ng-true-value="'ЖЕНСКИЙ'"/>
+        </div>
+        <div class="activities">
+            <h3>Activities</h3>
+            <input type="search" ng-model="searchActivity.name"/>
+            <div ng-repeat="activity in activities | filter: searchActivity">
+                <input type="checkbox" ng-model="activity.selected">
+                <label>[[activity.name]]</label>
+            </div>
+        </div>
+    </section>
+
+    <section class="col-xs-12 col-md-10 col-lg-10 left">
+        <div class="col-xs-11 col-md-11 col-lg-11 auto">
+            <div ng-repeat="user in users" class="left container col-xs-12 col-md-6">
+                <div class="info">
+                    <figure>
+                        <img ng-src="/static/img/email.png"/> <span> [[user.email]] </span>
+                    </figure>
+                    <figure>
+                        <img ng-src="/static/img/phone.png"/> <span>[[user.phone || 'Не указан']] </span>
+                    </figure>
+                </div>
+
+                <div class="activity">
+                    <div ng-repeat="activity_user in user.activity_users" class="col-xs-12 hidden">
+                        <label class="col-xs-6 col-md-4 col-lg-4 left">[[activity_user.activity.name]]</label>
+                        <star-rating
+                             class="col-xs-6 col-md-8 col-lg-8 right"
+                             ng-model="activity_user.activity.level"
+                             data-initial-rating="[[activity_user.level || '0']]"
+                             mode="read"></star-rating>
+                    </div>
+                </div>
+                <div class="actions" ng-show="eventId">
+                    <input type="button" class="col-xs-12"
+                           value="Пригласить" ng-hide='user.come_to_event'
+                           ng-click="inviteToEvent(user.id, $index)"/>
+
+                    <input type="button" class="col-xs-12"
+                           value="Отприглосить" ng-show="user.come_to_event"
+                           ng-click="removeFromEvent(user.id, $index)"/>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>

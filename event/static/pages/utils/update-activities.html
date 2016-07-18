@@ -1,0 +1,32 @@
+<div class="col-xs-12 text-left">
+    <header  ng-hide="show" class="col-xs-12">
+        <p class="col-xs-4 col-md-3 col-lg-3">Мои активности</p>
+        <div class="col-xs-6 col-md-6 col-lg-6 ">
+            <div ng-repeat="activity_user in account.activity_users" class="col-xs-12 hidden">
+                <label class="col-xs-6 col-md-7 col-lg-7">[[activity_user.activity.name]]</label>
+                <star-rating
+                     class="col-xs-6 col-md-5 col-lg-5 right"
+                     ng-model="activity_user.level"
+                     data-initial-rating="[[activity_user.level || '0']]"
+                     mode="read"></star-rating>
+            </div>
+        </div>
+        <a class="col-xs-2 col-md-3 col-lg-3 right" ng-click="show = !show">Редактировать</a>
+    </header>
+
+    <div ng-show="show">
+        < ng-repeat="activity_user in account.activity_users" class="col-xs-12 hidden">
+            <label class="col-xs-6 col-md-4 col-lg-4">[[activity_user.activity.name]]</label>
+            <star-rating
+                 class="col-xs-6 col-md-8 col-lg-8 right"
+                 ng-model="activity_user.level"
+                 data-initial-rating="[[activity_user.level || '0']]"
+                 mode="edit"></star-rating>
+        </div>
+        <div class="col-xs-12 actions">
+            <input type="button" class="col-xs-6" value="Сохранить" ng-click="save()"/>
+            <input type="button" class="col-xs-6" value="Отменить" ng-click="show=false"/>
+        </div>
+
+    </div>
+</div>

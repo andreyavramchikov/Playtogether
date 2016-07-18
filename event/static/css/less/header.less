@@ -1,0 +1,77 @@
+@import "share.less";
+
+@header-font : Georgia;
+@sports-club-font: Vivaldi;
+@xs-header-height: 40px;
+@md-lg-header-height: 70px;
+
+header {
+  .box-sizing;
+  height: @xs-header-height;
+
+  .sports-club {
+    float: left;
+    font-family:  @sports-club-font;;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    line-height: @xs-header-height;
+    color: black;
+    text-decoration: none;
+  }
+
+  .signin {
+    position: relative;
+    height: 100%;
+    float: right;
+  }
+}
+
+/*Tablet and Descktop*/
+@media (min-width: 768px) {
+  //  and (max-width: 1024px) {
+  header {
+    height: @md-lg-header-height;
+    .sports-club {
+      line-height: @md-lg-header-height;
+    }
+
+    .userinfo {
+      padding-right: 25%;
+      box-sizing: border-box;
+    }
+
+    section {
+      a {
+        font-family: @header-font;
+        color: black;
+        font-size: 16px;
+        line-height: @md-lg-header-height;
+      }
+
+      .account {
+        height: @md-lg-header-height;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    nav {
+      text-align: center;
+      ul {
+        li {
+          float: left;
+          a {
+            font-family: @header-font;
+            font-style: normal;
+            font-size: 16px;
+            color: black;
+            line-height: 70px;
+          }
+        }
+      }
+    }
+  }
+}
+

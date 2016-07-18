@@ -1,0 +1,40 @@
+<form id="create-event" name="createEventForm" ng-submit="createEventForm.$valid && createEvent()">
+
+    <dropdown
+            class="col-xs-12 xs-hide"
+            list="activities"
+            selected="selectedActivity"
+            property="name"
+            placeholder="Выбери чертов спорт..">
+    </dropdown>
+
+    <custom-select
+            elements="activities"
+            ng-model="selectedActivity"
+            placeholder="Выбери чертов спорт..">
+    </custom-select>
+
+    <div class="col-xs-12">
+        <input type="text" class="col-xs-12"
+               data-field="datetime"
+               ng-model="start_date"
+               placeholder="Когда играем?">
+        <datetime-box></datetime-box>
+    </div>
+    <div class="errors" ng-model="errors.start_date">[[errors.start_date]]</div>
+
+    <input class=col-xs-12"
+           type="number"
+           id="count"
+           value="count"
+           ng-model="min_people"
+           placeholder="Сколько минимум людей надо?">
+
+    <div class="errors" ng-model="errors.min_people">[[errors.min_people]]</div>
+
+    <openstreet-search ng-model="description"></openstreet-search>
+
+    <div id="basicMap" style="height:250px; position: relative;"></div>
+
+    <input type="submit" value="Создать" class="col-xs-12">
+</form>

@@ -1,0 +1,77 @@
+
+#landing {
+
+  .header-bottom {
+    >img {
+      max-width: 100%;
+    }
+
+    .choose-sport-text {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      right: 10%;
+      font-family: Georgia;
+      font-weight: bold;
+      font-size: 14px;
+      color: white;
+      text-align: center;
+    }
+    .how-it-works {
+      position: absolute;
+      bottom: 40%;
+      left: 0;
+      right: 0;
+      height: 20%;
+      background-color: rgba(255, 255, 255, 0.5);
+      margin: 0 auto;
+
+      span {
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 18px;
+        color: white;
+      }
+    }
+
+    .search-activity {
+      position: absolute;
+      bottom: 10%;
+      left: 0;
+      right: 0;
+      height: 20%;
+      width: 100%;
+
+      .activity {
+        width: 95%;
+        margin-left: 2.5%;
+        padding-left: 2.5%;
+        border: 0;
+        font-family: Georgia;
+        font-style: normal;
+        font-size: 16px;
+        color: #666666;
+      }
+    }
+  }
+}
+
+/*FOR DESKTOP*/
+@media only screen and (min-width: 1025px) {
+
+  #landing {
+
+    .header-bottom {
+      .choose-sport-text {
+        font-size: 40px;
+      }
+      .how-it-works span {
+        font-size: 30px;
+      }
+      .search-activity {
+        height: 70px;
+      }
+    }
+
+  }
+}

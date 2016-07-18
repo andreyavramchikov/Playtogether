@@ -1,0 +1,35 @@
+<form name='loginForm' id="login-form"
+      class="col-xs-12" novalidate
+      ng-submit="loginForm.$valid && login()">
+    <h3>Зайти</h3>
+
+    <input type="email" name="email"
+           class="col-xs-12" placeholder="Email"
+           ng-model="user.email" required
+           ng-focus="email.focus = true" ng-blur="email.focus = false"
+           ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"/>
+    <span class="errors" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine && !email.focus">Please enter a valid email address!</span>
+
+    <input type="password" class="col-xs-12"
+           name="password" ng-model="user.password"
+           placeholder="Пароль" required minlength="5"
+           ng-focus="password.focus = true" ng-blur="password.focus = false">
+    <span class="errors" ng-show="loginForm.password.$invalid && !loginForm.password.$pristine && !password.focus">Please enter a valid password</span>
+
+    <span class="errors">[[errors]]</span>
+
+    <input type="submit" name="submit" class="col-xs-12"  value="Войти">
+    <div class="errors" ng-model="errors.non_field_errors">[[errors.non_field_errors]]</div>
+
+    <div class="col-xs-12">
+         <p>Нет аккаунта? <a href="/register/step-1/">Зарегистрироваться</a></p>
+        <div class="vk_oauth right">
+            <a href="https://oauth.vk.com/authorize?client_id=5269479&redirect_uri=http://localhost:9000/callbackvk&display=popup&scope=email">
+                <img style="width:40px;" ng-src="/static/img/vk_oauth.png" />
+            </a>
+        </div>
+    </div>
+
+    <a href="/forgot_password/">Забыли пароль?</a>
+
+</form>

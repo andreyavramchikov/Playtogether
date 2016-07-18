@@ -1,0 +1,58 @@
+@import "share.less";
+
+#users section {
+  .container {
+    border: 1px solid aliceblue;
+    box-sizing: border-box;
+    max-height: 300px;
+    padding: 15px;
+    margin: 10px 0;
+
+    .info {
+      border-bottom: 1px solid gainsboro;
+      margin-bottom: 10px;
+    }
+
+    figure {
+      height: 40px;
+      span {
+        line-height: 40px;
+        float: right;
+      }
+    }
+
+    .activity {
+      &>div{
+        height: 30px;
+      }
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    input[type='button'] {
+      .action_button(white, #FF3F45, 0, 0);
+    }
+
+  }
+}
+
+/*Tablet*/
+@media (min-width: 768px)
+and (max-width: 1024px) {
+  #users section {
+    .container {
+      width: 48%;
+      margin: 20px 1% 20px 1%;
+    }
+  }
+}
+
+/*FOR DESKTOP*/
+@media only screen and (min-width: 1025px) {
+  #users section {
+    .container {
+      width: 30%;
+      margin: 20px 0 20px 3.333333%;
+    }
+  }
+}

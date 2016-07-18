@@ -1,0 +1,73 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" ng-app="playTogether">
+
+<head>
+    {#    for html5 location in angular 1.3#}
+    <base href="/">
+
+    {% block meta %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    {% endblock %}
+
+    {% block title %}
+        <title update-title></title>
+    {% endblock %}
+
+    <link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="image/x-icon"/>
+
+    {% block fonts %}
+        <link href="{% static 'fonts/fonts.css' %}" rel="stylesheet" type="text/css"/>
+    {% endblock %}
+
+     {% block lib_css %}
+        {% include 'styles/css-libs.html' %}
+    {% endblock %}
+
+    {% block less %}
+        {% include 'styles/css-custom.html' %}
+    {% endblock %}
+
+    {% block js_libs %}
+        {% include 'scripts/js-libs.html' %}
+    {% endblock %}
+
+    {% block js_custom %}
+        {% include 'scripts/js-custom.html' %}
+    {% endblock %}
+
+</head>
+
+<body ng-controller="BodyController">
+
+{% block mobile_menu %}
+    <input type="checkbox" id="mobile-menu-input" class="lg-hide md-hide">
+    <label for="mobile-menu-input" class="lg-hide md-hide" onclick ></label>
+    {#    Should be separate from other content because of moving other content to right - effect#}
+    {% include 'mobile-menu.html' %}
+{% endblock %}
+
+<main>
+
+    {% block navigation %}
+        <header>
+            {% include 'menu.html' %}
+        </header>
+    {% endblock %}
+
+    {% block main %}
+    {% endblock %}
+
+    {% block footer %}
+        {% include 'footer.html' %}
+    {% endblock %}
+
+</main>
+
+</body>
+
+</html>

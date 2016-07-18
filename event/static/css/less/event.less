@@ -1,0 +1,60 @@
+@import "share.less";
+
+section#event {
+
+  header {
+    height: 30px;
+    background-color: black;
+    color: white;
+  }
+
+  .container {
+    padding: 40px;
+  }
+
+  .info {
+    .box-sizing;
+    padding: 0 2%;
+    .block {
+      .box-sizing;
+      padding: 10px;
+      border-bottom: 1px solid gainsboro;
+      font-family: Arial, Helvetica, sans-serif;
+      color: gray;
+      font-size: 14px;
+      height: 60px;
+      span {
+        line-height: 40px;
+      }
+      .label {
+
+      }
+      .value {
+
+      }
+      .change {
+
+      }
+    }
+
+    .actions {
+      input[type='button'] {
+        &:nth-child(1) {
+          .action_button(white, #20cfb1, 0, 0);
+        }
+        &:nth-child(2) {
+          .action_button(white, #FF3F45, 0, 0);
+        }
+      }
+    }
+
+  }
+
+  .actions {
+    padding: 0 1%;
+    .box-sizing;
+    a {
+      .action_button(white, #FF3F45, 0, 0);
+    }
+  }
+}

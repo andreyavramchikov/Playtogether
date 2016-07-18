@@ -1,0 +1,20 @@
+<div class="col-xs-12 text-left">
+    <header ng-hide="show" class="col-xs-12">
+        <p class="col-xs-4">[[ label ]] </p>
+        <p class="col-xs-6 ">[[defaultValue.name]]</p>
+        <a class="col-xs-2 right" ng-click="show = !show">Редактировать</a>
+    </header>
+
+    <div ng-show="show">
+        <dropdown class="col-xs-12"
+                  placeholder="[[placeholders]]"
+                  list="choices"
+                  selected="field"
+                  property="name">
+        </dropdown>
+        <div class="col-xs-12 actions">
+            <input type="button" class="col-xs-6" value="Сохранить" ng-click="save()"/>
+            <input type="button" class="col-xs-6" value="Отменить" ng-click="cancel()"/>
+        </div>
+    </div>
+</div>

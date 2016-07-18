@@ -1,0 +1,21 @@
+<div class="col-xs-12 col-md-12 col-lg-12">
+    <div class="block" ng-show="!show">
+        <span class="label col-xs-4">Дата и время</span>
+        <span class="value col-xs-6">12 Февраля 2015 20:30</span>
+        <span class="change col-xs-2" ng-click="edit()">Редактировать</span>
+    </div>
+
+    <div ng-show="show">
+        <span class="label col-xs-4">Дата и время</span>
+        <div>
+            <input type="text" class="col-xs-12" data-field="datetime" ng-model="event.start_date">
+            <datetime-box></datetime-box>
+        </div>
+
+        <div class="col-xs-12 actions">
+            <input type="button" class="col-xs-6" value="Сохранить" ng-click="save()"/>
+            <input type="button" class="col-xs-6" value="Отменить" ng-click="show=false" />
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,197 @@
+/*Common styles for all devices and width of screen*/
+
+body, h1, h2, h3, h4, h5, h6, figure, header {
+    margin: 0;
+    padding: 0;
+}
+
+input[type='submit'] {
+  cursor: pointer;
+}
+
+input::-webkit-input-placeholder {
+  padding: 0 0 0 5px;
+}
+
+//BASIC STYLES FOR NAVIGATION
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    li {
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.ng-hide-add, .ng-hide-remove {
+    /* ensure visibility during the transition */
+    display: block !important; /* yes, important */
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    text-decoration: none;
+  }
+  
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+main {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+//I just added it because of responsive line-circle-line which should stretch to all screen, but line placed in div which is not 100% of screen
+  overflow-x: hidden;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+.block {
+    display: block;
+}
+
+.auto {
+    margin: 0 auto;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.no-margin-padding {
+    margin: 0;
+    padding: 0;
+}
+
+.relative {
+    position: relative;
+}
+
+.relative-100 {
+    height: 100%;
+    position: relative;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.bold {
+    font-weight: bold !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/*absolute centering - left- right image;
+parent should be height:100% (should present height of block + WIDTH of the block) and position: relative;*/
+.center-image {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.right-image {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.left-image {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.center-flex {
+    /*need to understand what it is*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row-95 {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+}
+
+@media only screen and (max-width: 767px) {
+    .xs-hide {
+        display: none !important;
+    }
+}
+
+/*TABLET*/
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .md-hide {
+        display: none !important;
+    }
+}
+
+/*DESKTOP*/
+@media only screen
+  and (min-width: 1025px) {
+
+    .lg-hide {
+        display: none !important;
+    }
+
+}

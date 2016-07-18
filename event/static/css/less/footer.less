@@ -1,0 +1,57 @@
+@import "share.less";
+
+.basic-font {
+  font-family: Georgia;
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: normal;
+}
+
+.white-line {
+  border-bottom: 1px solid white;
+  display: inline-block;
+}
+
+footer {
+  a {
+    color: white;
+  }
+  width: 100%;
+  overflow: hidden; // MUST RETHING ABOUT IT
+  background-color: black;
+  color: white;
+
+  .basic-font;
+
+  h3 {
+    .basic-font;
+  }
+
+  header {
+    height: 100%;
+    .white-line;
+  }
+
+  section.social {
+    header {
+      text-align: center;
+    }
+  }
+
+  section.map {
+    .box-sizing;
+    padding-left: 5%;
+    text-align: left;
+  }
+
+  section.info {
+    .box-sizing;
+    padding-right: 5%;
+    text-align: right;
+  }
+
+  section.sportclub {
+    text-align: center;
+  }
+
+}

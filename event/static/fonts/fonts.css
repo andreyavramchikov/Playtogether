@@ -1,0 +1,15 @@
+/*FONTS MUST PUT IN SEPARATE FILE*/
+@font-face {
+    font-family: Vivaldi;
+    src: url('vivaldi.ttf');
+}
+
+@font-face {
+    font-family: Courier New;
+    src: url('cour.ttf');
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url('Montserrat-Regular.otf');
+}

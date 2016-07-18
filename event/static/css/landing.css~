@@ -1,0 +1,146 @@
+/* iPhone [portrait + landscape] */
+@media only screen and (max-width: 700px) {
+
+    .left {
+        float: left;
+    }
+
+    .row {
+        width: 100%;
+    }
+
+    .right {
+        float: right;
+    }
+
+    .border {
+        border: 1px solid black;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .no-margin-padding {
+        margin: 0;
+        padding: 0;
+    }
+
+    #landing-header {
+        max-width: 100%;
+        position: relative;
+    }
+
+        #landing-header .header-img {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        #landing-header .signing-text {
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            font-size: 12px;
+            color: white;
+            font-style: normal;
+        }
+
+        #landing-header .menu-icon {
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+        }
+
+        #landing-header .sports-club {
+            position: absolute;
+            bottom: 10%;
+            left: 30%;
+            font-family: Vivaldi;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        #landing-header .search-icon {
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+        }
+
+    #landing-events {
+        max-width: 100%;
+        position: relative;
+    }
+        #landing-events .event {
+            width: 100%;
+            position: relative;
+        }
+
+            #landing-events .event .event-img {
+                width: 100%;
+            }
+
+            #landing-events .event .event-name {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                color: white;
+            }
+
+        #landing-events .description {
+            width: 100%;
+            font-size: 12px;
+        }
+
+        /*#landing-events .buttons {*/
+            /*width: 100%;*/
+        /*}*/
+
+            #landing-events .buttons button {
+                width: 100%;
+            }
+
+                #landing-events .buttons .going {
+                    background-color: red;
+                    color: white;
+                }
+
+                #landing-events .buttons .invite {
+                    background-color: gray;
+                    color: red;
+                }
+
+    #all-events {
+        width: 100%;
+    }
+        #all-events button {
+            width: 100%;
+        }
+
+    #landing-popular-events {
+        width: 100%;
+    }
+
+        #landing-popular-events .event{
+            width:48%;
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+
+            #landing-popular-events .event-img{
+                width:100%;
+            }
+
+            #landing-popular-events .event-name{
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+
+    #landing-footer {
+        width: 100%;
+    }
+
+}
