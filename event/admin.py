@@ -8,14 +8,14 @@ class ActivityAdmin(admin.ModelAdmin):
     inlines = (ActivityPlacesInline, ActivityUsersInline)
 
 
-
 class PlaceAdmin(admin.ModelAdmin):
     inlines = (ActivityPlacesInline,)
 
 
 class UserAdmin(admin.ModelAdmin):
 
-    list_display = ('email', 'phone', 'sex', 'sms_notification', 'email_notification', 'schedule_to_play', )
+    list_display = ('email', 'phone', 'sex', 'sms_notification',
+                    'email_notification', 'schedule_to_play', )
     list_filter = ('sms_notification',)
 
     inlines = (UserEventsInline, ActivityUsersInline)

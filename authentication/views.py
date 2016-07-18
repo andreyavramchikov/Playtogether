@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import json
+import requests
 
+from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -10,6 +12,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import authenticate, login, logout
 from django.template import loader
 from django.utils.translation import ugettext_lazy as _
+from django.shortcuts import redirect
 
 from rest_framework import permissions, viewsets, status, views, generics
 from rest_framework.response import Response
@@ -59,7 +62,6 @@ class AccountViewSet(viewsets.ModelViewSet):
 class LoginView(views.APIView):
 
     def post(self, request, format=None):
-        # data = json.loads(request.body)
         data = request.data
         email = data.get('email', None)
         password = data.get('password', None)
@@ -134,12 +136,13 @@ class ForgotPasswordView(views.APIView):
             EmailSender().send_forgot_password_email(email, email_msg)
             return Response(status=status.HTTP_200_OK)
         except ObjectDoesNotExist:
-            return Response(status=status.HTTP_400_BAD_REQUEST, data={'errors': {'email': 'No such email in system'}})
+            return Response(status=status.HTTP_400_BAD_REQUEST,
+                            data={'errors': {'email': 'No such email in system'}})
 
 
 class ResetPasswordConfirmView(views.APIView):
 
-    def post(self,request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         try:
             uidb64 = request.data['uidb64']
             token = request.data['token']
@@ -169,6 +172,7 @@ class GetUserView(views.APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
+# TODO - Should replace hardcoded data with settings parameters
 class CallBackView(views.APIView):
 
     def get(self, request, *args, **kwargs):
@@ -176,35 +180,26 @@ class CallBackView(views.APIView):
         code = request.query_params['code']
         response = requests.post('https://github.com/login/oauth/access_token',
                       {'client_id': '436adf1db1ea1a3b2936',
-                       'client_secret': '64f17899194c59f42861c1ece90290810bc04fd1',
+                       'client_secret': settings.GITHUB_SECRET_KEY,
                        'code': code})
-
         access_token = response.content.split('&')[0].split('=')[1]
-
-        # info = requests.get('https://api.github.com/user', {'params': {'access_token': access_token}})
         info = requests.get('https://api.github.com/user?access_token=' + access_token)
         print json.loads(info.content)['avatar_url']
         print json.loads(info.content)['login']
         return Response(status=status.HTTP_200_OK)
 
 
+# TODO - Should replace hardcoded data with settings parameters
 class CallBackVKView(views.APIView):
 
     def get(self, request, *args, **kwargs):
-        import requests
-        from django.shortcuts import redirect
-        import json
         code = request.query_params['code']
-
-        response = requests.get('https://oauth.vk.com/access_token?'
-                                 'client_id=5269479&redirect_uri=http://localhost:9000/callbackvk&'
-                                 'client_secret=GXiQkDrstC2hHGTYsfBG&code=' + code)
-
-
+        URL = 'https://oauth.vk.com/access_token?client_id=5269479&redirect_uri=' \
+              'http://localhost:9000/callbackvk&client_secret={}&code={}'.format(settings.VK_SECRET_KEY, code)
+        response = requests.get(URL)
         access_token = json.loads(response.content)['access_token']
         user_id = json.loads(response.content)['user_id']
         email = json.loads(response.content)['email']
-
         password = 'oauthpassword'
         try:
             User.objects.create_user(email=email, password=password)

@@ -17,8 +17,10 @@ app.controller('CreateEventController', ['$scope', '$rootScope', '$state', '_', 
             return data;
         };
 
-        //to broadcast event of click into dropdown directive
-        //to close dropdown on the page after clicking on any position;
+        /*
+            To broadcast event of click into dropdown directive
+            to close dropdown on the page after clicking on any position;
+        */
         $('#create-event').on("click", function (e) {
             $rootScope.$broadcast("documentClicked", angular.element(e.target));
         });

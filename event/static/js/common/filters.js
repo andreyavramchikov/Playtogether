@@ -2,7 +2,6 @@
 
 var filters = angular.module('filters', []);
 
-
 /*
     incoming value format 20-11-2016
     return format 20/11
@@ -61,7 +60,7 @@ filters.filter('timeRangeFilter', function () {
 });
 
 
-// presentation filter
+/* presentation filter */
 filters.filter('boolPresentationFilter', function(){
     return function (value) {
         if (value === false) {
@@ -74,11 +73,11 @@ filters.filter('boolPresentationFilter', function(){
     };
 });
 
-//presentation of array with separator
+/* presentation of array with separator */
 filters.filter('join', function () {
     return function join(array, separator, prop) {
         if (!Array.isArray(array)) {
-            return array; // if not array return original
+            return array;
         }
         return (!!prop ? array.map(function (item) {
             return item;

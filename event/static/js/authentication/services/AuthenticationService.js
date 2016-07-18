@@ -83,4 +83,5 @@ authentication.service('AuthenticationService', ['$http', '$cookies', function (
     this.resetConfirm = function (data) {
         return $http.post('/api/v1/reset-confirm/', data);
     };
+
 }]);

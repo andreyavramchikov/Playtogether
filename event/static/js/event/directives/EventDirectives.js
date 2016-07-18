@@ -62,11 +62,7 @@ app.directive('eventdateUpdate', function () {
                 scope.show = !scope.show;
             };
             scope.save = function () {
-                //var data = {'phone': scope.account.phone,
-                //'sms_notification': scope.account.sms_notification};
-                //AuthenticationService.updateProfile(AuthenticationService.getUserId(), data).then(function(){
-                //    scope.show = false;
-                //});
+                //TODO
             };
         }
     };

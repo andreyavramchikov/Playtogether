@@ -30,6 +30,7 @@ class PlaceListView(generics.ListCreateAPIView):
     serializer_class = PlaceSerializer
     paginate_by = 100
 
+
 class EventListView(generics.ListCreateAPIView):
     queryset = Event.objects.all().select_related('activity')
     serializer_class = EventSerializer

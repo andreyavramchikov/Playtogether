@@ -23,36 +23,35 @@ class ActivityUsersSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
-    # phone = serializers.IntegerField(write_only=True, required=False)
     confirm_password = serializers.CharField(write_only=True, required=False)
     activity_users = ActivityUsersSerializer(source='activityusers_set', many=True, read_only=True)
     date_of_birth = serializers.DateField(required=False)
 
-    # invoke just if data correct
+    # invoked just if data correct
     def validate(self, data):
         sms_notification = data.get('sms_notification')
         phone = data.get('phone')
         if sms_notification:
             # if user checked send_sms checkbox then user MUST fill the phone field
             if not phone:
-                raise serializers.ValidationError('Phone should be presented if you check sendSMS checkbox')
+                raise serializers.ValidationError('Phone should be presented '
+                                                  'if you check sendSMS checkbox')
             if not self.validate_phone(data.get('phone')):
                 raise serializers.ValidationError('Phone not valid')
 
         return data
 
-    def validate_phone(self, phone):
-        return phone
-
     class Meta:
         model = User
         fields = ('id', 'email', 'username', 'city', 'schedule_to_play',
                   'created_at', 'updated_at', 'first_name', 'last_name',
-                  'password', 'activity_users', 'confirm_password', 'phone', 'sms_notification', 'email_notification',
+                  'password', 'activity_users', 'confirm_password', 'phone',
+                  'sms_notification', 'email_notification',
                   'sex', 'date_of_birth')
         read_only_fields = ('created_at', 'updated_at',)
 
-        def create(self, validated_data):
+        @staticmethod
+        def create(validated_data):
             return User.objects.create(**validated_data)
 
         def update(self, instance, validated_data):

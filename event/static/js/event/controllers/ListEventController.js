@@ -26,7 +26,6 @@ app.controller('ListEventController', ['$scope', '$state', '$stateParams', '$roo
         };
 
         $scope.goFromEvent = function (eventId, index) {
-            //Copy past
             if (!$rootScope.IS_AUTHENTICATED) {
                 return $state.go('login');
             }
@@ -41,7 +40,6 @@ app.controller('ListEventController', ['$scope', '$state', '$stateParams', '$roo
         };
 
         $scope.inviteToEvent = function (eventId) {
-            //Copy past
             if (!$rootScope.IS_AUTHENTICATED) {
                 return $state.go('login');
             }

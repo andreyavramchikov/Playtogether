@@ -236,7 +236,7 @@ app.directive('datetimeBox', function () {
             element.DateTimePicker({
                 isPopup: false,
                 dateFormat: "yyyy-MM-dd", // this parameter not working with ru.localization of Datetimepicker.js.
-                    // Overrided in source code of this lib DateTimePicker-i18n-ru.js
+                // Overrided in source code of this lib DateTimePicker-i18n-ru.js
                 language: "ru"
             });
         }

@@ -33,13 +33,17 @@ app.run(function ($http, $rootScope, $state, AuthenticationService) {
 
     $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
         if (toState.loginRequired && !fromState.name) {
-            // if we refresh the page then we need huck because .getUser not complited when self function called so
-            // we need to recall it here
+            /*
+               if we refresh the page then we need huck because .getUser not complited
+                when self function called sowe need to recall it here
+            */
             AuthenticationService.getUser().then(function (){
-
-            }, function () {
-                // if error - means that is not authenticated user
-                $rootScope.returnToState = toState.name; // this parameter for history (example: if we go to protected - loginrequired url and we are not authenticated then after we logged in we want automatically come back to the original url
+            }, function () { // if error - means that is not authenticated user
+                /*
+                    this parameter for history (example: if we go to protected - loginrequired url and we are not
+                    authenticated then after we logged in we want automatically come back to the original url
+                */
+                $rootScope.returnToState = toState.name;
                 $state.transitionTo("login");
                 event.preventDefault();
             });

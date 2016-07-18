@@ -43,7 +43,6 @@ app.controller('EventFilterController',['$scope', 'EventService', 'ActivityServi
         }
 
         if ($scope.date.currentDate != undefined && $scope.date.currentDate != null) {
-            //query_params.start_date = $scope.currentDate['value'];
             query_params.push({name: 'start_date', value: $scope.date.currentDate['value']})
         }
 

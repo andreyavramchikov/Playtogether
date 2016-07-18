@@ -43,7 +43,7 @@ app.config(function ($locationProvider, $httpProvider, $interpolateProvider, $st
             title: 'Регистрация шаг 4'
         })
         .state('register-step-5', {
-            url: '/register/step-5',//without slash because we have params
+            url: '/register/step-5', //without slash because we have params
             params: {
                 userId: null
             },

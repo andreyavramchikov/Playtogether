@@ -23,7 +23,7 @@ app.controller('RegisterStep4Controller', function ($scope, $state,
         $scope.activities = response.data;
     });
 
-    //VERY BAD IMPLEMENTATION - MUST BE REFACTORED
+    // MUST BE REFACTORED
     $scope.registerStep4 = function () {
         var userId = $stateParams.userId;
         ActivityService.updateUserActivities(getData());

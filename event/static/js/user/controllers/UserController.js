@@ -18,7 +18,6 @@ app.controller('UserController', ['$scope', '$rootScope', '$stateParams',
             $scope.activities = response.data;
         });
 
-        //copy past
         var _getFilterData = function () {
             var selectedActivity = _.filter($scope.activities, function (activity) {
                     return activity.selected;

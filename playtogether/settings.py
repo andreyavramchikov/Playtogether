@@ -193,6 +193,7 @@ EMAIL_HOST_USER = 'aldrson@gmail.com'
 EMAIL_HOST_PASSWORD = 'andreypasan'
 
 from django.utils.translation import ugettext_lazy as _
+
 LANGUAGES = (
     ('en', _('English')),
     ('ca', _('Catalan')),
@@ -208,3 +209,6 @@ CACHES = {
         'LOCATION':'127.0.0.1:11211',
     }
 }
+
+VK_SECRET_KEY = 'GXiQkDrstC2hHGTYsfBG'
+GITHUB_SECRET_KEY = '64f17899194c59f42861c1ece90290810bc04fd1'

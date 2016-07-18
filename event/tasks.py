@@ -1,7 +1,8 @@
 from celery import task
 
 from mail.sender import EmailSender
-# HOW TO RUN LOCALLY
+
+# TO RUN LOCALLY
 # celery -A playtogether worker -l info
 
 
